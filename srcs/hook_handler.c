@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 00:38:44 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 01:49:10 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,28 @@
 
 int	mouse_handler(int button, int x, int y, t_sys *sys)
 {
-	// if (button == SCROLL_UP)
-	// 	zoom_screen(sys, 1 / 1.1, x, y);
-	// if (button == SCROLL_DOWN)
-	// 	zoom_screen(sys, 1.1, x, y);
+	//クリックした場所の色の情報などが取れるといいかもしれぬ
 	return (0);
 }
 
 int	key_handler(int key, t_sys *sys)
 {
+	int	num;
+
+	num = sys->obj->num_of_camera;
 	if (key == ESCAPE)
 		exit_handler(sys);
-	// if (key == UP || key == DOWN || key == LEFT || key == RIGHT)
-	// 	pan_screen(sys, key - LEFT);
+	if (key == UP)
+	{
+		sys->obj->id_of_camera++;
+		sys->obj->id_of_camera %= num;
+	}
+	if (key == DOWN)
+	{
+		sys->obj->id_of_camera--;
+		sys->obj->id_of_camera += num;
+		sys->obj->id_of_camera %= num;
+	}
 	return (0);
 }
 

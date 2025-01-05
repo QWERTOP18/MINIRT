@@ -11,19 +11,14 @@ void	system_exit(t_sys *sys, int status)
 	exit(status);
 }
 
-t_sys	*system_init(char *arg)
+t_sys	*system_init(char *file)
 {
-	t_sys *sys;
+	t_sys	*sys;
 
 	sys = ft_calloc(1, sizeof(t_sys));
 	if (!sys)
 		system_exit(NULL, E_ALLOCATE);
 	// sys->type = identify_arg(arg, sys);
-	// sys->col = 0x080808;
-	// sys->screen.base.im = -4;
-	// sys->screen.base.re = -4;
-	// sys->screen.height = 8;
-	// sys->screen.width = 8;
 	sys->mlx = mlx_init();
 	if (!sys->mlx)
 		system_exit(NULL, E_MLX_INIT);

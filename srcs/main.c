@@ -6,21 +6,12 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 00:38:08 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 01:48:59 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_handler.h"
 #include "system.h"
-
-void	render_pixel(t_sys *sys, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = sys->img.addr + (y * sys->img.line_length + x
-			* (sys->img.bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
 
 int	loop_handler(t_sys *sys)
 {
@@ -39,7 +30,7 @@ void	setup_hook(t_sys *sys)
 
 int	main(int argc, char **argv)
 {
-	t_sys *sys;
+	t_sys	*sys;
 
 	if (argc != 2)
 		system_exit(NULL, E_INVALID_INPUT);
@@ -48,3 +39,14 @@ int	main(int argc, char **argv)
 	mlx_loop(sys->mlx);
 	system_exit(sys, 0);
 }
+
+/*
+
+* main
+* system init
+*** parse allocate
+* setup hook
+
+
+
+*/

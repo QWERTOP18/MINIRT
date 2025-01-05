@@ -1,7 +1,7 @@
 NAME		:= miniRT
 CC			:= cc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
-CFLAGS		:= -Wall -Wextra -Werror -O2
+CFLAGS		:= -Wall -Wextra #-Werror -O2
 OUT_DIR		:= objs
 INCS_DIR	:= incs
 LIBFT_DIR	:= libft

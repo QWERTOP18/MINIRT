@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shape.h                                            :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 00:23:07 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 00:29:19 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/06 01:40:17 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/01/06 01:40:30 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "system.h"
 
-
-#ifndef SHAPE_H
-# define SHAPE_H
-
-
-typedef struct	s_vec 
+void	render_pixel(t_sys *sys, int x, int y, int color)
 {
-	double		x;
-	double		y;
-	double		z;
-} t_vec;
+	char *dst;
 
-typedef struct	s_sphere 
-{ 
-  t_vec		center;
-  double		radius;
-}				t_sphere;
-
-typedef struct	s_plane 
-{
-  t_vec		center;
-  t_vec		dir;
-}				t_plane;
-
-
-#endif
+	dst = sys->img.addr + (y * sys->img.line_length + x
+			* (sys->img.bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
