@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 05:39:51 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 05:45:23 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_unit_vec		vec_normalize(t_vec v);
 
 t_line			line(t_pos_vec p1, t_pos_vec p2);
 double			line_distance(t_line l, t_pos_vec p);
-t_unit_line		unit_line(t_pos_vec p1, t_vec dir);
+t_unit_line		unit_line(t_pos_vec pos, t_vec dir);
 
 t_unit_line		line_normalize(t_line l);
 

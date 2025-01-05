@@ -6,13 +6,13 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 05:15:54 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 05:36:26 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 05:46:11 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
-t_sphere	*sphere_new(t_vec center, double radius)
+t_sphere	*sphere_new(t_pos_vec center, double radius)
 {
 	t_sphere	*sphere;
 

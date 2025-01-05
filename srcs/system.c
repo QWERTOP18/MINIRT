@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 04:35:36 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 05:51:40 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ t_sys	*system_init(void)
 	sys->win = mlx_new_window(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH, "FRACTOL");
 	if (!sys->win)
 		system_exit(NULL, E_MLX_INIT);
-	sys->img.img = mlx_new_image(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH);
-	if (!sys->img.img)
-		system_exit(NULL, E_ALLOCATE);
-	sys->img.addr = mlx_get_data_addr(sys->img.img, &sys->img.bits_per_pixel,
-			&sys->img.line_length, &sys->img.endian);
+	// sys->img.img = mlx_new_image(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH);
+	// if (!sys->img.img)
+	// 	system_exit(NULL, E_ALLOCATE);
+	// sys->img.addr = mlx_get_data_addr(sys->img.img, &sys->img.bits_per_pixel,
+	// 		&sys->img.line_length, &sys->img.endian);
 	return (sys);
 }
