@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:20:56 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 03:35:44 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 04:34:29 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define SCREEN_HEIGHT 1000
 # define SCREEN_WIDTH 1000
 
+# include "ft_lst.h"
 # include "libft.h"
 # include "mlx.h"
 # include "mlx_int.h"

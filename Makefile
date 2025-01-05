@@ -7,7 +7,7 @@ DFLAGS      := -DNOINPUT
 
 
 
-SRCS := $(wildcard srcs/*.c vector/*.c)
+SRCS := $(wildcard srcs/*.c vector/*.c list/*.c)
 
 
 
@@ -15,13 +15,14 @@ OUT_DIR		:= objs
 INCS_DIR	:= incs
 
 VECTOR_DIR  := vector
+LIST_DIR    := list
 
 LIBFT_DIR	:= libft
 LIBFT		:= $(LIBFT_DIR)/libft.a
 MLX_DIR		:= minilibx
 MLX			:= $(MLX_DIR)/libmlx.a
 
-IFLAGS		:= -I$(INCS_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(VECTOR_DIR)
+IFLAGS		:= -I$(INCS_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(VECTOR_DIR) -I$(LIST_DIR)
 
 
 OBJS		:= $(addprefix $(OUT_DIR)/, $(SRCS:.c=.o))
