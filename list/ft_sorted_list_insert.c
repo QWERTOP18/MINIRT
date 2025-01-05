@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:31:35 by teando            #+#    #+#             */
-/*   Updated: 2025/01/06 04:42:09 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 04:53:31 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_sorted_list_insert(t_list **begin_list, int type, void *data,
 	t_list	*prev;
 	t_list	*new;
 
-	new = ft_create_elem(type, data);
+	new = ft_lstnew(type, data);
 	if (!new)
 		return ;
 	if (!*begin_list || (*cmp)((*begin_list)->data, data) > 0)

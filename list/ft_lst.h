@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 20:39:44 by teando            #+#    #+#             */
-/*   Updated: 2025/01/06 04:42:21 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 04:53:13 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_list
 	void			*data;
 }					t_list;
 
-t_list				*ft_create_elem(int type, void *data);
 t_list				*ft_list_at(t_list *begin_list, unsigned int nbr);
 t_list				*ft_list_find(t_list *begin_list, void *data_ref,
 						int (*cmp)(void *, void *));
@@ -49,7 +48,7 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
-t_list				*ft_lstnew(void *content);
+t_list				*ft_lstnew(int type, void *content);
 int					ft_lstsize(t_list *lst);
 void				ft_sorted_list_insert(t_list **begin_list, int type,
 						void *data, int (*cmp)(void *, void *));
