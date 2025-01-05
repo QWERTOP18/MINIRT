@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 01:49:10 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 02:29:29 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int	key_handler(int key, t_sys *sys)
 {
 	int	num;
 
+	// printf("key: %d\n", key);
 	num = sys->obj->num_of_camera;
+	num = 10;
 	if (key == ESCAPE)
 		exit_handler(sys);
 	if (key == UP)
@@ -36,6 +38,9 @@ int	key_handler(int key, t_sys *sys)
 		sys->obj->id_of_camera += num;
 		sys->obj->id_of_camera %= num;
 	}
+	if (0 <= key - '0' && key - '0' < num)
+		sys->obj->id_of_camera = key - '0';
+	// printf("camera id %d\n", sys->obj->id_of_camera);
 	return (0);
 }
 

@@ -2,6 +2,15 @@ NAME		:= miniRT
 CC			:= cc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
 CFLAGS		:= -Wall -Wextra #-Werror -O2
+DFLAGS      := -DNOINPUT
+
+
+
+
+SRCS 		:= srcs/*.c
+
+
+
 OUT_DIR		:= objs
 INCS_DIR	:= incs
 LIBFT_DIR	:= libft
@@ -9,19 +18,18 @@ LIBFT		:= $(LIBFT_DIR)/libft.a
 MLX_DIR		:= minilibx
 MLX			:= $(MLX_DIR)/libmlx.a
 
-IDFLAGS		:= -I$(INCS_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
+IFLAGS		:= -I$(INCS_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
 
-SRCS 		:= $(addprefix srcs/, main.c system.c hook_handler.c)
 
 OBJS		:= $(addprefix $(OUT_DIR)/, $(SRCS:.c=.o))
 DEPS		:= $(OBJS:.o=.d)
 
-
+COMPILE     := $(CC) $(CFLAGS) $(DFLAGS) $(IFLAGS)
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -L$(MLX_DIR) $(FRAMEWORKS) -o $@
+	$(COMPILE) $(OBJS) $(LIBFT) -L$(MLX_DIR) $(FRAMEWORKS) -o $@
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
@@ -34,7 +42,7 @@ $(MLX_DIR):
 
 $(OUT_DIR)/%.o: %.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) -MMD -MP $(IDFLAGS) -c $< -o $@
+	$(COMPILE) -MMD -MP -c $< -o $@
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
