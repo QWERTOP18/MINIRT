@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   object.h                                           :+:      :+:    :+:   */
+/*   vec_mul.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 00:23:07 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 03:24:14 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/06 03:23:25 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/01/06 03:25:27 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OBJECT_H
-# define OBJECT_H
+#include "vector.h"
 
-# include "vector.h"
-
-// sp 0,0,0 12 10,20,20
-//  center diameter RGB
-typedef struct s_sphere
+t_vec	vec_mul(t_vec v, double scalar)
 {
-	t_vec			center;
-	double			radius;
-}					t_sphere;
+	t_vec	v_scaled;
 
-typedef struct s_plane
-{
-	t_vec			center;
-	t_vec			dir;
-}					t_plane;
-
-typedef struct s_light
-{
-	t_vec			pos;
-	double			intensity;
-	struct s_light	*next;
-}					t_light;
-
-#endif
+	v_scaled.x = v.x * scalar;
+	v_scaled.y = v.y * scalar;
+	v_scaled.z = v.z * scalar;
+	return (v_scaled);
+}

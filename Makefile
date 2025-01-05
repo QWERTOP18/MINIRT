@@ -7,18 +7,21 @@ DFLAGS      := -DNOINPUT
 
 
 
-SRCS 		:= srcs/*.c
+SRCS := $(wildcard srcs/*.c vector/*.c)
 
 
 
 OUT_DIR		:= objs
 INCS_DIR	:= incs
+
+VECTOR_DIR  := vector
+
 LIBFT_DIR	:= libft
 LIBFT		:= $(LIBFT_DIR)/libft.a
 MLX_DIR		:= minilibx
 MLX			:= $(MLX_DIR)/libmlx.a
 
-IFLAGS		:= -I$(INCS_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
+IFLAGS		:= -I$(INCS_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(VECTOR_DIR)
 
 
 OBJS		:= $(addprefix $(OUT_DIR)/, $(SRCS:.c=.o))
@@ -45,12 +48,12 @@ $(OUT_DIR)/%.o: %.c
 	$(COMPILE) -MMD -MP -c $< -o $@
 
 clean:
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(MLX_DIR) clean
+	# $(MAKE) -C $(LIBFT_DIR) clean
+	# $(MAKE) -C $(MLX_DIR) clean
 	rm -rf $(OUT_DIR)
 
 fclean: clean
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	# $(MAKE) -C $(LIBFT_DIR) fclean
 	rm -f $(NAME)
 
 re: fclean all

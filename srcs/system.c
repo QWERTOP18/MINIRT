@@ -6,39 +6,12 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 02:17:54 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 03:27:57 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 #include "system.h"
-
-t_objects	*parse_file(char *file, t_sys *sys)
-{
-	t_objects	*objects;
-	int			fd;
-	char		*line;
-
-	objects = ft_calloc(1, sizeof(t_objects));
-	if (!objects)
-		system_exit(sys, E_ALLOCATE);
-#ifdef NOINPUT
-#else
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		system_exit(sys, E_INVALID_INPUT);
-	line = get_next_line(fd);
-	while (line)
-	{
-		// if (is_valid_line(line))
-		//    add_object(objects, line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	close(fd);
-#endif
-	return (objects);
-}
 
 void	system_exit(t_sys *sys, int status)
 {

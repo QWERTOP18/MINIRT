@@ -6,14 +6,13 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 02:24:10 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 03:27:04 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "system.h"
 
-t_camera	*camera_init(t_vec center, t_vec orientation, double fov,
-		t_sys *sys)
+t_camera	*camera_init(t_vec center, t_vec orient, double fov, t_sys *sys)
 {
 	t_camera	*camera;
 
@@ -21,7 +20,7 @@ t_camera	*camera_init(t_vec center, t_vec orientation, double fov,
 	if (!camera)
 		system_exit(sys, E_ALLOCATE);
 	camera->pos = center;
-	camera->dir = orientation;
+	camera->dir = orient;
 	camera->fov = fov;
 	camera->img.img = mlx_new_image(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH);
 	if (!camera->img.img)

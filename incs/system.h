@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:20:56 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 02:25:49 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 03:26:53 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ typedef struct s_sys
 	t_screen	img;
 	t_objects	*obj;
 }				t_sys;
+
+t_camera		*camera_init(t_vec center, t_vec orient, double fov,
+					t_sys *sys);
 
 t_sys			*system_init(char *file);
 void			system_exit(t_sys *sys, int status);

@@ -1,4 +1,4 @@
-objs/srcs/system.o: srcs/system.c incs/parse.h libft/libft.h \
+objs/srcs/parse.o: srcs/parse.c incs/parse.h libft/libft.h \
   libft/./incs/ft_btree.h libft/./incs/ft_ctype.h libft/./incs/ft_lst.h \
   libft/./incs/ft_stdio.h libft/./incs/ft_printf.h \
   libft/./incs/ft_string.h libft/./incs/ft_stdlib.h \
