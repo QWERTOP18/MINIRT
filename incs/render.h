@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 01:40:17 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 03:47:06 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/06 03:43:54 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/01/06 03:52:26 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "system.h"
+#ifndef RENDER_H
+# define RENDER_H
 
-void	render_pixel(const t_screen *screen, int x, int y, int color)
-{
-	char	*dst;
+# include "system.h"
 
-	dst = screen->addr + (y * screen->line_length + x * (screen->bits_per_pixel
-				/ 8));
-	*(unsigned int *)dst = color;
-}
+void	render_pixel(const t_screen *screen, int x, int y, int color);
+
+#endif

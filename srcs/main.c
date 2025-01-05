@@ -6,17 +6,29 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 01:48:59 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 03:38:20 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx_handler.h"
+#include "parse.h"
 #include "system.h"
+
+void	*update(t_sys *sys)
+{
+	int	id;
+
+	id = sys->obj->id_of_camera;
+	// if loading return sys->img.img
+	return (sys->obj->camera[id].img.img);
+}
 
 int	loop_handler(t_sys *sys)
 {
-	// calculate(sys);
-	mlx_put_image_to_window(sys->mlx, sys->win, sys->img.img, 0, 0);
+	void	*img;
+
+	img = update(sys);
+	mlx_put_image_to_window(sys->mlx, sys->win, img, 0, 0);
 	return (0);
 }
 
@@ -34,7 +46,8 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		system_exit(NULL, E_INVALID_INPUT);
-	sys = system_init(argv[1]);
+	sys = system_init();
+	sys->obj = parse_file(argv[1], sys);
 	setup_hook(sys);
 	mlx_loop(sys->mlx);
 	system_exit(sys, 0);
@@ -44,7 +57,7 @@ int	main(int argc, char **argv)
 
 * main
 * system init
-*** parse allocate
+* parse
 * setup hook
 
 

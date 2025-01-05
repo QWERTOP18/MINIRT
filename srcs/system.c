@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 03:27:57 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/06 03:31:01 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ void	system_exit(t_sys *sys, int status)
 	exit(status);
 }
 
-t_sys	*system_init(char *file)
+t_sys	*system_init(void)
 {
 	t_sys	*sys;
 
 	sys = ft_calloc(1, sizeof(t_sys));
 	if (!sys)
 		system_exit(NULL, E_ALLOCATE);
-	sys->obj = parse_file(file, sys);
 	sys->mlx = mlx_init();
 	if (!sys->mlx)
 		system_exit(NULL, E_MLX_INIT);
