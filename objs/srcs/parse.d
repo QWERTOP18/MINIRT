@@ -1,8 +1,8 @@
-objs/srcs/parse.o: srcs/parse.c incs/render.h incs/system.h list/ft_lst.h \
+objs/srcs/parse.o: srcs/parse.c incs/ray.h incs/system.h list/ft_lst.h \
   libft/libft.h minilibx/mlx.h minilibx/mlx_int.h incs/object.h \
-  vector/vector.h
+  vector/vector.h incs/render.h
 
-incs/render.h:
+incs/ray.h:
 
 incs/system.h:
 
@@ -17,3 +17,5 @@ minilibx/mlx_int.h:
 incs/object.h:
 
 vector/vector.h:
+
+incs/render.h:

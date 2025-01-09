@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 03:53:20 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:59:52 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	key_handler(int key, t_sys *sys)
 
 int	exit_handler(t_sys *sys)
 {
-	mlx_destroy_image(sys->mlx, sys->img.img);
+	// mlx_destroy_image(sys->mlx, sys->img.img);
 	mlx_destroy_window(sys->mlx, sys->win);
 	mlx_destroy_display(sys->mlx);
 	mlx_loop_end(sys->mlx);

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:20:56 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 04:34:29 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/09 20:15:00 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ typedef struct s_objects
 	t_camera	camera[MAX_CAMERA];
 	int			num_of_camera;
 	int			id_of_camera;
-	t_list		list;
+	t_list		*lights;
+	t_list		*list;
 }				t_objects;
 
 typedef struct s_sys

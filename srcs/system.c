@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 05:51:40 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/09 21:29:37 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_sys	*system_init(void)
 	sys->mlx = mlx_init();
 	if (!sys->mlx)
 		system_exit(NULL, E_MLX_INIT);
-	sys->win = mlx_new_window(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH, "FRACTOL");
+	sys->win = mlx_new_window(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH, "miniRT");
 	if (!sys->win)
 		system_exit(NULL, E_MLX_INIT);
 	// sys->img.img = mlx_new_image(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH);
