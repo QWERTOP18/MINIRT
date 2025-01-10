@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:20:56 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 13:36:16 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:07:40 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define E_WINDOW_CREATE -3
 # define E_INVALID_INPUT -4
 
+/* ************************************************************************** */
+/*                                 STRUCT         :)                          */
+/* ************************************************************************** */
+
 typedef struct s_objects	t_objects;
 typedef struct s_screen		t_screen;
 
@@ -37,6 +41,10 @@ typedef struct s_sys
 	int						height;
 	int						width;
 }							t_sys;
+
+/* ************************************************************************** */
+/*                                  FUNCS                                     */
+/* ************************************************************************** */
 
 t_sys						*system_init(void);
 void						system_exit(t_sys *sys, int status);

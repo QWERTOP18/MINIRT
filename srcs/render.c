@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:40:17 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 14:02:48 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:00:14 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	raytrace(t_camera *camera, t_sys *sys)
 		x = 0;
 		while (x < sys->width)
 		{
+			fcol = vec(0, 0, 0);
+			// ray.dir = dir();
 			//座標変換（スケールを変えるだけ)
 			//もっとも近いobjectを探す
 			//光を計算してRGBに落とし込む

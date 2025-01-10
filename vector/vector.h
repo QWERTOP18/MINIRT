@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 07:41:57 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:52:22 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <math.h>
 # include <stdlib.h>
+
+# define CENTER pos
+# define BASE pos
 
 typedef struct s_vec
 {
@@ -44,10 +47,24 @@ typedef struct s_sphere
 	double		radius;
 }				t_sphere;
 
+typedef struct s_plane
+{
+	t_unit_line	wdir;
+	t_unit_line	hdir;
+	t_unit_line	normal;
+	t_pos_vec	pos;
+	double		width;
+	double		height;
+}				t_plane;
+
+typedef t_plane	t_rect;
+typedef t_plane	t_square;
+
 t_vec			vec(double x, double y, double z);
 t_vec			vec_add(t_vec v1, t_vec v2);
 t_vec			vec_sub(t_vec v1, t_vec v2);
 t_vec			vec_mul(t_vec v, double scalar);
+t_unit_vec		dir(t_pos_vec v1, t_pos_vec v2);
 // t_vec    vec_div(t_vec v, double scalar);
 double			vec_dot(t_vec v1, t_vec v2);
 t_vec			vec_cross(t_vec v1, t_vec v2);

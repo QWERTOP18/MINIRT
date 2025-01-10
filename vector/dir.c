@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   dir.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 21:37:12 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 15:09:50 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/10 14:16:18 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/01/10 14:18:35 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
-# include "system.h"
+#include "vector.h"
 
-// int	calc1(t_unit_line *ray, t_list *lobj, t_camera *camera);
-
-// int	calc2(t_unit_line *ray, t_list *lobj, t_camera *camera);
-
-void	*update(t_sys *sys);
-
-#endif
+t_unit_vec	dir(t_pos_vec v1, t_pos_vec v2)
+{
+	return (vec_normalize(vec_sub(v2, v1)));
+}

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 13:49:04 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 14:59:52 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,7 @@ t_camera	*camera_init(t_vec center, t_vec orient, int fov, t_sys *sys)
 	camera->fov = fov / 180 * M_PI;
 	camera->dist_to_screen = sys->width / 2 / tan(fov / 2);
 	printf("dist to screen %f\n", camera->dist_to_screen);
-	camera->img.img = mlx_new_image(sys->mlx, sys->height, sys->width);
-	camera->img.height = sys->height;
-	camera->img.width = sys->width;
-	if (!camera->img.img)
-		system_exit(NULL, E_ALLOCATE);
-	camera->img.addr = mlx_get_data_addr(camera->img.img,
-			&camera->img.bits_per_pixel, &camera->img.line_length,
-			&camera->img.endian);
+	setup_img(&camera->img, sys);
 	return (camera);
 }
 
