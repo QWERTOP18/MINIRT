@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 14:52:22 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:39:17 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <math.h>
 # include <stdlib.h>
 
-# define CENTER pos
-# define BASE pos
+// # define CENTER pos
+// # define BASE pos
 
 typedef struct s_vec
 {
@@ -51,7 +51,7 @@ typedef struct s_plane
 {
 	t_unit_line	wdir;
 	t_unit_line	hdir;
-	t_unit_line	normal;
+	t_unit_vec	normal;
 	t_pos_vec	pos;
 	double		width;
 	double		height;

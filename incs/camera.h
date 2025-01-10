@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 07:33:37 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 15:04:46 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 15:25:22 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 // C 0,0,0   0,0,1  70
 //   pos      dir   fov
 /* ************************************************************************** */
-/*                                  FUNCS                                     */
+/*                                 STRUCT         :)                          */
 /* ************************************************************************** */
 
 typedef struct s_camera
@@ -39,7 +39,7 @@ typedef struct s_camera
 /*                                  FUNCS                                     */
 /* ************************************************************************** */
 
-t_camera		*camera_init(t_vec center, t_vec orient, int fov, t_sys *sys);
+t_camera		*camera_init(t_vec pos, t_vec orient, int fov, t_sys *sys);
 void			camera_deinit(void *mlx, t_camera camera[], int size);
 
 #endif
