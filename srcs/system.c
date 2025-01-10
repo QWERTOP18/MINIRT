@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 07:54:29 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:19:57 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@ void	system_exit(t_sys *sys, int status)
 		// ft_putstr_fd(ERRMSG1, 2);
 		// ft_putstr_fd(ERRMSG2, 2);
 	}
+	if (!sys)
+		exit(status);
+	if (!sys->mlx)
+		exit(status);
+	objs_deinit(sys->mlx, sys->obj);
+	mlx_destroy_window(sys->mlx, sys->win);
+	mlx_destroy_display(sys->mlx);
+	mlx_loop_end(sys->mlx);
+	free(sys->mlx);
 	free(sys);
 	exit(status);
 }

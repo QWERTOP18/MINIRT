@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:23:07 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 09:11:37 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:19:15 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ struct			s_objects
 // 	t_vec	dir;
 // }			t_plane;
 
+void			objs_deinit(void *mlx, t_objects *objs);
 #endif

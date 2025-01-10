@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 07:55:31 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:22:43 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,14 @@ t_camera	*camera_init(t_vec center, t_vec orient, double fov, t_sys *sys)
 			&camera->img.bits_per_pixel, &camera->img.line_length,
 			&camera->img.endian);
 	return (camera);
+}
+
+void	camera_deinit(void *mlx, t_camera camera[], int size)
+{
+	int i = 0;
+	while (i < size)
+	{
+		mlx_destroy_image(mlx, camera[i].img.img);
+		i++;
+	}
 }

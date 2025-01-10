@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 08:01:15 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:08:15 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,6 @@ int	key_handler(int key, t_sys *sys)
 int	exit_handler(t_sys *sys)
 {
 	// mlx_destroy_image(sys->mlx, sys->img.img);
-	mlx_destroy_window(sys->mlx, sys->win);
-	mlx_destroy_display(sys->mlx);
-	mlx_loop_end(sys->mlx);
-	free(sys->mlx);
 	system_exit(sys, 0);
 	return (0);
 }
