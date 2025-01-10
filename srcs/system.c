@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 13:52:31 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 21:09:56 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,38 +17,43 @@
 
 void	system_exit(t_sys *sys, int status)
 {
+	LOG;
 	if (status == E_INVALID_INPUT)
 	{
 		// ft_putstr_fd(ERRMSG1, 2);
 		// ft_putstr_fd(ERRMSG2, 2);
 	}
 	if (!sys)
-		exit(status);
+		return (free(sys), exit(status));
+	if (!sys->obj)
+		return (free(sys), exit(status));
+	camera_deinit(sys->mlx, sys->obj->camera, sys->obj->num_of_camera);
+	light_deinit(sys->obj->light, sys->obj->num_of_light);
+	objs_deinit(sys->obj);
 	if (!sys->mlx)
-		exit(status);
-	objs_deinit(sys->mlx, sys->obj);
+		return (free(sys), exit(status));
 	mlx_destroy_window(sys->mlx, sys->win);
 	mlx_destroy_display(sys->mlx);
 	mlx_loop_end(sys->mlx);
 	free(sys->mlx);
-	free(sys);
-	exit(status);
+	return (free(sys), exit(status));
 }
 
 t_sys	*system_init(void)
 {
 	t_sys	*sys;
 
-	sys = ft_calloc(1, sizeof(t_sys));
-	if (!sys)
-		system_exit(NULL, E_ALLOCATE);
+	LOG;
+	sys = xcalloc(1, sizeof(t_sys), NULL);
 	sys->mlx = mlx_init();
 	if (!sys->mlx)
 		system_exit(NULL, E_MLX_INIT);
-	// sys->img.img = mlx_new_image(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH);
-	// if (!sys->img.img)
-	// 	system_exit(NULL, E_ALLOCATE);
-	// sys->img.addr = mlx_get_data_addr(sys->img.img, &sys->img.bits_per_pixel,
-	// 		&sys->img.line_length, &sys->img.endian);
 	return (sys);
+}
+void	*xcalloc(size_t nmemb, size_t size, t_sys *sys)
+{
+	void *ptr = ft_calloc(nmemb, size);
+	if (!ptr)
+		system_exit(sys, E_ALLOCATE);
+	return (ptr);
 }

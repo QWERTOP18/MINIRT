@@ -6,13 +6,14 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:01 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 15:07:29 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:43:57 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MLX_HANDLER_H
 # define MLX_HANDLER_H
 
+# include "color.h"
 # include "mlx.h"
 # include "mlx_int.h"
 # include "system.h"
@@ -46,6 +47,7 @@ struct		s_screen
 	int		endian;
 	int		width;
 	int		height;
+	t_fcol	**color_arr;
 };
 
 /* ************************************************************************** */
@@ -60,7 +62,7 @@ void		setup_img(t_screen *img, t_sys *sys);
 
 /* -----------------------------   RENDER   --------------------------------- */
 
-void		render_pixel(const t_screen *screen, int x, int y, int color);
+void		render_pixel(const t_screen *screen, int x, int y);
 
 /* ----------------------------   HANDLER   --------------------------------- */
 

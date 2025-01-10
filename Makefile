@@ -7,7 +7,7 @@ DFLAGS      := -DNOINPUT -DDEBUG
 
 
 
-SRCS := $(wildcard srcs/*.c vector/*.c list/*.c debug/*.c)
+SRCS := $(wildcard srcs/*.c vector/*.c list/*.c debug/*.c console/*.c)
 
 
 
@@ -61,8 +61,13 @@ re: fclean all
 
 
 run: $(NAME)
+	$(NAME) sample.rt 2>/dev/null
+
+log: $(NAME)
 	$(NAME) sample.rt
-	
+
+
+
 sub:
 	git submodule update --init --recursive
 

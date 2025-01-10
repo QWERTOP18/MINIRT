@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 15:39:33 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 21:13:02 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@ t_rect	set_screen(t_camera *c, t_sys *sys)
 	int		dist;
 	t_rect	screen;
 
-	screen.normal = c->dir;
+	LOG;
 	dist = sys->width / 2 / tan(c->fov / 2);
+	screen.normal = c->dir;
 	screen.pos = vec_add(vec_mul(c->dir, dist), c->pos);
-	log_vec(screen.pos);
+	screen.wdir = vec_normalize(vec(-c->dir.z, 0, c->dir.x));
+	screen.hdir = vec_cross(screen.normal, screen.wdir);
+	log_vec("center", screen.pos);
+	log_vec("hdir", screen.hdir);
 	return (screen);
 }
 
@@ -42,12 +46,16 @@ t_camera	*camera_init(t_vec pos, t_vec orient, int fov, t_sys *sys)
 	return (camera);
 }
 
-void	camera_deinit(void *mlx, t_camera camera[], int size)
+void	camera_deinit(void *mlx, t_camera *camera[], int size)
 {
+	LOG;
 	int i = 0;
+	if (!camera)
+		return ;
 	while (i < size)
 	{
-		mlx_destroy_image(mlx, camera[i].img.img);
+		mlx_destroy_image(mlx, camera[i]->img.img);
+		free(camera[i]);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:23:07 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 15:07:34 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 20:46:39 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define OBJECT_H
 
 # include "camera.h"
+# include "light.h"
 # include "vector.h"
 
 typedef enum e_obj_type
@@ -30,10 +31,11 @@ typedef enum e_obj_type
 
 struct			s_objects
 {
-	t_camera	camera[MAX_CAMERA];
+	t_camera	*camera[MAX_CAMERA];
 	int			num_of_camera;
 	int			id_of_camera;
-	t_list		*lights;
+	t_light		*light[MAX_LIGHT];
+	int			num_of_light;
 	t_list		*objs;
 };
 
@@ -55,6 +57,6 @@ struct			s_objects
 /*                                  FUNCS                                     */
 /* ************************************************************************** */
 
-void			objs_deinit(void *mlx, t_objects *objs);
+void			objs_deinit(t_objects *objs);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 15:39:17 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 18:23:51 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,18 @@ typedef struct s_sphere
 {
 	t_pos_vec	center;
 	double		radius;
+	void		*material;
 }				t_sphere;
 
 typedef struct s_plane
 {
-	t_unit_line	wdir;
-	t_unit_line	hdir;
+	t_unit_vec	wdir;
+	t_unit_vec	hdir;
 	t_unit_vec	normal;
 	t_pos_vec	pos;
 	double		width;
 	double		height;
+	void		*material;
 }				t_plane;
 
 typedef t_plane	t_rect;

@@ -1,46 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   light.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 20:32:30 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/10 20:42:53 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/01/10 21:13:30 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	*update(t_sys *sys)
+t_light	*light_init(t_pos_vec pos, t_fcol col, double intensity, t_sys *sys)
 {
-	int	id;
+	t_light	*light;
 
-	id = sys->obj->id_of_camera;
-	// if loading return sys->img.img
-	return (sys->obj->camera[id]->img.img);
+	LOG;
+	light = xcalloc(1, sizeof(t_light), sys);
+	light->pos = pos;
+	light->color = col;
+	light->intensity = intensity;
+	return (light);
 }
 
-int	main(int argc, char **argv)
+void	light_deinit(t_light *light[], int size)
 {
-	t_sys	*sys;
-
-	if (argc != 2)
-		system_exit(NULL, E_INVALID_INPUT);
-	sys = system_init();
-	sys->obj = parse_file(argv[1], sys);
-	setup_mlx(sys);
-	mlx_loop(sys->mlx);
-	system_exit(sys, 0);
+	LOG;
+	if (!light)
+		return ;
+	int i;
+	i = 0;
+	while (i < size)
+	{
+		free()
+	}
 }
-
-/*
-
-* main
-* system init
-* parse
-* setup hook
-
-
-
-*/
