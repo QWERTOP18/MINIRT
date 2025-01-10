@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 07:57:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 09:29:31 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:33:37 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "parse.h"
 # include "ray.h"
 # include "system.h"
+# include <math.h>
 
 # ifndef SUBMIT
 #  include "../debug/debug.h"

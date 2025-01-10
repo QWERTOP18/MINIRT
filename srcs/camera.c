@@ -6,14 +6,15 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 11:22:43 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 11:39:31 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "camera.h"
+#include "minirt.h"
 #include "mlx_handler.h"
 
-t_camera	*camera_init(t_vec center, t_vec orient, double fov, t_sys *sys)
+t_camera	*camera_init(t_vec center, t_vec orient, int fov, t_sys *sys)
 {
 	t_camera	*camera;
 
@@ -21,8 +22,10 @@ t_camera	*camera_init(t_vec center, t_vec orient, double fov, t_sys *sys)
 	if (!camera)
 		system_exit(sys, E_ALLOCATE);
 	camera->pos = center;
-	camera->dir = orient;
-	camera->fov = fov;
+	camera->dir = vec_normalize(orient);
+	camera->fov = fov / 180 * M_PI;
+	camera->dist_to_screen = SCREEN_WIDTH / 2 / tan(fov / 2);
+	// printf("dist to screen %f\n", camera->dist_to_screen);
 	camera->img.img = mlx_new_image(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH);
 	if (!camera->img.img)
 		system_exit(NULL, E_ALLOCATE);
