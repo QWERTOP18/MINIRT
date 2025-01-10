@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:01 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 08:54:43 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:42:38 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,6 @@
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
-# define SCREEN_WIDTH 1024
-# define SCREEN_HEIGHT 1024
-
 // # define DELTA 0.01
 
 struct		s_screen
@@ -44,9 +41,12 @@ struct		s_screen
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	// int			width;
-	// int			height;
+	int		width;
+	int		height;
 };
+
+void		setup_mlx(t_sys *sys);
+void		setup_hook(t_sys *sys);
 
 void		render_pixel(const t_screen *screen, int x, int y, int color);
 

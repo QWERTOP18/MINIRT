@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 00:26:34 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 13:20:52 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/10 11:43:19 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/01/10 13:20:42 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H
+#include "color.h"
 
-# include "vector.h"
-
-# define RED x
-# define GREEN y
-# define BLUE z
-typedef t_vec	t_fcol;
-
-unsigned int	fcolor_to_rgb(t_fcol fcol);
-
-#endif
+unsigned int	fcolor_to_rgb(t_fcol fcol)
+{
+	unsigned int red = fcol.RED * 255;
+	unsigned int green = fcol.GREEN * 255;
+	unsigned int blue = fcol.BLUE * 255;
+	return (red << 16 | green << 8 | blue);
+}

@@ -1,46 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 14:03:57 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/10 13:41:55 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/01/10 13:49:57 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	*update(t_sys *sys)
+void	setup_hook(t_sys *sys)
 {
-	int	id;
-
-	id = sys->obj->id_of_camera;
-	// if loading return sys->img.img
-	return (sys->obj->camera[id].img.img);
+	mlx_hook(sys->win, KeyPress, KeyPressMask, key_handler, sys);
+	mlx_hook(sys->win, ClientMessage, StructureNotifyMask, exit_handler, sys);
+	mlx_mouse_hook(sys->win, mouse_handler, sys);
+	mlx_loop_hook(sys->mlx, loop_handler, sys);
 }
 
-int	main(int argc, char **argv)
+void	setup_mlx(t_sys *sys)
 {
-	t_sys	*sys;
-
-	if (argc != 2)
-		system_exit(NULL, E_INVALID_INPUT);
-	sys = system_init();
-	sys->obj = parse_file(argv[1], sys);
-	setup_mlx(sys);
-	mlx_loop(sys->mlx);
-	system_exit(sys, 0);
+	sys->win = mlx_new_window(sys->mlx, sys->height, sys->width, "miniRT");
+	if (!sys->win)
+		system_exit(NULL, E_MLX_INIT);
+	setup_hook(sys);
 }
-
-/*
-
-* main
-* system init
-* parse
-* setup hook
-
-
-
-*/

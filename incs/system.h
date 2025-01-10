@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:20:56 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 08:00:27 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:36:16 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_sys
 	void					*win;
 	t_objects				*obj;
 	// t_screen				*img;
+	int						height;
+	int						width;
 }							t_sys;
 
 t_sys						*system_init(void);

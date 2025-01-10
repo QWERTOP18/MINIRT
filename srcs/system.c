@@ -6,10 +6,11 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 11:19:57 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:52:31 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minirt.h"
 #include "mlx_handler.h"
 #include "parse.h"
 #include "system.h"
@@ -43,9 +44,6 @@ t_sys	*system_init(void)
 		system_exit(NULL, E_ALLOCATE);
 	sys->mlx = mlx_init();
 	if (!sys->mlx)
-		system_exit(NULL, E_MLX_INIT);
-	sys->win = mlx_new_window(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH, "miniRT");
-	if (!sys->win)
 		system_exit(NULL, E_MLX_INIT);
 	// sys->img.img = mlx_new_image(sys->mlx, SCREEN_HEIGHT, SCREEN_WIDTH);
 	// if (!sys->img.img)
