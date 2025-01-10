@@ -6,10 +6,11 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/09 15:59:52 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 08:01:15 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minirt.h"
 #include "mlx_handler.h"
 
 int	mouse_handler(int button, int x, int y, t_sys *sys)

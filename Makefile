@@ -1,13 +1,13 @@
-NAME		:= miniRT
+NAME		:= ./miniRT
 CC			:= cc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
 CFLAGS		:= -Wall -Wextra #-Werror -O2
-DFLAGS      := -DNOINPUT
+DFLAGS      := -DNOINPUT -DDEBUG
 
 
 
 
-SRCS := $(wildcard srcs/*.c vector/*.c list/*.c)
+SRCS := $(wildcard srcs/*.c vector/*.c list/*.c debug/*.c)
 
 
 
@@ -58,6 +58,10 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+
+run: $(NAME)
+	$(NAME) sample.rt
 	
 sub:
 	git submodule update --init --recursive

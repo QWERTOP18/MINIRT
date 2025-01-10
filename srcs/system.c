@@ -6,10 +6,11 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/09 21:29:37 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 07:54:29 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "mlx_handler.h"
 #include "parse.h"
 #include "system.h"
 

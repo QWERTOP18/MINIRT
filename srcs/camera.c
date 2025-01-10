@@ -6,11 +6,12 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 04:35:32 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 07:55:31 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "system.h"
+#include "camera.h"
+#include "mlx_handler.h"
 
 t_camera	*camera_init(t_vec center, t_vec orient, double fov, t_sys *sys)
 {

@@ -6,12 +6,11 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:54:28 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/09 22:04:57 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 08:00:10 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "render.h"
-#include "system.h"
+#include "minirt.h"
 
 // SQUARE
 /*

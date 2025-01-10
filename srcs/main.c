@@ -6,13 +6,11 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 03:38:20 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:01:28 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_handler.h"
-#include "parse.h"
-#include "system.h"
+#include "minirt.h"
 
 void	*update(t_sys *sys)
 {

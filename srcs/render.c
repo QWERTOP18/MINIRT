@@ -6,10 +6,11 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:40:17 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/09 21:24:20 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 08:01:00 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minirt.h"
 #include "system.h"
 
 void	render_pixel(const t_screen *screen, int x, int y, int color)
@@ -25,8 +26,9 @@ void	raytrace(t_camera *camera, t_sys *sys)
 {
 	int		y;
 	int		x;
-	t_list	*head = y;
+	t_list	*head;
 
+	head = y;
 	head = y = 0;
 	x = 0;
 	while (y < SCREEN_HEIGHT)

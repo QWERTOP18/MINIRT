@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 21:37:12 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 08:00:46 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/10 07:57:53 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/01/10 09:29:31 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#ifndef MINIRT_H
+# define MINIRT_H
+
+# include "camera.h"
+# include "color.h"
+# include "mlx_handler.h"
+# include "object.h"
+# include "parse.h"
+# include "ray.h"
 # include "system.h"
 
-// int	calc1(t_unit_line *ray, t_list *lobj, t_camera *camera);
-
-// int	calc2(t_unit_line *ray, t_list *lobj, t_camera *camera);
+# ifndef SUBMIT
+#  include "../debug/debug.h"
+# else
+#  define LOG ""
+# endif
 
 #endif
