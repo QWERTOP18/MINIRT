@@ -2,6 +2,7 @@
 # define LIGHT_H
 # include "color.h"
 # include "vector.h"
+# include <stdbool.h>
 
 # define MAX_LIGHT 10
 
@@ -14,6 +15,7 @@ typedef struct s_light
 	t_pos_vec	pos;
 	double		intensity;
 	t_fcol		color;
+	bool		ison;
 }				t_light;
 
 /* ************************************************************************** */

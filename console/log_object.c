@@ -6,20 +6,24 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:02:58 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 08:06:48 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:34:14 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "console.h"
 
-void	log_light(t_light *light, int size)
+void	log_light(t_light *light[], int size)
 {
 	int	i;
 
 	i = 0;
 	while (i < size)
 	{
-		printf(YELLOW REVERSED "[%d]" RESET " ", ++i);
+		if (light[i]->ison)
+			printf(YELLOW REVERSED "[%d]" RESET " ", i);
+		else
+			printf("[%d] ", i);
+		i++;
 	}
 	printf("\n");
 }

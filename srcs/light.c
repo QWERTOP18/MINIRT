@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:42:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 21:14:32 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:26:09 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_light	*light_init(t_pos_vec pos, t_fcol col, double intensity, t_sys *sys)
 	light->pos = pos;
 	light->color = col;
 	light->intensity = intensity;
+	light->ison = True;
 	return (light);
 }
 

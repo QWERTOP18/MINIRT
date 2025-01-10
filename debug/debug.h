@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 09:03:16 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 07:30:50 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:23:24 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "camera.h"
 # include "color.h"
 # include "material.h"
-# include "mlx_handler.h"
+# include "screen.h"
 # include "object.h"
 # include "parse.h"
 # include "ray.h"

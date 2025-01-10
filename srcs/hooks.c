@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup_handler.c                                    :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 21:10:26 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:39:46 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "mlx_handler.h"
+#include "screen.h"
 
 int	loop_handler(t_sys *sys)
 {
@@ -30,26 +30,36 @@ int	mouse_handler(int button, int x, int y, t_sys *sys)
 
 int	key_handler(int key, t_sys *sys)
 {
-	int	num;
+	int	n_camera;
+	int	n_light;
 
 	// printf("key: %d\n", key);
-	num = sys->obj->num_of_camera;
+	n_camera = sys->obj->num_of_camera;
+	n_light = sys->obj->num_of_light;
 	if (key == ESCAPE)
 		exit_handler(sys);
 	if (key == UP)
 	{
 		sys->obj->id_of_camera++;
-		sys->obj->id_of_camera %= num;
+		sys->obj->id_of_camera %= n_camera;
 	}
 	if (key == DOWN)
 	{
 		sys->obj->id_of_camera--;
-		sys->obj->id_of_camera += num;
-		sys->obj->id_of_camera %= num;
+		sys->obj->id_of_camera += n_camera;
+		sys->obj->id_of_camera %= n_camera;
 	}
-	if (0 <= key - '0' && key - '0' < num)
-		sys->obj->id_of_camera = key - '0';
-	printf("camera id %d\n", sys->obj->id_of_camera);
+	if (0 <= key - '0' && key - '0' < n_light)
+	{
+		sys->obj->light[key - '0']->ison ^= 1;
+		// printf("light no.%d is swithed\n", key - '0');
+		log_light(sys->obj->light, n_light);
+	}
+	// if (0 <= key - '0' && key - '0' < n_camera)
+	// 	sys->obj->id_of_camera = key - '0';
+	// printf("camera id %d\n", sys->obj->id_of_camera);
+	if (key == 'i')
+		log_objs(sys->obj);
 	return (0);
 }
 

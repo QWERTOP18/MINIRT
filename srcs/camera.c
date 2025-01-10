@@ -6,13 +6,13 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 08:20:11 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:23:24 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "camera.h"
 #include "minirt.h"
-#include "mlx_handler.h"
+#include "screen.h"
 
 t_rect	set_screen(t_camera *c, t_sys *sys)
 {

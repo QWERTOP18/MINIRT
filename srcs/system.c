@@ -6,13 +6,13 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 07:32:39 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:23:24 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-#include "mlx_handler.h"
 #include "parse.h"
+#include "screen.h"
 #include "system.h"
 
 void	system_exit(t_sys *sys, int status)
