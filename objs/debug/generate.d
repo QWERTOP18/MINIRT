@@ -1,12 +1,12 @@
-objs/srcs/objects.o: srcs/objects.c srcs/minirt.h \
-  srcs/../console/console.h incs/camera.h incs/mlx_handler.h \
+objs/debug/generate.o: debug/generate.c debug/../srcs/minirt.h \
+  debug/../srcs/../console/console.h incs/camera.h incs/mlx_handler.h \
   incs/color.h incs/system.h list/ft_lst.h libft/libft.h vector/vector.h \
   minilibx/mlx.h minilibx/mlx_int.h incs/material.h incs/object.h \
-  incs/light.h incs/parse.h incs/ray.h srcs/../debug/debug.h
+  incs/light.h incs/parse.h incs/ray.h debug/../srcs/../debug/debug.h
 
-srcs/minirt.h:
+debug/../srcs/minirt.h:
 
-srcs/../console/console.h:
+debug/../srcs/../console/console.h:
 
 incs/camera.h:
 
@@ -36,4 +36,4 @@ incs/parse.h:
 
 incs/ray.h:
 
-srcs/../debug/debug.h:
+debug/../srcs/../debug/debug.h:

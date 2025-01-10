@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 21:09:56 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 07:32:39 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_sys	*system_init(void)
 }
 void	*xcalloc(size_t nmemb, size_t size, t_sys *sys)
 {
+	// WARNIG;
 	void *ptr = ft_calloc(nmemb, size);
 	if (!ptr)
 		system_exit(sys, E_ALLOCATE);

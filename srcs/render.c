@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:40:17 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 18:43:35 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:20:38 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	render_pixel(const t_screen *screen, int x, int y)
 
 	dst = screen->addr + (y * screen->line_length + x * (screen->bits_per_pixel
 				/ 8));
-	*(unsigned int *)dst = color_convert(screen->color_arr[y][x]);
+	*(unsigned int *)dst = color_convert(screen->pixels[y][x].color);
 }
 
 t_list	*find_nearest_obj(t_unit_line ray, t_list *objs)

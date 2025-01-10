@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:42:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 21:13:30 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/10 21:14:32 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	light_deinit(t_light *light[], int size)
 	i = 0;
 	while (i < size)
 	{
-		free()
+		free(light[i]);
+		i++;
 	}
 }

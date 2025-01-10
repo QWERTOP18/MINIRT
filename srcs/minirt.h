@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 07:57:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 21:00:47 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 07:29:06 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 #  include "../debug/debug.h"
 # else
 #  define LOG ""
+#  define WARNIG ""
 # endif
 
 #endif

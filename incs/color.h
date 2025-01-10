@@ -6,13 +6,14 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:26:34 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 15:44:01 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:18:36 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H
 
+# include "system.h"
 # include "vector.h"
 
 # define RESET "\033[0m"
@@ -45,5 +46,7 @@
 typedef t_vec	t_fcol;
 
 unsigned int	color_convert(t_fcol fcol);
+// t_fcol			**color_array_init(int height, int width, t_sys *sys);
+// void			color_array_deinit(int height, int width, t_fcol **array);
 
 #endif

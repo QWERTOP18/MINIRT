@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:01 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 18:43:57 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:19:34 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,12 @@
 /*                                 STRUCT         :)                          */
 /* ************************************************************************** */
 
+typedef struct s_pixel
+{
+	t_fcol	color;
+	t_list *obj; // nearest object or NULL
+}			t_pixel;
+
 struct		s_screen
 {
 	void	*img;
@@ -47,7 +53,8 @@ struct		s_screen
 	int		endian;
 	int		width;
 	int		height;
-	t_fcol	**color_arr;
+	// t_fcol	**color_arr;
+	t_pixel	**pixels;
 };
 
 /* ************************************************************************** */
@@ -59,6 +66,8 @@ struct		s_screen
 void		setup_mlx(t_sys *sys);
 void		setup_hook(t_sys *sys);
 void		setup_img(t_screen *img, t_sys *sys);
+t_pixel		**pixels_init(int height, int width, t_sys *sys);
+void		pixels_deinit(int height, int width, t_pixel **pixels);
 
 /* -----------------------------   RENDER   --------------------------------- */
 

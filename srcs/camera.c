@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 21:13:02 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:20:11 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	camera_deinit(void *mlx, t_camera *camera[], int size)
 	while (i < size)
 	{
 		mlx_destroy_image(mlx, camera[i]->img.img);
+		pixels_deinit(camera[i]->img.height, camera[i]->img.width,
+			camera[i]->img.pixels);
 		free(camera[i]);
 		i++;
 	}

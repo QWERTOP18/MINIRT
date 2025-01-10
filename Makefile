@@ -29,6 +29,7 @@ OBJS		:= $(addprefix $(OUT_DIR)/, $(SRCS:.c=.o))
 DEPS		:= $(OBJS:.o=.d)
 
 COMPILE     := $(CC) $(CFLAGS) $(DFLAGS) $(IFLAGS)
+VALGRIND    := valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q
 
 all: $(NAME)
 
@@ -65,6 +66,9 @@ run: $(NAME)
 
 log: $(NAME)
 	$(NAME) sample.rt
+
+val: $(NAME)
+	$(VALGRIND) $(NAME) sample.rt 
 
 
 

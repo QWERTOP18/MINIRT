@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:41:55 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 18:42:02 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 08:20:57 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,6 @@ void	setup_hook(t_sys *sys)
 	mlx_loop_hook(sys->mlx, loop_handler, sys);
 }
 
-t_fcol	**color_array_init(int height, int width, t_sys *sys)
-{
-	t_fcol	**array;
-	int		i;
-
-	i = 0;
-	array = xcalloc(height, sizeof(t_fcol *), sys);
-	while (i < height)
-	{
-		array[i] = xcalloc(width, sizeof(t_fcol), sys);
-		i++;
-	}
-	return (array);
-}
-
 void	setup_img(t_screen *img, t_sys *sys)
 {
 	img->height = sys->height;
@@ -44,7 +29,7 @@ void	setup_img(t_screen *img, t_sys *sys)
 		system_exit(NULL, E_ALLOCATE);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
-	img->color_arr = color_array_init(img->height, img->width, sys);
+	img->pixels = pixels_init(img->height, img->width, sys);
 }
 
 void	setup_mlx(t_sys *sys)
@@ -53,4 +38,37 @@ void	setup_mlx(t_sys *sys)
 	if (!sys->win)
 		system_exit(NULL, E_MLX_INIT);
 	setup_hook(sys);
+}
+
+t_pixel	**pixels_init(int height, int width, t_sys *sys)
+{
+	t_pixel	**pixels;
+	int		i;
+
+	LOG;
+	i = 0;
+	pixels = xcalloc(height, sizeof(t_pixel *), sys);
+	while (i < height)
+	{
+		pixels[i] = xcalloc(width, sizeof(t_pixel), sys);
+		i++;
+	}
+	return (pixels);
+}
+
+void	pixels_deinit(int height, int width, t_pixel **pixels)
+{
+	int i;
+
+	LOG;
+	(void)width;
+	if (!pixels)
+		return ;
+	i = 0;
+	while (i < height)
+	{
+		free(pixels[i]);
+		i++;
+	}
+	free(pixels);
 }
