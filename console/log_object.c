@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:02:58 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 13:58:50 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 16:40:45 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,35 @@ void	log_objs(t_objects *objs)
 	printf("\n");
 }
 
-void	l0(t_list *list)
+void	l0(void *data)
+{
+	t_sphere	*sp;
+
+	sp = (t_sphere *)data;
+	log_vec("sphere", sp->center);
+	printf("r:  %8.2f\n", sp->radius);
+}
+void	l1(void *data)
+{
+}
+void	l2(void *data)
+{
+}
+void	l3(void *data)
 {
 }
 
 void	log_obj(t_list *obj)
 {
-	static char	*name[] = {"sphere", "plane", "cylinder", NULL};
+	static char			*name[] = {"sphere", "plane", "cylinder", NULL};
+	static console_log	l[] = {l0, l1, l2, l3};
 
 	if (!obj)
 	{
 		printf(RED "object None" RESET "\n");
 		return ;
 	}
-	printf("type: %s\n", name[obj->type]);
+	// printf("type: %s\n", name[obj->type]);
+	l[obj->type](obj->data);
 	printf("\n");
 }

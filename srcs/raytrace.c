@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 15:34:14 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:48:59 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,3 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 	}
 	return (color_convert(vec_normalize(sum_color)));
 }
-
-// typedef struct s_pixel
-// {
-// 	t_scaled_col	color;
-// 	t_list *obj; // nearest object or NULL
-// 	t_unit_vec		ray;
-
-// 	bool			ishide[MAX_LIGHT];
-// 	t_unit_vec		light[MAX_LIGHT];
-// 	t_unit_vec		reflect[MAX_LIGHT];
-// }					t_pixel;
