@@ -23,7 +23,7 @@ typedef struct s_light_disc
 typedef struct s_light
 {
 	t_pos_vec		pos;
-	double			intensity;
+	t_scaled_col	intensity;
 	t_scaled_col	color;
 	bool			ison;
 }					t_light;

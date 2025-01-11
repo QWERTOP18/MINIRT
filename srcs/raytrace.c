@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 15:48:59 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 20:38:17 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,44 @@ t_list	*determine_target(t_unit_line ray, t_list *objs)
 	return (res);
 }
 
+t_scaled_col	cal_diffuse(t_unit_vec lightdir, t_unit_vec normal,
+		t_scaled_col intensity)
+{
+	// double	dot_product;
+	// dot_product = vec_dot(lightdir, normal);
+	return (vec_mul(intensity, fmax(0.0, vec_dot(lightdir, normal))));
+}
+t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
+		t_unit_vec normal, t_scaled_col intensity)
+{
+	t_unit_vec	reflection;
+	double		n_dot_l;
+	double		v_dot_r;
+
+	static double gloss = 3; // todo
+	n_dot_l = vec_dot(lightdir, normal);
+	reflection = vec_normalize(vec_sub(vec_mul(normal, 2 * n_dot_l), lightdir));
+	v_dot_r = vec_dot(ray_inverse, reflection);
+	if (n_dot_l < 0 || v_dot_r < 0)
+		return (vec(0, 0, 0));
+	return (vec_mul(intensity, pow(v_dot_r, gloss)));
+}
+
 t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect)
 {
-	return (vec(0.5, 0.5, 0.5));
+	t_scaled_col	res;
+	t_scaled_col	ambient;
+
+	t_unit_vec lightdir; //交点から光源へのベクトル
+	lightdir = vec_normalize(vec_sub(light->pos, intersect.pos));
+	// t_scaled_col coef = vec(0.6, 0.6); // todo materialによって変える
+	res = vec(0, 0, 0); // original color
+	// ambient = vec(0.3, 0.3, 1.0);
+	res = vec_add(res, cal_diffuse(lightdir, intersect.normal,
+				light->intensity));
+	res = vec_add(res, cal_specular(vec_mul(ray.dir, -1), lightdir,
+				intersect.normal, light->intensity));
+	return (res);
 }
 
 unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
@@ -52,6 +87,7 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 	int				i;
 	t_scaled_col	sum_color;
 
+	sum_color = vec(0.0, 0.0, 0.0);
 	pixel->obj = determine_target(ray, objs->objs);
 	// log_obj(pixel->obj);
 	if (!pixel->obj)
@@ -64,13 +100,6 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 		pixel->colors[i] = cal_col(ray, objs->light[i], pixel->intersect);
 		i++;
 	}
-	/*
-	法線ベクトルを計算
-	ONな光源について
-		影の判定
-		入射、反射ベクトルの計算
-		再計算しないように関数をわける？？
-	*/
 	i = 0;
 	while (i < objs->num_of_light)
 	{
@@ -78,5 +107,7 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 			sum_color = vec_add(sum_color, pixel->colors[i]);
 		i++;
 	}
-	return (color_convert(vec_normalize(sum_color)));
+	sum_color = vec_add(sum_color, objs->ambient); // todo
+	return (color_convert(sum_color));
+	// return (color_convert(vec_normalize(sum_color)));
 }
