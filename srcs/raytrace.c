@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minirt.h                                           :+:      :+:    :+:   */
+/*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 07:57:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 09:55:11 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/01/11 10:48:04 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_H
-# define MINIRT_H
+#include "minirt.h"
 
-# include "../console/console.h"
-# include "camera.h"
-# include "color.h"
-# include "light.h"
-# include "material.h"
-# include "object.h"
-# include "parse.h"
-# include "raytrace.h"
-# include "screen.h"
-# include "system.h"
-# include <math.h>
-# ifndef SUBMIT
-#  include "../debug/debug.h"
-# else
-#  define LOG ""
-#  define WARNIG ""
-# endif
-
-#endif
+void	update_pixel(t_unit_line ray, t_objects *objs)
+{
+	return ;
+}

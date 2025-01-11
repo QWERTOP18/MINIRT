@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray.h                                              :+:      :+:    :+:   */
+/*   raytrace.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RAY_H
-# define RAY_H
+#ifndef RAYTRACE_H
+# define RAYTRACE_H
 # include "system.h"
 
 // int	calc1(t_unit_line *ray, t_list *lobj, t_camera *camera);
@@ -19,5 +19,7 @@
 // int	calc2(t_unit_line *ray, t_list *lobj, t_camera *camera);
 
 void	*update(t_sys *sys);
+void	update_pixel(t_unit_line ray, t_objects *objs);
+void	render_img(t_camera *camera, t_sys *sys);
 
 #endif

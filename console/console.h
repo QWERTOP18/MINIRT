@@ -6,7 +6,7 @@
 # include "material.h"
 # include "object.h"
 # include "parse.h"
-# include "ray.h"
+# include "raytrace.h"
 # include "screen.h"
 # include "system.h"
 # include <stdio.h>

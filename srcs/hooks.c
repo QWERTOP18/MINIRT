@@ -6,21 +6,12 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 09:35:46 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 10:36:57 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "screen.h"
-
-int	loop_handler(t_sys *sys)
-{
-	void	*img;
-
-	img = update(sys);
-	mlx_put_image_to_window(sys->mlx, sys->win, img, 0, 0);
-	return (0);
-}
 
 int	mouse_handler(int button, int x, int y, t_sys *sys)
 {
@@ -29,7 +20,7 @@ int	mouse_handler(int button, int x, int y, t_sys *sys)
 	id = sys->obj->id_of_camera;
 	if (button == LEFT_CLICK)
 	{
-		log_pixel(sys->obj->camera[id]->img.pixels, y, x);
+		log_pixel(sys->obj->camera[id]->img->pixels, y, x);
 	}
 	return (0);
 }

@@ -80,6 +80,7 @@ void			pixels_deinit(int height, int width, t_pixel **pixels);
 /* -----------------------------   RENDER   --------------------------------- */
 
 void			render_pixel(const t_screen *screen, int x, int y);
+// void			render_img(t_camera *camera, t_sys *sys);
 
 /* ----------------------------   HANDLER   --------------------------------- */
 

@@ -6,11 +6,19 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:38:54 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 09:20:33 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 10:51:50 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+/*
+C fovが0だったらdiv 0になるので
+
+
+
+
+*/
 
 t_objects	*parse_file(char *file, t_sys *sys)
 {
@@ -20,8 +28,8 @@ t_objects	*parse_file(char *file, t_sys *sys)
 
 	LOG;
 #ifdef NOINPUT
-	sys->width = 512;
-	sys->height = 512;
+	sys->width = 1024;
+	sys->height = 1024;
 	return (generate(sys));
 #else
 	objects = xcalloc(1, sizeof(t_objects), sys);
