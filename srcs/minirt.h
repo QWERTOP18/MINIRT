@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 07:57:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 09:55:11 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:37:32 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../console/console.h"
 # include "camera.h"
 # include "color.h"
+# include "intersection.h"
 # include "light.h"
 # include "material.h"
 # include "object.h"

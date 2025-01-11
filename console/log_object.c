@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:02:58 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 09:38:34 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:58:50 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,10 @@ void	log_obj(t_list *obj)
 	static char	*name[] = {"sphere", "plane", "cylinder", NULL};
 
 	if (!obj)
+	{
+		printf(RED "object None" RESET "\n");
 		return ;
+	}
 	printf("type: %s\n", name[obj->type]);
 	printf("\n");
 }

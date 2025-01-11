@@ -7,7 +7,7 @@ VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origi
 
 
 
-SRCS := $(wildcard srcs/*.c vector/*.c list/*.c debug/*.c console/*.c)
+SRCS := $(wildcard srcs/*.c vector/*.c list/*.c debug/*.c console/*.c srcs/intersection/*.c)
 
 
 

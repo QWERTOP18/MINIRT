@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
+/*   mlx_setup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:41:55 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 09:19:18 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:02:22 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,37 +41,4 @@ void	setup_mlx(t_sys *sys)
 	if (!sys->win)
 		system_exit(NULL, E_MLX_INIT);
 	setup_hook(sys);
-}
-
-t_pixel	**pixels_init(int height, int width, t_sys *sys)
-{
-	t_pixel	**pixels;
-	int		i;
-
-	LOG;
-	i = 0;
-	pixels = xcalloc(height, sizeof(t_pixel *), sys);
-	while (i < height)
-	{
-		pixels[i] = xcalloc(width, sizeof(t_pixel), sys);
-		i++;
-	}
-	return (pixels);
-}
-
-void	pixels_deinit(int height, int width, t_pixel **pixels)
-{
-	int i;
-
-	LOG;
-	(void)width;
-	if (!pixels)
-		return ;
-	i = 0;
-	while (i < height)
-	{
-		free(pixels[i]);
-		i++;
-	}
-	free(pixels);
 }

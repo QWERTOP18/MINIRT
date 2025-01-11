@@ -6,32 +6,57 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 11:22:33 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 14:00:14 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_list	*find_nearest_obj(t_unit_line ray, t_list *objs)
+t_intersect	intersect_dispacher(t_unit_line ray, t_list *obj)
 {
+	static t_isfunc	isfunc[] = {is0, is1, is2, is3};
+
+	return (isfunc[obj->type](ray, obj->data));
+}
+
+t_list	*determine_target(t_unit_line ray, t_list *objs)
+{
+	double	dist;
 	double	min_dist;
 	t_list	*res;
+	t_list	*obj;
 
-	//全探索して一番近いものをみつける
+	res = NULL;
 	min_dist = __DBL_MAX__;
-	return (objs);
+	obj = objs;
+	while (obj)
+	{
+		dist = intersect_dispacher(ray, obj).dist;
+		if (dist < min_dist)
+		{
+			min_dist = dist;
+			res = obj;
+		}
+		obj = obj->next;
+	}
+	return (res);
 }
 
 void	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 {
+	double	x;
+
+	pixel->obj = determine_target(ray, objs->objs);
+	log_obj(pixel->obj);
+	if (!pixel->obj)
+		return ;
+	pixel->intersect = intersect_dispacher(ray, pixel->obj);
 	/*
-	一番近いものを見つける
 	法線ベクトルを計算
 	ONな光源について
 		影の判定
 		入射、反射ベクトルの計算
 	*/
-	return ;
 }
 
 // typedef struct s_pixel

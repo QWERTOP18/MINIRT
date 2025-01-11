@@ -14,6 +14,7 @@
 # define SCREEN_H
 
 # include "color.h"
+# include "intersection.h"
 # include "light.h"
 # include "mlx.h"
 # include "mlx_int.h"
@@ -42,11 +43,8 @@
 typedef struct s_pixel
 {
 	t_scaled_col	color;
-	double			dist;
 	t_list *obj; // nearest object or NULL
-	t_unit_vec		ray;
-	t_unit_vec		normal;
-	t_pos_vec		intersection;
+	t_intersect		intersect;
 	bool			ishide[MAX_LIGHT];
 	t_unit_vec		light[MAX_LIGHT];
 	t_unit_vec		reflect[MAX_LIGHT];
