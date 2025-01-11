@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 10:48:36 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:03:14 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void	*update(t_sys *sys)
 {
-	int	id;
+	int			id;
+	t_camera	*camera;
 
 	id = sys->obj->id_of_camera;
-	render_img(sys->obj->camera[id], sys); //実際には最初しか計算していないので名前を変えるか
-	return (sys->obj->camera[id]->img->img);
+	camera = sys->obj->camera[id];
+	if (camera->isupdate == True)
+		render_img(camera, sys); //実際には最初しか計算していないので名前を変えるか
+	return (camera->img->img);
 }
 
 int	loop_handler(t_sys *sys)

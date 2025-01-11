@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:26:34 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 08:18:36 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:20:11 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@
 // # define RED x
 // # define GREEN y
 // # define BLUE z
-typedef t_vec	t_fcol;
+typedef t_vec	t_scaled_col;
 
-unsigned int	color_convert(t_fcol fcol);
-// t_fcol			**color_array_init(int height, int width, t_sys *sys);
-// void			color_array_deinit(int height, int width, t_fcol **array);
+unsigned int	color_convert(t_scaled_col scol);
+// t_scaled_col			**color_array_init(int height, int width, t_sys *sys);
+// void			color_array_deinit(int height, int width, t_scaled_col **array);
 
 #endif

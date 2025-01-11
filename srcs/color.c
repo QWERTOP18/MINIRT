@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:43:19 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 10:23:14 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:20:10 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,35 @@
 #include "minirt.h"
 #include "system.h"
 
-unsigned int	color_convert(t_fcol fcol)
+unsigned int	color_convert(t_scaled_col scol)
 {
 	unsigned int	red;
 	unsigned int	green;
 	unsigned int	blue;
 
-	red = fcol.x * 255;
-	green = fcol.y * 255;
-	blue = fcol.z * 255;
+	red = scol.x * 255;
+	green = scol.y * 255;
+	blue = scol.z * 255;
 	return (red << 16 | green << 8 | blue);
 }
 
-// t_fcol	**color_array_init(int height, int width, t_sys *sys)
+// t_scaled_col	**color_array_init(int height, int width, t_sys *sys)
 // {
-// 	t_fcol	**array;
+// 	t_scaled_col	**array;
 // 	int		i;
 
 // 	LOG;
 // 	i = 0;
-// 	array = xcalloc(height, sizeof(t_fcol *), sys);
+// 	array = xcalloc(height, sizeof(t_scaled_col *), sys);
 // 	while (i < height)
 // 	{
-// 		array[i] = xcalloc(width, sizeof(t_fcol), sys);
+// 		array[i] = xcalloc(width, sizeof(t_scaled_col), sys);
 // 		i++;
 // 	}
 // 	return (array);
 // }
 
-// void	color_array_deinit(int height, int width, t_fcol **array)
+// void	color_array_deinit(int height, int width, t_scaled_col **array)
 // {
 // 	LOG;
 // 	(void)width;

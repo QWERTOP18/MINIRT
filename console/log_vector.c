@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:03:01 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 09:43:52 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:06:21 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	log_vec(char *name, t_vec vec)
 	printf("y:  %8.2f\n", vec.y);
 	printf("z:  %8.2f\n", vec.z);
 	// printf(CYAN BOLD "----------------------------------\n" RESET);
-	// printf("\n");
+	printf("\n");
 }

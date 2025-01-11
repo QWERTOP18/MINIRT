@@ -6,13 +6,14 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:42:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 08:26:09 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:19:27 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_light	*light_init(t_pos_vec pos, t_fcol col, double intensity, t_sys *sys)
+t_light	*light_init(t_pos_vec pos, t_scaled_col col, double intensity,
+		t_sys *sys)
 {
 	t_light	*light;
 

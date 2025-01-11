@@ -19,7 +19,7 @@
 // int	calc2(t_unit_line *ray, t_list *lobj, t_camera *camera);
 
 void	*update(t_sys *sys);
-void	update_pixel(t_unit_line ray, t_objects *objs);
+void	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel);
 void	render_img(t_camera *camera, t_sys *sys);
 
 #endif

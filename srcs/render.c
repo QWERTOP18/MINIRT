@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:40:17 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 10:49:23 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:13:34 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,6 @@ void	render_pixel(const t_screen *screen, int x, int y)
 	dst = screen->addr + (y * screen->line_length + x * (screen->bits_per_pixel
 				/ 8));
 	*(unsigned int *)dst = color_convert(screen->pixels[y][x].color);
-}
-
-t_list	*find_nearest_obj(t_unit_line ray, t_list *objs)
-{
-	double	min_dist;
-	t_list	*res;
-
-	//全探索して一番近いものをみつける
-	min_dist = __DBL_MAX__;
-	return (objs);
 }
 
 t_pos_vec	screen_point(int x, int y, t_camera *c)
@@ -50,6 +40,7 @@ void	render_img(t_camera *camera, t_sys *sys)
 	int			x;
 	t_unit_line	ray;
 
+	camera->isupdate = False;
 	ray.pos = camera->pos;
 	y = 0;
 	while (y < sys->height)
@@ -57,11 +48,8 @@ void	render_img(t_camera *camera, t_sys *sys)
 		x = 0;
 		while (x < sys->width)
 		{
-			/*
-			ambient + Diffuse + Specular
-			*/
 			ray.dir = dir(ray.pos, screen_point(x, y, camera));
-			update_pixel(ray, sys->obj);
+			update_pixel(ray, sys->obj, &camera->img->pixels[y][x]);
 			render_pixel(camera->img, x, y);
 			x++;
 		}

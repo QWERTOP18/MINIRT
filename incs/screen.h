@@ -41,28 +41,28 @@
 
 typedef struct s_pixel
 {
-	t_fcol		color;
-	double		dist;
+	t_scaled_col	color;
+	double			dist;
 	t_list *obj; // nearest object or NULL
-	t_unit_vec	ray;
-	t_unit_vec	normal;
-	t_pos_vec	intersection;
-	bool		ishide[MAX_LIGHT];
-	t_unit_vec	light[MAX_LIGHT];
-	t_unit_vec	reflect[MAX_LIGHT];
-}				t_pixel;
+	t_unit_vec		ray;
+	t_unit_vec		normal;
+	t_pos_vec		intersection;
+	bool			ishide[MAX_LIGHT];
+	t_unit_vec		light[MAX_LIGHT];
+	t_unit_vec		reflect[MAX_LIGHT];
+}					t_pixel;
 
-struct			s_screen
+struct				s_screen
 {
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-	int			width;
-	int			height;
-	// t_fcol	**color_arr;
-	t_pixel		**pixels;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+	int				width;
+	int				height;
+	// t_scaled_col	**color_arr;
+	t_pixel			**pixels;
 };
 
 /* ************************************************************************** */
@@ -71,22 +71,22 @@ struct			s_screen
 
 /* -----------------------------   SET UP   --------------------------------- */
 
-void			setup_mlx(t_sys *sys);
-void			setup_hook(t_sys *sys);
-void			setup_img(t_screen *img, t_sys *sys);
-t_pixel			**pixels_init(int height, int width, t_sys *sys);
-void			pixels_deinit(int height, int width, t_pixel **pixels);
+void				setup_mlx(t_sys *sys);
+void				setup_hook(t_sys *sys);
+void				setup_img(t_screen *img, t_sys *sys);
+t_pixel				**pixels_init(int height, int width, t_sys *sys);
+void				pixels_deinit(int height, int width, t_pixel **pixels);
 
 /* -----------------------------   RENDER   --------------------------------- */
 
-void			render_pixel(const t_screen *screen, int x, int y);
+void				render_pixel(const t_screen *screen, int x, int y);
 // void			render_img(t_camera *camera, t_sys *sys);
 
 /* ----------------------------   HANDLER   --------------------------------- */
 
-int				exit_handler(t_sys *sys);
-int				key_handler(int key, t_sys *sys);
-int				mouse_handler(int button, int x, int y, t_sys *sys);
-int				loop_handler(t_sys *sys);
+int					exit_handler(t_sys *sys);
+int					key_handler(int key, t_sys *sys);
+int					mouse_handler(int button, int x, int y, t_sys *sys);
+int					loop_handler(t_sys *sys);
 
 #endif

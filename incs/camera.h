@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 07:33:37 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 10:35:43 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 10:58:45 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_camera
 	t_rect		screen;
 	double		fov;
 	t_screen	*img;
+	bool		isupdate;
 }				t_camera;
 
 /* ************************************************************************** */

@@ -16,7 +16,7 @@ typedef struct s_light
 {
 	t_pos_vec	pos;
 	double		intensity;
-	t_fcol		color;
+	t_scaled_col		color;
 	bool		ison;
 }				t_light;
 
@@ -24,7 +24,7 @@ typedef struct s_light
 /*                                  FUNCS                                     */
 /* ************************************************************************** */
 
-t_light			*light_init(t_pos_vec pos, t_fcol col, double intensity,
+t_light			*light_init(t_pos_vec pos, t_scaled_col col, double intensity,
 					t_sys *sys);
 void			light_deinit(t_light *light[], int size);
 

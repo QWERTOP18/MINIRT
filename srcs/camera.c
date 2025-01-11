@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 10:40:05 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 11:01:35 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_camera	*camera_init(t_vec pos, t_vec orient, int fov, t_sys *sys)
 	camera->fov = (double)fov / 180 * M_PI;
 	camera->screen = set_screen(camera, sys);
 	setup_img(camera->img, sys);
+	camera->isupdate = True;
 	return (camera);
 }
 
