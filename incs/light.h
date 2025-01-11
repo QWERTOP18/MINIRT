@@ -4,7 +4,9 @@
 # include "vector.h"
 # include <stdbool.h>
 
-# define MAX_LIGHT 10
+# ifndef MAX_LIGHT
+#  define MAX_LIGHT 5
+# endif
 
 /* ************************************************************************** */
 /*                                 STRUCT         :)                          */

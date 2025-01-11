@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 08:39:46 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 09:35:46 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,13 @@ int	loop_handler(t_sys *sys)
 
 int	mouse_handler(int button, int x, int y, t_sys *sys)
 {
-	//クリックした場所の色の情報などが取れるといいかもしれぬ
+	int	id;
+
+	id = sys->obj->id_of_camera;
+	if (button == LEFT_CLICK)
+	{
+		log_pixel(sys->obj->camera[id]->img.pixels, y, x);
+	}
 	return (0);
 }
 

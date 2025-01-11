@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:38:54 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 07:33:55 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 09:20:33 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_objects	*parse_file(char *file, t_sys *sys)
 
 	LOG;
 #ifdef NOINPUT
-	sys->width = 1024;
+	sys->width = 512;
 	sys->height = 512;
 	return (generate(sys));
 #else

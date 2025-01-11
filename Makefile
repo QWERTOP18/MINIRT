@@ -1,9 +1,9 @@
 NAME		:= ./miniRT
 CC			:= cc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
-CFLAGS		:= -Wall -Wextra #-Werror -O2
+CFLAGS		:= -O2 -Wall -Wextra #-Werror
 DFLAGS      := -DNOINPUT -DDEBUG
-
+VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origins=yes
 
 
 
@@ -29,7 +29,7 @@ OBJS		:= $(addprefix $(OUT_DIR)/, $(SRCS:.c=.o))
 DEPS		:= $(OBJS:.o=.d)
 
 COMPILE     := $(CC) $(CFLAGS) $(DFLAGS) $(IFLAGS)
-VALGRIND    := valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q
+
 
 all: $(NAME)
 

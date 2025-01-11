@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:20:56 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/10 20:32:04 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 09:05:51 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_lst.h"
 # include "libft.h"
 # include <math.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>

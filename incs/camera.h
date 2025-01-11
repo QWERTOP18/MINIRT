@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 07:33:37 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 08:23:24 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 09:25:06 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 # include "screen.h"
 # include "system.h"
 # include "vector.h"
-
-# define MAX_CAMERA 10
+# ifndef MAX_CAMERA
+#  define MAX_CAMERA 10
+# endif
 
 // C 0,0,0   0,0,1  70
 //   pos      dir   fov

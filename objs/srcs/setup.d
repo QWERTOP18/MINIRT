@@ -1,8 +1,8 @@
 objs/srcs/setup.o: srcs/setup.c srcs/minirt.h srcs/../console/console.h \
   incs/camera.h incs/screen.h incs/color.h incs/system.h list/ft_lst.h \
-  libft/libft.h vector/vector.h minilibx/mlx.h minilibx/mlx_int.h \
-  incs/material.h incs/object.h incs/light.h incs/parse.h incs/ray.h \
-  srcs/../debug/debug.h
+  libft/libft.h vector/vector.h incs/light.h minilibx/mlx.h \
+  minilibx/mlx_int.h incs/material.h incs/object.h incs/parse.h \
+  incs/ray.h srcs/../debug/debug.h
 
 srcs/minirt.h:
 
@@ -22,6 +22,8 @@ libft/libft.h:
 
 vector/vector.h:
 
+incs/light.h:
+
 minilibx/mlx.h:
 
 minilibx/mlx_int.h:
@@ -29,8 +31,6 @@ minilibx/mlx_int.h:
 incs/material.h:
 
 incs/object.h:
-
-incs/light.h:
 
 incs/parse.h:
 

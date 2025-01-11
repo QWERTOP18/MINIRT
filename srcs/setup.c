@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 13:41:55 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 08:20:57 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 09:19:18 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	setup_hook(t_sys *sys)
 {
+	LOG;
 	mlx_hook(sys->win, KeyPress, KeyPressMask, key_handler, sys);
 	mlx_hook(sys->win, ClientMessage, StructureNotifyMask, exit_handler, sys);
 	mlx_mouse_hook(sys->win, mouse_handler, sys);
@@ -22,6 +23,7 @@ void	setup_hook(t_sys *sys)
 
 void	setup_img(t_screen *img, t_sys *sys)
 {
+	LOG;
 	img->height = sys->height;
 	img->width = sys->width;
 	img->img = mlx_new_image(sys->mlx, sys->width, sys->height);
@@ -34,6 +36,7 @@ void	setup_img(t_screen *img, t_sys *sys)
 
 void	setup_mlx(t_sys *sys)
 {
+	LOG;
 	sys->win = mlx_new_window(sys->mlx, sys->width, sys->height, "miniRT");
 	if (!sys->win)
 		system_exit(NULL, E_MLX_INIT);
