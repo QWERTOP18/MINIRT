@@ -6,20 +6,20 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:40:17 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 11:21:25 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/11 15:38:08 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 #include "system.h"
 
-void	render_pixel(const t_screen *screen, int x, int y)
+void	render_pixel(const t_screen *screen, int x, int y, unsigned int color)
 {
 	char	*dst;
 
 	dst = screen->addr + (y * screen->line_length + x * (screen->bits_per_pixel
 				/ 8));
-	*(unsigned int *)dst = color_convert(screen->pixels[y][x].color);
+	*(unsigned int *)dst = color;
 }
 
 t_pos_vec	screen_point(int x, int y, t_camera *c)
@@ -36,10 +36,12 @@ t_pos_vec	screen_point(int x, int y, t_camera *c)
 
 void	render_img(t_camera *camera, t_sys *sys)
 {
-	int			y;
-	int			x;
-	t_unit_line	ray;
+	int				y;
+	int				x;
+	unsigned int	color;
+	t_unit_line		ray;
 
+	LOG;
 	camera->isupdate = False;
 	ray.pos = camera->pos;
 	y = 0;
@@ -49,8 +51,8 @@ void	render_img(t_camera *camera, t_sys *sys)
 		while (x < sys->width)
 		{
 			ray.dir = dir(ray.pos, screen_point(x, y, camera));
-			update_pixel(ray, sys->obj, &camera->img->pixels[y][x]);
-			render_pixel(camera->img, x, y);
+			color = update_pixel(ray, sys->obj, &camera->img->pixels[y][x]);
+			render_pixel(camera->img, x, y, color);
 			x++;
 		}
 		y++;

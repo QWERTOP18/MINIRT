@@ -20,8 +20,7 @@ t_objects	*generate(t_sys *sys)
 	{
 		for (int x = 0; x < sys->width; x++)
 		{
-			img->pixels[y][x].color = vec(0, 0, 1);
-			render_pixel(img, x, y);
+			render_pixel(img, x, y, 0x000FF);
 		}
 	}
 	/* ------------------------ */

@@ -42,12 +42,11 @@
 
 typedef struct s_pixel
 {
-	t_scaled_col	color;
+	// t_scaled_col color; // light_disc->scolの合計
 	t_list *obj; // nearest object or NULL
 	t_intersect		intersect;
-	bool			ishide[MAX_LIGHT];
-	t_unit_vec		light[MAX_LIGHT];
-	t_unit_vec		reflect[MAX_LIGHT];
+	// t_light_disc	light_disc[MAX_LIGHT];
+	t_scaled_col	colors[MAX_LIGHT];
 }					t_pixel;
 
 struct				s_screen
@@ -77,7 +76,8 @@ void				pixels_deinit(int height, int width, t_pixel **pixels);
 
 /* -----------------------------   RENDER   --------------------------------- */
 
-void				render_pixel(const t_screen *screen, int x, int y);
+void				render_pixel(const t_screen *screen, int x, int y,
+						unsigned int color);
 // void			render_img(t_camera *camera, t_sys *sys);
 
 /* ----------------------------   HANDLER   --------------------------------- */
