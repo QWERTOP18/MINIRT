@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/18 19:49:52 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/18 21:09:30 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ t_intersect	is1(t_unit_line ray, void *obj)
 	normal_dot_ray = vec_dot(pl->normal, ray.dir);
 	if (normal_dot_ray <= FT_EPSILON)
 	{
-		// LOG;
 		return (is);
 	}
 	is.dist = vec_magnitude(vec_sub(ray.pos, pl->pos));

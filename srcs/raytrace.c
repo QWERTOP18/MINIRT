@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 20:38:17 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/18 21:21:24 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
 	double		n_dot_l;
 	double		v_dot_r;
 
-	static double gloss = 3; // todo
+	static double gloss = 4; // todo
 	n_dot_l = vec_dot(lightdir, normal);
 	reflection = vec_normalize(vec_sub(vec_mul(normal, 2 * n_dot_l), lightdir));
 	v_dot_r = vec_dot(ray_inverse, reflection);
@@ -68,13 +68,11 @@ t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
 t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect)
 {
 	t_scaled_col	res;
-	t_scaled_col	ambient;
 
 	t_unit_vec lightdir; //交点から光源へのベクトル
 	lightdir = vec_normalize(vec_sub(light->pos, intersect.pos));
 	// t_scaled_col coef = vec(0.6, 0.6); // todo materialによって変える
 	res = vec(0, 0, 0); // original color
-	// ambient = vec(0.3, 0.3, 1.0);
 	res = vec_add(res, cal_diffuse(lightdir, intersect.normal,
 				light->intensity));
 	res = vec_add(res, cal_specular(vec_mul(ray.dir, -1), lightdir,
