@@ -29,8 +29,11 @@ t_objects	*generate(t_sys *sys)
 	// 	}
 	// }
 	/* ------------------------ */
-	objects->objs = ft_lstnew(SPHERE, sphere_new(vec(0, 0, 5), 1));
-	objects->objs->next = ft_lstnew(SPHERE, sphere_new(vec(10, 10, 5), 1));
+	objects->objs = ft_lstnew(SPHERE, sphere_new(vec(0, 0, 5), 1, NULL));
+	objects->objs->next = ft_lstnew(SPHERE, sphere_new(vec(10, 10, 5), 1,
+				NULL));
+	objects->objs->next->next = ft_lstnew(PLANE, sphere_new(vec(10, 10, 5), 1,
+				NULL));
 	// calc1(NULL, objects->list, &objects->camera[1]);
 	log_objs(objects);
 	return (objects);

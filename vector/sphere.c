@@ -6,19 +6,22 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 05:15:54 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/09 21:47:00 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/18 18:00:08 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
-t_sphere	*sphere_new(t_pos_vec center, double radius)
+t_sphere	*sphere_new(t_pos_vec center, double radius, void *material)
 {
 	t_sphere	*sphere;
 
-	sphere = malloc(sizeof(t_sphere));
+	sphere = ft_calloc(1, sizeof(t_sphere));
+	if (!sphere)
+		return (NULL);
 	sphere->center = center;
 	sphere->radius = radius;
+	sphere->material = material;
 	return (sphere);
 }
 

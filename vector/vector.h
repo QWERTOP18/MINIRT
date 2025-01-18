@@ -6,13 +6,14 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/16 15:12:28 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/18 18:01:57 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
 
+# include "libft.h"
 # include <math.h>
 # include <stdlib.h>
 
@@ -83,7 +84,7 @@ typedef struct s_sphere
 // t_sphere		sphere(t_vec center, double radius);
 double			sphere_distance(t_sphere s, t_vec p);
 
-t_sphere		*sphere_new(t_pos_vec center, double radius);
+t_sphere		*sphere_new(t_pos_vec center, double radius, void *material);
 
 /* ************************************************************************** */
 /*                                PLANE                                       */
@@ -103,8 +104,28 @@ typedef struct s_plane
 typedef t_plane	t_rect;
 typedef t_plane	t_square;
 
+t_plane			*plane_new(t_pos_vec pos, t_vec normal, void *material);
+
 /* ************************************************************************** */
 /*                              CYLINDER                                      */
 /* ************************************************************************** */
+
+typedef struct s_cylinder
+{
+	t_pos_vec	center;
+	double		radius;
+	t_unit_vec	normal;
+
+	// t_unit_line	center_line;
+	void		*material;
+}				t_cylinder;
+
+/* ************************************************************************** */
+/*                                  UTILS                                     */
+/* ************************************************************************** */
+
+// void object_clear(void *)
+t_cylinder		*cylinder_new(t_pos_vec center, t_vec normal, t_vec lengths,
+					void *material);
 
 #endif
