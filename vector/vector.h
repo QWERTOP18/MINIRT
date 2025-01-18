@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/18 18:01:57 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:40:13 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 // # define CENTER pos
 // # define BASE pos
+# define FT_EPSILON 0.0001
 
 typedef int		scalar;
 

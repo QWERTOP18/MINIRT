@@ -1,4 +1,4 @@
-objs/debug/debug_intersect.o: debug/debug_intersect.c incs/minirt.h \
+objs/srcs/interface/mlx_setup.o: srcs/interface/mlx_setup.c incs/minirt.h \
   incs/../console/console.h incs/camera.h incs/screen.h incs/color.h \
   incs/system.h list/ft_lst.h libft/libft.h vector/vector.h \
   incs/intersection.h incs/light.h minilibx/mlx.h minilibx/mlx_int.h \

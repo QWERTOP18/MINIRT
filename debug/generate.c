@@ -1,4 +1,4 @@
-#include "../srcs/minirt.h"
+#include "minirt.h"
 
 t_objects	*generate(t_sys *sys)
 {

@@ -6,11 +6,12 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/18 14:09:57 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:49:52 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
+#include "minirt.h"
 
 // typedef struct s_plane
 // {
@@ -26,13 +27,19 @@
 t_intersect	is1(t_unit_line ray, void *obj)
 {
 	t_intersect		is;
-	t_vec			plane_vec;
 	const t_plane	*pl = (const t_plane *)obj;
+	double			normal_dot_ray;
 
 	is.dist = __DBL_MAX__;
-	plane_vec = vec_sub(ray.pos, pl->pos);
-	is.normal = vec(0, 0, 0);
-	is.pos = vec(0, 0, 0);
+	normal_dot_ray = vec_dot(pl->normal, ray.dir);
+	if (normal_dot_ray <= FT_EPSILON)
+	{
+		// LOG;
+		return (is);
+	}
+	is.dist = vec_magnitude(vec_sub(ray.pos, pl->pos));
+	is.normal = pl->normal; // todo consider directions
+	is.pos = vec_add(ray.pos, vec_mul(ray.dir, is.dist));
 	return (is);
 }
 

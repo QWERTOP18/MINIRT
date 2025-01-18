@@ -6,7 +6,7 @@
 #    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/01/18 14:08:53 by ymizukam         ###   ########.fr        #
+#    Updated: 2025/01/18 19:32:53 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,9 @@ VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origi
 
 
 
-SRCS := $(wildcard srcs/*.c vector/*.c list/*.c debug/*.c console/*.c srcs/intersection/*.c)
+SRCS :=  $(shell find srcs -type f -name "*.c") \
+         $(shell find vector -type f -name "*.c") $(shell find list -type f -name "*.c") $(shell find console -type f -name "*.c") \
+         $(shell find debug -type f -name "*.c")
 
 
 
