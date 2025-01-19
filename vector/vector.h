@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/18 19:40:13 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/19 16:52:55 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct s_cylinder
 	t_pos_vec	center;
 	double		radius;
 	t_unit_vec	normal;
+	double		height;
 
 	// t_unit_line	center_line;
 	void		*material;

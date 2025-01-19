@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/18 21:09:30 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:02:05 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 // 	void		*material;
 // }				t_plane;
 
+/* PLANE */
 t_intersect	is1(t_unit_line ray, void *obj)
 {
 	t_intersect		is;

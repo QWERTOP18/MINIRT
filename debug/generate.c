@@ -34,11 +34,14 @@ t_objects	*generate(t_sys *sys)
 				NULL));
 	objects->objs->next->next = ft_lstnew(PLANE, plane_new(vec(0, -4, 0), vec(0,
 					1, 0), NULL));
+	objects->objs->next->next->next = ft_lstnew(PLANE, cylinder_new(vec(-5, -1,
+					0), vec(0, 1, 0), vec(4, 2, 0), NULL));
 	// calc1(NULL, objects->list, &objects->camera[1]);
 	log_objs(objects);
 	return (objects);
 }
 /*
+test9
 R  1024      800
 A  0.1      255,255,255
 c  0,3,-20    0,-0.2,1       60

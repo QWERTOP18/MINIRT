@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersect_cylinder.c                               :+:      :+:    :+:   */
+/*   intersect_ellipsoid.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/19 17:59:50 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/19 16:41:26 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/01/19 16:41:35 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-/* CYLINDER */
-t_intersect	is2(t_unit_line ray, void *obj)
+t_intersect	is3(t_unit_line ray, void *obj)
 {
-	t_intersect			is;
-	const t_cylinder	*cy = (const t_cylinder *)obj;
-	t_vec				ray_x_cynorm;
-	t_vec				ray_x_cypos;
-	t_vec				roots;
+	t_intersect is;
 
 	is.dist = __DBL_MAX__;
-	roots = solve_quadratic_eq(0, 0, 0);
-	ray_x_cynorm = vec_cross(ray.dir, cy->normal);
-	ray_x_cypos = vec_cross(ray.dir, vec_sub(ray.pos, cy->center));
+	is.normal = vec(0, 0, 0);
+	is.pos = vec(0, 0, 0);
 	return (is);
 }
