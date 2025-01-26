@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:38:54 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/18 18:08:38 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:39:48 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ C fovが0だったらdiv 0になるので
 
 
 */
+
+bool	parse_line(t_objects *objs, char *line, t_sys *sys)
+{
+	return (true);
+}
 
 t_objects	*parse_file(char *file, t_sys *sys)
 {
@@ -41,9 +46,12 @@ t_objects	*parse_file(char *file, t_sys *sys)
 	{
 		// if (is_valid_line(line))
 		//    add_object(objects, line);
+		if (!parse_line(objects, line, sys))
+			break ;
 		free(line);
 		line = get_next_line(fd);
 	}
+	free(line);
 	close(fd);
 #endif
 	return (objects);

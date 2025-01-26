@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:02:58 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 16:40:45 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:58:05 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,18 @@ void	log_objs(t_objects *objs)
 
 void	l0(void *data)
 {
-	t_sphere	*sp;
+	const t_sphere	*sp = (const t_sphere *)data;
 
-	sp = (t_sphere *)data;
 	log_vec("sphere", sp->center);
 	printf("r:  %8.2f\n", sp->radius);
 }
 void	l1(void *data)
 {
+	const t_plane	*pl = (const t_plane *)data;
+
+	log_vec("plane normal", pl->normal);
+	log_vec("plane center", pl->pos);
+	// printf("r:  %8.2f\n", sp->radius);
 }
 void	l2(void *data)
 {

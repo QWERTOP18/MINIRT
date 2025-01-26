@@ -61,7 +61,6 @@ struct				s_screen
 	// t_scaled_col	**color_arr;
 	t_pixel			**pixels;
 };
-
 /* ************************************************************************** */
 /*                                  FUNCS                                     */
 /* ************************************************************************** */
@@ -75,6 +74,7 @@ t_pixel				**pixels_init(int height, int width, t_sys *sys);
 void				pixels_deinit(int height, int width, t_pixel **pixels);
 
 /* -----------------------------   RENDER   --------------------------------- */
+
 
 void				render_pixel(const t_screen *screen, int x, int y,
 						unsigned int color);

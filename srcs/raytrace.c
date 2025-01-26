@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/18 21:21:24 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/01/20 10:46:45 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
 	double		n_dot_l;
 	double		v_dot_r;
 
-	static double gloss = 4; // todo
+	static double gloss = 400; // todo
 	n_dot_l = vec_dot(lightdir, normal);
 	reflection = vec_normalize(vec_sub(vec_mul(normal, 2 * n_dot_l), lightdir));
 	v_dot_r = vec_dot(ray_inverse, reflection);
