@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 09:03:16 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 09:55:11 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/03/27 09:35:26 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 # include "camera.h"
 # include "color.h"
 # include "material.h"
-# include "screen.h"
 # include "object.h"
 # include "parse.h"
 # include "raytrace.h"
+# include "screen.h"
 # include "system.h"
 # define LOG dprintf(2, "log :%s\n", __func__)
 # define WARNIG dprintf(2, RED "warning :%s" RESET "\n", __func__)
@@ -35,5 +35,3 @@
 
 /* -----------------------------   PARSE   ---------------------------------- */
 t_objects	*generate(t_sys *sys);
-
-#endif

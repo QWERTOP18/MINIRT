@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 16:15:23 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/03/27 09:34:06 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	mouse_handler(int button, int x, int y, t_sys *sys)
 {
 	int	id;
 
+	printf("mouse %d\n", button);
 	id = sys->obj->id_of_camera;
 	if (button == LEFT_CLICK)
 	{

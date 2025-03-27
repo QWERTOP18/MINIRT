@@ -6,14 +6,14 @@
 #    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/01/19 16:57:25 by ymizukam         ###   ########.fr        #
+#    Updated: 2025/03/27 09:39:29 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= ./miniRT
 CC			:= cc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
-CFLAGS		:= -O2 -Wall -Wextra #-Werror
+CFLAGS		:= -O2 -fPIE -Wall -Wextra #-Werror
 DFLAGS      := -DNOINPUT -DDEBUG
 VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origins=yes
 
@@ -34,9 +34,9 @@ LIST_DIR    := list
 LIBFT_DIR	:= libft
 LIBFT		:= $(LIBFT_DIR)/libft.a
 MLX_DIR		:= minilibx
-MLX			:= $(MLX_DIR)/libmlx.a
+MLX			:= $(MLX_DIR)/libmlx.a 
 
-IFLAGS		:= -I$(INCS_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(VECTOR_DIR) -I$(LIST_DIR)
+IFLAGS		:= -I$(INCS_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(VECTOR_DIR) -I$(LIST_DIR) -Ilibbmp/includes
 
 
 OBJS		:= $(addprefix $(OUT_DIR)/, $(SRCS:.c=.o))
@@ -97,6 +97,9 @@ minirm:
 
 norm:
 	@norminette $(SRCS) $(INCS_DIR)
+
+func: all
+	nm -u ./miniRT | sort | uniq | grep -v X
 
 
 .PHONY: all clean fclean re sub sub-update norm debug
