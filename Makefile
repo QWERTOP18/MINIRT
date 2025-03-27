@@ -6,7 +6,7 @@
 #    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/03/27 09:39:29 by ymizukam         ###   ########.fr        #
+#    Updated: 2025/03/27 09:47:12 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,11 +50,14 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
 	$(COMPILE) $(OBJS) $(LIBFT) -L$(MLX_DIR) $(FRAMEWORKS) -o $@
 
-$(LIBFT):
+$(LIBFT): | $(LIBFT_DIR)
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(MLX): | $(MLX_DIR)
 	$(MAKE) -C $(MLX_DIR)
+
+$(LIBFT_DIR):
+	git clone https://github.com/QWERTOP18/LIBFT.git $(LIBFT_DIR)
 
 $(MLX_DIR):
 	git clone https://github.com/42Paris/minilibx-linux.git $(MLX_DIR)
