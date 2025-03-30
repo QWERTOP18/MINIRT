@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:46:07 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/19 16:52:42 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/03/30 21:45:14 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 t_cylinder	*cylinder_new(t_pos_vec center, t_vec normal, t_vec lengths,
 		void *material)
 {
-	t_cylinder *cylinder = ft_calloc(1, sizeof(t_cylinder));
+	t_cylinder	*cylinder;
+
+	cylinder = ft_calloc(1, sizeof(t_cylinder));
 	if (!cylinder)
 		return (NULL);
 	cylinder->center = center;
 	cylinder->radius = lengths.x;
 	cylinder->height = lengths.y;
-
 	return (cylinder);
 }
