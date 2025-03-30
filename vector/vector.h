@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/19 16:52:55 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/03/30 21:45:45 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 // # define CENTER pos
 // # define BASE pos
 # define FT_EPSILON 0.0001
-
-typedef int		scalar;
 
 /* ************************************************************************** */
 /*                                 VECTOR                                     */
@@ -118,7 +116,6 @@ typedef struct s_cylinder
 	t_unit_vec	normal;
 	double		height;
 
-	// t_unit_line	center_line;
 	void		*material;
 }				t_cylinder;
 

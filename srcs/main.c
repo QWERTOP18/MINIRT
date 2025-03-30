@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/30 21:13:09 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/03/30 21:49:18 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*update(t_sys *sys)
 	id = sys->obj->id_of_camera;
 	camera = sys->obj->camera[id];
 	if (camera->isupdate == True)
-		render_img(camera, sys); //実際には最初しか計算していないので名前を変えるか
+		render_img(camera, sys);
 	return (camera->img->img);
 }
 
