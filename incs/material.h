@@ -11,19 +11,22 @@
 /* ************************************************************************** */
 
 #ifndef MATERIAL_H
-# define MATERIAL_H
+#define MATERIAL_H
 
-# include "color.h"
+#include "color.h"
 
 /* ************************************************************************** */
 /*                                 STRUCT         :)                          */
 /* ************************************************************************** */
 typedef struct s_material
 {
-	t_scaled_col	color;
+	t_scaled_col color;
 	double gloss; // alpha
-	
-}					t_material;
+	bool checker;
+	bool mirror;
+	bool bump;
+	char *ref; // bump file
+} t_material;
 
 /* ************************************************************************** */
 /*                                  FUNCS                                     */

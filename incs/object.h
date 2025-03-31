@@ -11,34 +11,37 @@
 /* ************************************************************************** */
 
 #ifndef OBJECT_H
-# define OBJECT_H
+#define OBJECT_H
 
-# include "camera.h"
-# include "color.h"
-# include "light.h"
-# include "vector.h"
+#include "camera.h"
+#include "color.h"
+#include "light.h"
+#include "vector.h"
 
 typedef enum e_obj_type
 {
 	SPHERE,
 	PLANE,
 	CYLINDER,
+	TRIANGLE,
+	CONE,
+	ELLIPSOID,
 	ERROR = -1,
-}					t_obj_type;
+} t_obj_type;
 
 /* ************************************************************************** */
 /*                                 STRUCT         :)                          */
 /* ************************************************************************** */
 
-struct				s_objects
+struct s_objects
 {
-	t_camera		*camera[MAX_CAMERA];
-	int				num_of_camera;
-	int				id_of_camera;
-	t_light			*light[MAX_LIGHT];
-	int				num_of_light;
-	t_list			*objs;
-	t_scaled_col	ambient;
+	t_camera *camera[MAX_CAMERA];
+	int num_of_camera;
+	int id_of_camera;
+	t_light *light[MAX_LIGHT];
+	int num_of_light;
+	t_list *objs;
+	t_scaled_col ambient;
 };
 
 // sp 0,0,0 12 10,20,20
@@ -59,6 +62,6 @@ struct				s_objects
 /*                                  FUNCS                                     */
 /* ************************************************************************** */
 
-void				objs_deinit(t_objects *objs);
+void objs_deinit(t_objects *objs);
 
 #endif
