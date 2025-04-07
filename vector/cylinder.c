@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:46:07 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/03/30 21:45:14 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:05:56 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,13 @@ t_cylinder	*cylinder_new(t_pos_vec center, t_vec normal, t_vec lengths,
 	cylinder->radius = lengths.x;
 	cylinder->height = lengths.y;
 	return (cylinder);
+}
+
+void	cylinder_clear(t_cylinder *cy)
+{
+	if (!cy)
+		return ;
+
+	free(cy->material);
+	free(cy);
 }

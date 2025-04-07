@@ -1,37 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane.c                                            :+:      :+:    :+:   */
+/*   material.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/18 17:33:54 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 06:03:08 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/04/08 05:45:37 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/04/08 05:55:52 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "material.h"
 
-// pl 0.0,0.0,-10.0 0.0,1.0,0.0 0,0,255
-// id pos normal color
-
-t_plane	*plane_new(t_pos_vec pos, t_vec normal, void *material)
+t_material	*material_init(t_vec color)
 {
-	t_plane	*plane;
+	t_material	*material;
 
-	plane = ft_calloc(1, sizeof(t_plane));
-	if (!plane)
+	material = ft_calloc(1, sizeof(t_material));
+	if (!material)
 		return (NULL);
-	plane->pos = pos;
-	plane->normal = vec_normalize(normal);
-	plane->material = material;
-	return (plane);
-}
-
-void	plane_clear(t_plane *pl)
-{
-	if (!pl)
-		return ;
-	free(pl->material);
-	free(pl);
+	material->color = color_scaler(color);
+	return (material);
 }

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:26:34 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 11:20:11 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 05:53:49 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 typedef t_vec	t_scaled_col;
 
 unsigned int	color_convert(t_scaled_col scol);
+t_scaled_col	color_scaler(t_vec color);
 // t_scaled_col			**color_array_init(int height, int width, t_sys *sys);
 // void			color_array_deinit(int height, int width, t_scaled_col **array);
 

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 06:20:50 by teando            #+#    #+#             */
-/*   Updated: 2025/01/06 04:54:41 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:14:02 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-{
-	t_list	*new_list;
-	t_list	*new_node;
-	void	*new_data;
+// t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+// {
+// 	t_list	*new_list;
+// 	t_list	*new_node;
+// 	void	*new_data;
 
-	if (f == NULL || del == NULL)
-		return (NULL);
-	new_list = NULL;
-	while (lst)
-	{
-		new_data = f(lst->data);
-		if (new_data == NULL)
-			return (ft_lstclear(&new_list, del), NULL);
-		new_node = ft_lstnew(lst->type, new_data);
-		if (!new_node)
-		{
-			del(new_data);
-			ft_lstclear(&new_list, del);
-			return (NULL);
-		}
-		ft_lstadd_back(&new_list, new_node);
-		lst = lst->next;
-	}
-	return (new_list);
-}
+// 	if (f == NULL || del == NULL)
+// 		return (NULL);
+// 	new_list = NULL;
+// 	while (lst)
+// 	{
+// 		new_data = f(lst->data);
+// 		if (new_data == NULL)
+// 			return (ft_lstclear(&new_list, del), NULL);
+// 		new_node = ft_lstnew(lst->type, new_data);
+// 		if (!new_node)
+// 		{
+// 			del(new_data);
+// 			ft_lstclear(&new_list, del);
+// 			return (NULL);
+// 		}
+// 		ft_lstadd_back(&new_list, new_node);
+// 		lst = lst->next;
+// 	}
+// 	return (new_list);
+// }
