@@ -11,26 +11,28 @@ t_objects	*generate(t_sys *sys)
 	objects->id_of_camera = 0;
 	LOG;
 	objects->camera[0] = camera_init(vec(0, 3, -20), vec(0, -0.2, 1), 60, sys);
-	objects->camera[1] = camera_init(vec(20, 3, 0), vec(-1, 0, 0), 60, sys);
+	objects->camera[1] = camera_init(vec(40, 3, 0), vec(-1, 0, 0), 60, sys);
 	objects->camera[2] = camera_init(vec(-20, 3, 0), vec(1, 0, 0), 60, sys);
 	objects->camera[3] = camera_init(vec(0, 20, 0), vec(0, -1, 0), 60, sys);
 	objects->camera[4] = camera_init(vec(0, -40, 10), vec(0, 1, 0), 90, sys);
 	objects->light[0] = light_init(vec(40, 100, 20), vec(1, 1, 1), 1.0, sys);
 	objects->ambient = vec(0.04, 0, 0);
-	objects->objs = ft_lstnew(SPHERE, sphere_new(vec(5, 0, 0), 3,
+	objects->objs = ft_lstnew(SPHERE, sphere_new(vec(0, 0, 0), 3,
 				material_init(vec(128, 24, 24))));
-	objects->objs->next = ft_lstnew(SPHERE, sphere_new(vec(10, 10, 5), 1,
-				NULL));
-	objects->objs->next->next = ft_lstnew(SPHERE, sphere_new(vec(10, 10, 5), 10,
-				NULL));
+	objects->objs->next = ft_lstnew(SPHERE, sphere_new(vec(0, 10, 0), 3,
+				material_init(vec(24, 128, 24))));
+	objects->objs->next->next = ft_lstnew(SPHERE, sphere_new(vec(0, 20, 0), 3,
+				material_init(vec(24, 24, 128))));
 	/* objects->objs->next->next = ft_lstnew(PLANE, plane_new(vec(0, -4, 0),
 				vec(0,
 					1, 0), NULL)); */
-	/* objects->objs->next->next->next = ft_lstnew(PLANE, plane_new(vec(0, -4,
+	/* objects->objs->next->next->next = ft_lstnew(PLANE, plane_new(vec(0,
+					-4,
 					0),
 				vec(0, 0, -1), NULL));
 	objects->objs->next->next->next->next = ft_lstnew(CYLINDER,
-			cylinder_new(vec(-5, -1, 0), vec(0, 1, 0), vec(4, 2, 0), NULL)); */
+			cylinder_new(vec(-5, -1, 0), vec(0, 1, 0), vec(4, 2, 0),
+				NULL)); */
 	// calc1(NULL, objects->list, &objects->camera[1]);
 	log_objs(objects);
 	return (objects);

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:33:11 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/19 18:02:02 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 07:26:49 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_intersect
 	t_pos_vec		pos;
 	t_unit_vec		normal;
 	double			dist;
-	// t_material		*material;
+	t_material		*material;
 }					t_intersect;
 
 /* ************************************************************************** */

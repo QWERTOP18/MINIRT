@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 06:38:25 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 07:41:08 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_intersect	intersect_dispacher(t_unit_line ray, t_list *obj)
 	return (isfunc[obj->type](ray, obj->data));
 }
 
-t_material	*determine_target(t_unit_line ray, t_list *objs)
+t_list	*determine_target(t_unit_line ray, t_list *objs)
 {
 	double		dist;
 	double		min_dist;
@@ -35,7 +35,7 @@ t_material	*determine_target(t_unit_line ray, t_list *objs)
 		if (dist < min_dist)
 		{
 			min_dist = dist;
-			res = get_material(obj);
+			res = obj;
 		}
 		obj = obj->next;
 	}
@@ -43,11 +43,12 @@ t_material	*determine_target(t_unit_line ray, t_list *objs)
 }
 
 t_scaled_col	cal_diffuse(t_unit_vec lightdir, t_unit_vec normal,
-		t_scaled_col intensity)
+		t_scaled_col intensity, t_scaled_col obj_color)
 {
-	// double	dot_product;
-	// dot_product = vec_dot(lightdir, normal);
-	return (vec_mul(intensity, fmax(0.0, vec_dot(lightdir, normal))));
+	double	dot_product;
+
+	dot_product = fmax(0.0, vec_dot(lightdir, normal));
+	return (vec_mul(vec_hadamard(intensity, obj_color), dot_product));
 }
 t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
 		t_unit_vec normal, t_scaled_col intensity)
@@ -73,8 +74,8 @@ t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect)
 	lightdir = vec_normalize(vec_sub(light->pos, intersect.pos));
 	// t_scaled_col coef = vec(0.6, 0.6); // todo materialによって変える
 	res = vec(0, 0, 0); // original color
-	res = vec_add(res, cal_diffuse(lightdir, intersect.normal,
-				light->intensity));
+	res = vec_add(res, cal_diffuse(lightdir, intersect.normal, light->intensity,
+				intersect.material->color));
 	res = vec_add(res, cal_specular(vec_mul(ray.dir, -1), lightdir,
 				intersect.normal, light->intensity));
 	return (res);

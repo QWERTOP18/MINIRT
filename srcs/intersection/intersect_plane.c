@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/26 19:51:42 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 07:27:51 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ t_intersect	is1(t_unit_line ray, void *obj)
 	is.dist = vec_dot(vec_sub(ray.pos, pl->pos), pl->normal) / normal_dot_ray;
 	is.normal = pl->normal; // todo consider directions
 	is.pos = vec_add(ray.pos, vec_mul(ray.dir, is.dist));
+	is.material = pl->material;
 	return (is);
 }
