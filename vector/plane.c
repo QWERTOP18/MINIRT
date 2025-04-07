@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:33:54 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/20 10:56:16 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:03:08 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,12 @@ t_plane	*plane_new(t_pos_vec pos, t_vec normal, void *material)
 	plane->normal = vec_normalize(normal);
 	plane->material = material;
 	return (plane);
+}
+
+void	plane_clear(t_plane *pl)
+{
+	if (!pl)
+		return ;
+	free(pl->material);
+	free(pl);
 }

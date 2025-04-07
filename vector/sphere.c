@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 05:15:54 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/18 18:00:08 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:04:26 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,14 @@ t_sphere	*sphere_new(t_pos_vec center, double radius, void *material)
 	sphere->radius = radius;
 	sphere->material = material;
 	return (sphere);
+}
+
+void	sphere_clear(t_sphere *sp)
+{
+	if (!sp)
+		return ;
+	free(sp->material);
+	free(sp);
 }
 
 double	sphere_distance(t_sphere s, t_vec p)

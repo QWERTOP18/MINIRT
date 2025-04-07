@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/16 15:26:32 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 07:27:33 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ t_intersect	is0(t_unit_line ray, void *obj)
 		is.pos = vec_add(ray.pos, vec_mul(ray.dir, is.dist));
 		is.normal = vec_normalize(vec_sub(is.pos, sp->center));
 	}
+	is.material = sp->material;
 	return (is);
 }

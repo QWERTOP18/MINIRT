@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 06:19:31 by teando            #+#    #+#             */
-/*   Updated: 2025/01/11 07:57:27 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:09:51 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *, int))
 {
 	t_list	*current;
 	t_list	*next_node;
@@ -25,7 +25,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	while (current != NULL)
 	{
 		next_node = current->next;
-		ft_lstdelone(current, del);
+		del(current->data, current->type);
 		current = next_node;
 	}
 	*lst = NULL;

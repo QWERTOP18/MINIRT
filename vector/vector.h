@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/03/30 21:45:45 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:06:25 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_sphere
 double			sphere_distance(t_sphere s, t_vec p);
 
 t_sphere		*sphere_new(t_pos_vec center, double radius, void *material);
+void			sphere_clear(t_sphere *sp);
 
 /* ************************************************************************** */
 /*                                PLANE                                       */
@@ -104,6 +105,7 @@ typedef t_plane	t_rect;
 typedef t_plane	t_square;
 
 t_plane			*plane_new(t_pos_vec pos, t_vec normal, void *material);
+void			plane_clear(t_plane *pl);
 
 /* ************************************************************************** */
 /*                              CYLINDER                                      */
@@ -119,12 +121,12 @@ typedef struct s_cylinder
 	void		*material;
 }				t_cylinder;
 
+t_cylinder		*cylinder_new(t_pos_vec center, t_vec normal, t_vec lengths,
+					void *material);
+void			cylinder_clear(t_cylinder *cy);
+
 /* ************************************************************************** */
 /*                                  UTILS                                     */
 /* ************************************************************************** */
-
-// void object_clear(void *)
-t_cylinder		*cylinder_new(t_pos_vec center, t_vec normal, t_vec lengths,
-					void *material);
 
 #endif
