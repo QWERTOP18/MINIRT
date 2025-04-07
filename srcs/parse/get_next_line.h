@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 13:29:13 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 01:06:07 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 01:14:12 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef enum s_err
 {
 	E_NONE = 0,
 	E_READ,
-	E_ALLOCATE,
+	E_ALLOCATES,
 	END_LINE,
 	END_FILE,
 }			t_err;

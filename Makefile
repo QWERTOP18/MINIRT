@@ -6,7 +6,7 @@
 #    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/04/08 00:03:37 by ymizukam         ###   ########.fr        #
+#    Updated: 2025/04/08 01:51:43 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,7 +108,6 @@ norm:
 	     $(INCS_DIR) | grep -v "Comment is invalid in this scope" | grep -v "IMPLICIT_VAR_TYPE" | grep -v "OK!"
 
 func: all
-	nm -u ./miniRT | sort | uniq | grep -v X
 
 
 .PHONY: all clean fclean re sub sub-update norm debug

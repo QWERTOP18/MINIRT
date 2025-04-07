@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 18:47:25 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 01:05:53 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 01:14:24 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_err	allocate(t_str *str, t_opt opt, int fd)
 	if (!str->base)
 		str->base = malloc(BUFFER_SIZE + 1);
 	if (!str->base)
-		return (E_ALLOCATE);
+		return (E_ALLOCATES);
 	str->size = BUFFER_SIZE;
 	str->index = 0;
 	if (opt == O_READ)
@@ -44,7 +44,7 @@ t_err	reallocate(t_str *str)
 	{
 		free(str->base);
 		str->base = NULL;
-		return (E_ALLOCATE);
+		return (E_ALLOCATES);
 	}
 	while (index < str->index)
 	{
