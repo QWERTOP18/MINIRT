@@ -29,12 +29,11 @@ t_objects	*generate(t_sys *sys)
 	// 	}
 	// }
 	/* ------------------------ */
-	objects->objs = ft_lstnew(SPHERE, sphere_new(vec(5, 0, 0), 3,
-				color_scaler(vec(240, 12, 12))));
+	objects->objs = ft_lstnew(SPHERE, sphere_new(vec(5, 0, 0), 3, NULL));
 	objects->objs->next = ft_lstnew(SPHERE, sphere_new(vec(10, 10, 5), 1,
-				color_scaler(vec(240, 12, 12))));
+				NULL));
 	objects->objs->next->next = ft_lstnew(SPHERE, sphere_new(vec(10, 10, 5), 10,
-				color_scaler(vec(240, 12, 12))));
+				NULL));
 	/* objects->objs->next->next = ft_lstnew(PLANE, plane_new(vec(0, -4, 0),
 				vec(0,
 					1, 0), NULL)); */
