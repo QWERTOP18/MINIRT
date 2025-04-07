@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 08:23:24 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 00:04:23 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	system_exit(t_sys *sys, int status)
 	if (status == E_INVALID_INPUT)
 	{
 		// ft_putstr_fd(ERRMSG1, 2);
-		// ft_putstr_fd(ERRMSG2, 2);
 	}
 	if (!sys)
 		return (free(sys), exit(status));
@@ -50,10 +49,13 @@ t_sys	*system_init(void)
 		system_exit(NULL, E_MLX_INIT);
 	return (sys);
 }
+
 void	*xcalloc(size_t nmemb, size_t size, t_sys *sys)
 {
+	void	*ptr;
+
 	// WARNIG;
-	void *ptr = ft_calloc(nmemb, size);
+	ptr = ft_calloc(nmemb, size);
 	if (!ptr)
 		system_exit(sys, E_ALLOCATE);
 	return (ptr);

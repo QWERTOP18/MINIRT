@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 11:26:12 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 11:26:18 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 00:04:15 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_pixel	**pixels_init(int height, int width, t_sys *sys)
 	t_pixel	**pixels;
 	int		i;
 
-	LOG;
 	i = 0;
+	LOG;
 	pixels = xcalloc(height, sizeof(t_pixel *), sys);
 	while (i < height)
 	{
@@ -32,8 +32,8 @@ void	pixels_deinit(int height, int width, t_pixel **pixels)
 {
 	int	i;
 
-	LOG;
 	(void)width;
+	LOG;
 	if (!pixels)
 		return ;
 	i = 0;

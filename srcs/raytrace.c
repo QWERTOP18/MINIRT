@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/20 10:46:45 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/07 23:54:09 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,8 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 
 	sum_color = vec(0.0, 0.0, 0.0);
 	pixel->obj = determine_target(ray, objs->objs);
-	// log_obj(pixel->obj);
 	if (!pixel->obj)
-		return (0); // back groud color
-	//空間計算量が悪いのでメモらなくてもいいのでは。。。
+		return (0);
 	pixel->intersect = intersect_dispacher(ray, pixel->obj);
 	i = 0;
 	while (i < objs->num_of_light)
@@ -107,5 +105,4 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 	}
 	sum_color = vec_add(sum_color, objs->ambient); // todo
 	return (color_convert(sum_color));
-	// return (color_convert(vec_normalize(sum_color)));
 }
