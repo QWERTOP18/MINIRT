@@ -6,27 +6,27 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:24:23 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/26 19:51:15 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/07 23:53:21 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATERIAL_H
-#define MATERIAL_H
+# define MATERIAL_H
 
-#include "color.h"
+# include "color.h"
 
 /* ************************************************************************** */
 /*                                 STRUCT         :)                          */
 /* ************************************************************************** */
 typedef struct s_material
 {
-	t_scaled_col color;
-	double gloss; // alpha
-	bool checker;
-	bool mirror;
-	bool bump;
-	char *ref; // bump file
-} t_material;
+	t_scaled_col	color;
+	double			gloss;
+	bool			checker;
+	bool			mirror;
+	bool			bump;
+	char			*ref;
+}					t_material;
 
 /* ************************************************************************** */
 /*                                  FUNCS                                     */

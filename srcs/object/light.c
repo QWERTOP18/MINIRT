@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:42:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/03/30 21:51:38 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 00:05:18 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ t_light	*light_init(t_pos_vec pos, t_scaled_col col, double intensity,
 
 void	light_deinit(t_light *light[], int size)
 {
+	int	i;
+
 	LOG;
 	if (!light)
 		return ;
-	int i;
 	i = 0;
 	while (i < size)
 	{

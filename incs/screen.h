@@ -40,12 +40,11 @@
 /*                                 STRUCT         :)                          */
 /* ************************************************************************** */
 
+// obj  // nearest object or NULL
 typedef struct s_pixel
 {
-	// t_scaled_col color; // light_disc->scolの合計
-	t_list *obj; // nearest object or NULL
+	t_list			*obj;
 	t_intersect		intersect;
-	// t_light_disc	light_disc[MAX_LIGHT];
 	t_scaled_col	colors[MAX_LIGHT];
 }					t_pixel;
 
@@ -58,7 +57,6 @@ struct				s_screen
 	int				endian;
 	int				width;
 	int				height;
-	// t_scaled_col	**color_arr;
 	t_pixel			**pixels;
 };
 /* ************************************************************************** */
@@ -74,7 +72,6 @@ t_pixel				**pixels_init(int height, int width, t_sys *sys);
 void				pixels_deinit(int height, int width, t_pixel **pixels);
 
 /* -----------------------------   RENDER   --------------------------------- */
-
 
 void				render_pixel(const t_screen *screen, int x, int y,
 						unsigned int color);

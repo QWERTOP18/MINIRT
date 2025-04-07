@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 11:01:35 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 00:04:43 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,10 @@ t_camera	*camera_init(t_vec pos, t_vec orient, int fov, t_sys *sys)
 
 void	camera_deinit(void *mlx, t_camera *camera[], int size)
 {
+	int	i;
+
 	LOG;
-	int i = 0;
+	i = 0;
 	if (!camera)
 		return ;
 	while (i < size)

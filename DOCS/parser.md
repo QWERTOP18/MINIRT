@@ -1,8 +1,8 @@
 # パーサー概要
 
 rt ファイルをパースして線形リストの形でもつ
-
 ```c
+
 typedef struct s_list
 {
 	int				type;

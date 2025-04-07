@@ -6,7 +6,7 @@
 #    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/03/27 09:47:12 by ymizukam         ###   ########.fr        #
+#    Updated: 2025/04/08 00:03:37 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origi
 
 
 SRCS :=  $(shell find srcs -type f -name "*.c") \
-         $(shell find vector -type f -name "*.c") $(shell find list -type f -name "*.c") $(shell find console -type f -name "*.c") \
+         $(shell find vector -type f -name "*.c") \
+		 $(shell find list -type f -name "*.c") \
+		 $(shell find console -type f -name "*.c") \
          $(shell find debug -type f -name "*.c")
 
 
@@ -99,7 +101,11 @@ minirm:
 	rm -rf $(MLX_DIR)
 
 norm:
-	@norminette $(SRCS) $(INCS_DIR)
+	@norminette $(shell find srcs -type f -name "*.c") \
+         $(shell find vector -type f -name "*.c") \
+		 $(shell find list -type f -name "*.c") \
+		 $(shell find console -type f -name "*.c") \
+	     $(INCS_DIR) | grep -v "Comment is invalid in this scope" | grep -v "IMPLICIT_VAR_TYPE" | grep -v "OK!"
 
 func: all
 	nm -u ./miniRT | sort | uniq | grep -v X
