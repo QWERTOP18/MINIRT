@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:46:07 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/03/30 21:45:14 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:53:11 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
  * @param lengths x->radius y->height
  */
 t_cylinder	*cylinder_new(t_pos_vec center, t_vec normal, t_vec lengths,
-		void *material)
+		t_scaled_col color)
 {
 	t_cylinder	*cylinder;
 
@@ -29,5 +29,6 @@ t_cylinder	*cylinder_new(t_pos_vec center, t_vec normal, t_vec lengths,
 	cylinder->center = center;
 	cylinder->radius = lengths.x;
 	cylinder->height = lengths.y;
+	cylinder->color = color;
 	return (cylinder);
 }

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/03/30 21:45:45 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/08 06:52:37 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,26 @@
 
 typedef struct s_vec
 {
-	double		x;
-	double		y;
-	double		z;
-}				t_vec;
+	double			x;
+	double			y;
+	double			z;
+}					t_vec;
 
-typedef t_vec	t_unit_vec;
-typedef t_vec	t_pos_vec;
+typedef t_vec		t_unit_vec;
+typedef t_vec		t_pos_vec;
+typedef t_vec		t_scaled_col;
 
-t_vec			vec(double x, double y, double z);
-t_vec			vec_add(t_vec v1, t_vec v2);
-t_vec			vec_sub(t_vec v1, t_vec v2);
-t_vec			vec_mul(t_vec v, double scalar);
-t_unit_vec		dir(t_pos_vec v1, t_pos_vec v2);
-t_vec			vec_hadamard(t_vec v1, t_vec v2);
-t_vec			vec_div(t_vec v, double scalar);
-double			vec_dot(t_vec v1, t_vec v2);
-t_vec			vec_cross(t_vec v1, t_vec v2);
-double			vec_magnitude(t_vec v);
-t_unit_vec		vec_normalize(t_vec v);
+t_vec				vec(double x, double y, double z);
+t_vec				vec_add(t_vec v1, t_vec v2);
+t_vec				vec_sub(t_vec v1, t_vec v2);
+t_vec				vec_mul(t_vec v, double scalar);
+t_unit_vec			dir(t_pos_vec v1, t_pos_vec v2);
+t_vec				vec_hadamard(t_vec v1, t_vec v2);
+t_vec				vec_div(t_vec v, double scalar);
+double				vec_dot(t_vec v1, t_vec v2);
+t_vec				vec_cross(t_vec v1, t_vec v2);
+double				vec_magnitude(t_vec v);
+t_unit_vec			vec_normalize(t_vec v);
 
 /* ************************************************************************** */
 /*                                  LINE                                      */
@@ -53,21 +54,21 @@ t_unit_vec		vec_normalize(t_vec v);
 
 typedef struct s_line
 {
-	t_pos_vec	p1;
-	t_pos_vec	p2;
-}				t_line;
+	t_pos_vec		p1;
+	t_pos_vec		p2;
+}					t_line;
 
 typedef struct s_unit_line
 {
-	t_pos_vec	pos;
-	t_unit_vec	dir;
-}				t_unit_line;
+	t_pos_vec		pos;
+	t_unit_vec		dir;
+}					t_unit_line;
 
-t_line			line(t_pos_vec p1, t_pos_vec p2);
-double			line_distance(t_line l, t_pos_vec p);
-t_unit_line		unit_line(t_pos_vec pos, t_vec dir);
+t_line				line(t_pos_vec p1, t_pos_vec p2);
+double				line_distance(t_line l, t_pos_vec p);
+t_unit_line			unit_line(t_pos_vec pos, t_vec dir);
 
-t_unit_line		line_normalize(t_line l);
+t_unit_line			line_normalize(t_line l);
 
 /* ************************************************************************** */
 /*                                SPHERE                                      */
@@ -75,15 +76,16 @@ t_unit_line		line_normalize(t_line l);
 
 typedef struct s_sphere
 {
-	t_pos_vec	center;
-	double		radius;
-	void		*material;
-}				t_sphere;
+	t_pos_vec		center;
+	double			radius;
+	t_scaled_col	color;
+}					t_sphere;
 
 // t_sphere		sphere(t_vec center, double radius);
-double			sphere_distance(t_sphere s, t_vec p);
+double				sphere_distance(t_sphere s, t_vec p);
 
-t_sphere		*sphere_new(t_pos_vec center, double radius, void *material);
+t_sphere			*sphere_new(t_pos_vec center, double radius,
+						t_scaled_col color);
 
 /* ************************************************************************** */
 /*                                PLANE                                       */
@@ -91,19 +93,19 @@ t_sphere		*sphere_new(t_pos_vec center, double radius, void *material);
 
 typedef struct s_plane
 {
-	t_unit_vec	wdir;
-	t_unit_vec	hdir;
-	t_unit_vec	normal;
-	t_pos_vec	pos;
-	double		width;
-	double		height;
-	void		*material;
-}				t_plane;
+	t_unit_vec		wdir;
+	t_unit_vec		hdir;
+	t_unit_vec		normal;
+	t_pos_vec		pos;
+	double			width;
+	double			height;
+	t_scaled_col	color;
+}					t_plane;
 
-typedef t_plane	t_rect;
-typedef t_plane	t_square;
+typedef t_plane		t_rect;
+typedef t_plane		t_square;
 
-t_plane			*plane_new(t_pos_vec pos, t_vec normal, void *material);
+t_plane				*plane_new(t_pos_vec pos, t_vec normal, t_scaled_col color);
 
 /* ************************************************************************** */
 /*                              CYLINDER                                      */
@@ -111,20 +113,20 @@ t_plane			*plane_new(t_pos_vec pos, t_vec normal, void *material);
 
 typedef struct s_cylinder
 {
-	t_pos_vec	center;
-	double		radius;
-	t_unit_vec	normal;
-	double		height;
+	t_pos_vec		center;
+	double			radius;
+	t_unit_vec		normal;
+	double			height;
 
-	void		*material;
-}				t_cylinder;
+	t_scaled_col	color;
+}					t_cylinder;
 
 /* ************************************************************************** */
 /*                                  UTILS                                     */
 /* ************************************************************************** */
 
 // void object_clear(void *)
-t_cylinder		*cylinder_new(t_pos_vec center, t_vec normal, t_vec lengths,
-					void *material);
+t_cylinder			*cylinder_new(t_pos_vec center, t_vec normal, t_vec lengths,
+						t_scaled_col color);
 
 #endif
