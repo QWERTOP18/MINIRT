@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 00:01:58 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/09 19:11:25 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	loop_handler(t_sys *sys)
 	return (0);
 }
 
+/* --- main() --- */
 int	main(int argc, char **argv)
 {
 	t_sys	*sys;
@@ -41,20 +42,15 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		system_exit(NULL, E_INVALID_INPUT);
 	sys = system_init();
+#ifdef GEN
 	sys->obj = parse_file(argv[1], sys);
+#else
+	/*  generate_from_file() を呼び出してファイルからオブジェクト群を生成 */
+	sys->obj = generate_from_file(sys, argv[1]);
+#endif
 	setup_mlx(sys);
 	LOG;
 	mlx_loop(sys->mlx);
 	system_exit(sys, 0);
+	return (0);
 }
-
-/*
-
-* main
-* system init
-* parse
-* setup hook
-
-
-
-*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 07:41:08 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/09 19:21:25 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ t_intersect	intersect_dispacher(t_unit_line ray, t_list *obj)
 
 	return (isfunc[obj->type](ray, obj->data));
 }
+/**
 
+	* determine_target は、与えられた光線 (t_unit_line ray) とオブジェクトのリスト (t_list *objs) を基に、光線と交差する最も近いオブジェクトを特定し、そのオブジェクトをリストの要素として返す関数です。交差距離を計算し、最小距離のオブジェクトを選択します。
+ */
 t_list	*determine_target(t_unit_line ray, t_list *objs)
 {
 	double		dist;
@@ -66,6 +69,10 @@ t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
 	return (vec_mul(intensity, pow(v_dot_r, gloss)));
 }
 
+/**
+
+	* cal_col は、与えられた光線 (ray)、光源 (light)、および交差点 (intersect) を基に、最終的な色を計算する関数です。拡散反射と鏡面反射を考慮し、最終的な色を返します。
+ */
 t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect)
 {
 	t_scaled_col	res;
@@ -89,7 +96,7 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 	sum_color = vec(0.0, 0.0, 0.0);
 	pixel->obj = determine_target(ray, objs->objs);
 	if (!pixel->obj)
-		return (0);
+		return (0xFFFFFF);
 	pixel->intersect = intersect_dispacher(ray, pixel->obj);
 	i = 0;
 	while (i < objs->num_of_light)
