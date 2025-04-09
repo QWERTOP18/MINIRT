@@ -10,7 +10,7 @@ t_objects	*generate(t_sys *sys)
 	objects->num_of_light = 1;
 	objects->id_of_camera = 0;
 	LOG;
-	objects->camera[0] = camera_init(vec(50, 3, 0), vec(-1, 0, 0), 60, sys);
+	objects->camera[0] = camera_init(vec(50, 10, 0), vec(-1, 0, 0), 60, sys);
 	objects->camera[1] = camera_init(vec(0, 3, -20), vec(0, -0.2, 1), 60, sys);
 	objects->camera[2] = camera_init(vec(-20, 3, 0), vec(1, 0, 0), 60, sys);
 	objects->camera[3] = camera_init(vec(0, 20, 0), vec(0, -1, 0), 60, sys);
@@ -19,14 +19,16 @@ t_objects	*generate(t_sys *sys)
 	objects->ambient = vec(0.04, 0, 0);
 	objects->objs = ft_lstnew(SPHERE, sphere_new(vec(0, 0, 0), 3,
 				material_init(vec(128, 24, 24))));
-	objects->objs->next = ft_lstnew(SPHERE, sphere_new(vec(0, 10, 0), 3,
-				material_init(vec(24, 128, 24))));
-	objects->objs->next->next = ft_lstnew(SPHERE, sphere_new(vec(0, 20, 0), 3,
-				material_init(vec(24, 24, 128))));
-	objects->objs->next->next->next = ft_lstnew(PLANE, plane_new(vec(0, 0, 0),
-				vec(0, 0, 1), material_init(vec(240, 240, 240))));
-	// objects->objs->next->next->next->next = ft_lstnew(CYLINDER,
-	// 		cylinder_new(vec(-5, -1, 0), vec(0, 1, 0), vec(4, 2, 0), NULL));
+	ft_lstadd_back(&objects->objs, ft_lstnew(SPHERE, sphere_new(vec(10, 0, 0),
+				3, material_init(vec(24, 128, 24)))));
+	ft_lstadd_back(&objects->objs, ft_lstnew(SPHERE, sphere_new(vec(0, 10, 0),
+				3, material_init(vec(24, 24, 128)))));
+	ft_lstadd_back(&objects->objs, ft_lstnew(SPHERE, sphere_new(vec(20, 0, 0),
+				3, material_init(vec(24, 128, 24)))));
+	ft_lstadd_back(&objects->objs, ft_lstnew(PLANE, plane_new(vec(0, -3, 0),
+				vec(0, 1, 0), material_init(vec(240, 240, 240)))));
+	ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(-5, -1,
+					0), vec(0, 1, 0), vec(4, 2, 0), NULL)));
 	log_objs(objects);
 	return (objects);
 }

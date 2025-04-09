@@ -3,21 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   raytrace.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/09 19:21:25 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/10 00:27:37 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_intersect	intersect_dispacher(t_unit_line ray, t_list *obj)
-{
-	static t_isfunc	isfunc[] = {is0, is1, is2, is3};
-
-	return (isfunc[obj->type](ray, obj->data));
-}
 /**
 
 	* determine_target は、与えられた光線 (t_unit_line ray) とオブジェクトのリスト (t_list *objs) を基に、光線と交差する最も近いオブジェクトを特定し、そのオブジェクトをリストの要素として返す関数です。交差距離を計算し、最小距離のオブジェクトを選択します。
@@ -34,7 +28,7 @@ t_list	*determine_target(t_unit_line ray, t_list *objs)
 	obj = objs;
 	while (obj)
 	{
-		dist = intersect_dispacher(ray, obj).dist;
+		dist = intersect_dispatcher(ray, obj).dist;
 		if (dist < min_dist)
 		{
 			min_dist = dist;
@@ -96,8 +90,8 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 	sum_color = vec(0.0, 0.0, 0.0);
 	pixel->obj = determine_target(ray, objs->objs);
 	if (!pixel->obj)
-		return (0xFFFFFF);
-	pixel->intersect = intersect_dispacher(ray, pixel->obj);
+		return (0);
+	pixel->intersect = intersect_dispatcher(ray, pixel->obj);
 	i = 0;
 	while (i < objs->num_of_light)
 	{
