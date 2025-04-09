@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:33:11 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/09 22:49:33 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 07:42:06 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_intersect			is9(t_unit_line ray, void *obj);
 
 /* -----------------------------   UTILS    --------------------------------- */
 
-t_vec				solve_quadratic_eq(double a, double b, double c);
+t_vec				solve_eq(double a, double b, double c);
 
 t_intersect			intersect_dispatcher(t_unit_line ray, t_list *obj);
 

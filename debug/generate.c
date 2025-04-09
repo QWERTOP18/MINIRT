@@ -9,7 +9,7 @@ t_objects	*generate(t_sys *sys)
 	objects->num_of_light = 1;
 	objects->id_of_camera = 0;
 	LOG;
-	objects->camera[0] = camera_init(vec(50, 10, 0), vec(-1, 0, 0), 60, sys);
+	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 60, sys);
 	objects->camera[1] = camera_init(vec(0, 3, -20), vec(0, -0.2, 1), 60, sys);
 	objects->camera[2] = camera_init(vec(-20, 0, 0), vec(1, 0, 0), 60, sys);
 	//球の内部
@@ -39,9 +39,12 @@ t_objects	*generate(t_sys *sys)
 		* CYLINDER
 		ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(30,
 						0,
-		0), vec(0, 1, 0), vec(6, 10, 0), material_init(vec(200, 0,
-		0)))));
+		0), vec(1, 0, 0), vec(6, 10, 0), material_init(vec(0, 0,
+		200)))));
 		*/
+	ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(40, 0,
+					0), vec(0, 1, 0), vec(5, 20, 0), material_init(vec(200, 0,
+						0)))));
 	log_objs(objects);
 	return (objects);
 }

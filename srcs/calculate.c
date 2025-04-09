@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 05:35:19 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 05:35:23 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 07:22:53 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ bool	is_interrupted(t_light *light, t_intersect is, t_list *objs)
 t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect,
 		t_list *objs)
 {
-	t_scaled_col res;
+	t_scaled_col	res;
 
 	t_unit_vec lightdir; //交点から光源へのベクトル
 	lightdir = vec_normalize(vec_sub(light->pos, intersect.pos));
@@ -75,3 +75,12 @@ t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect,
 				intersect.normal, light));
 	return (res);
 }
+
+/**
+ * 衝突判定のみ
+ */
+// t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect,
+// 		t_list *objs)
+// {
+// 	return (color_scaler(vec(255, 255, 255)));
+// }

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 05:38:08 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 07:58:49 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,33 @@ t_intersect	intersect_cylinder(t_unit_line ray, const t_cylinder *cy,
 	t_vec		center_outer;
 	t_vec		center_inner;
 	double		inner_h;
+	double		outer_h;
 
 	outer_pos = vec_add(ray.pos, vec_mul(ray.dir, outer));
 	inner_pos = vec_add(ray.pos, vec_mul(ray.dir, inner));
+	//
 	center_outer = vec_sub(outer_pos, cy->center);
 	center_inner = vec_sub(inner_pos, cy->center);
 	is.material = cy->material;
-	inner_h = vec_dot(center_inner, cy->normal);
-	is.dist = inner;
-	is.normal = vec_normalize(vec_sub(vec_mul(cy->normal, inner_h),
-				center_inner));
+	inner_h = fabs(vec_dot(center_inner, cy->normal));
+	outer_h = fabs(vec_dot(center_outer, cy->normal));
+	//
+	if (outer_h <= cy->height / 2)
+	{
+		is.dist = outer;
+		is.pos = inner_pos;
+		is.normal = vec_normalize(vec_sub(center_outer, vec_mul(cy->normal,
+						outer_h)));
+	}
+	else if (inner_h <= cy->height / 2)
+	{
+		is.dist = inner;
+		is.pos = outer_pos;
+		is.normal = vec_normalize(vec_sub(center_inner, vec_mul(cy->normal,
+						inner_h)));
+	}
+	else
+		is.dist = __DBL_MAX__;
 	return (is);
 }
 
@@ -52,10 +69,15 @@ t_intersect	is2(t_unit_line ray, void *obj)
 	b = 2 * vec_dot(ray_x_cynorm, ray_x_cypos);
 	c = pow(vec_magnitude(ray_x_cypos), 2) - pow(cy->radius, 2);
 	a = pow(vec_magnitude(ray_x_cynorm), 2);
-	// roots = solve_quadratic_eq(a, b, c);
+	roots = solve_eq(a, b, c);
 	if (roots.x <= 1)
 		return (is);
-	return (intersect_cylinder(ray, cy, roots.z, roots.y));
+	return (intersect_cylinder(ray, cy, roots.y, roots.z));
+	// is.material = cy->material;
+	// is.dist = 10;
+	// is.pos = vec(1, 1, 1);
+	// is.normal = vec(1, 1, 1);
+	// return (is);
 }
 
 // 底面から交点までの高さ
