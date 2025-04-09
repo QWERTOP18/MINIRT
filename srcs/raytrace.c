@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 03:45:14 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 05:25:56 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ t_list	*determine_target(t_unit_line ray, t_list *objs)
 }
 
 t_scaled_col	cal_diffuse(t_unit_vec lightdir, t_unit_vec normal,
-		t_scaled_col intensity, t_scaled_col obj_color)
+		t_light *light, t_scaled_col obj_color)
 {
 	double	dot_product;
 
 	dot_product = fmax(0.0, vec_dot(lightdir, normal));
-	return (vec_mul(vec_hadamard(intensity, obj_color), dot_product));
+	return (vec_mul(vec_hadamard(light->color, obj_color), dot_product));
 }
 t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
-		t_unit_vec normal, t_scaled_col intensity)
+		t_unit_vec normal, t_light *light)
 {
 	t_unit_vec	reflection;
 	double		n_dot_l;
@@ -60,7 +60,7 @@ t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
 	v_dot_r = vec_dot(ray_inverse, reflection);
 	if (n_dot_l < 0 || v_dot_r < 0)
 		return (vec(0, 0, 0));
-	return (vec_mul(intensity, pow(v_dot_r, gloss)));
+	return (vec_mul(light->color, pow(v_dot_r, gloss)));
 }
 
 bool	is_interrupted(t_light *light, t_intersect is, t_list *objs)
@@ -96,10 +96,10 @@ t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect,
 	res = vec(0, 0, 0); // original color
 	if (is_interrupted(light, intersect, objs))
 		return (res);
-	res = vec_add(res, cal_diffuse(lightdir, intersect.normal, light->intensity,
+	res = vec_add(res, cal_diffuse(lightdir, intersect.normal, light,
 				intersect.material->color));
 	res = vec_add(res, cal_specular(vec_mul(ray.dir, -1), lightdir,
-				intersect.normal, light->intensity));
+				intersect.normal, light));
 	return (res);
 }
 
@@ -116,8 +116,8 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 	i = 0;
 	while (i < objs->num_of_light)
 	{
-		pixel->colors[i] = cal_col(ray, objs->light[i], pixel->intersect,
-				objs->objs);
+		pixel->colors[i] = vec_mul(cal_col(ray, objs->light[i],
+					pixel->intersect, objs->objs), objs->light[i]->intensity);
 		i++;
 	}
 	i = 0;
