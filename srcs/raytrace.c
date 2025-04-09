@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/09 22:49:33 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 00:27:37 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 	sum_color = vec(0.0, 0.0, 0.0);
 	pixel->obj = determine_target(ray, objs->objs);
 	if (!pixel->obj)
-		return (0xFFFFFF);
+		return (0);
 	pixel->intersect = intersect_dispatcher(ray, pixel->obj);
 	i = 0;
 	while (i < objs->num_of_light)
