@@ -6,7 +6,7 @@
 #    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/04/09 22:00:27 by ymizukam         ###   ########.fr        #
+#    Updated: 2025/04/09 22:24:47 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ run: $(NAME)
 
 gen: fclean
 	$(MAKE) DFLAGS='-DGEN' all
-	$(NAME) sample.rt 2>/dev/null
+	# $(NAME) sample.rt 2>/dev/null
 
 log: $(NAME)
 	$(NAME) sample.rt

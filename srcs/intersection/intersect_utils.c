@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 17:59:56 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 00:02:35 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:56:53 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,11 @@ t_vec	solve_quadratic_eq(double a, double b, double c)
 		roots.x = 1;
 	}
 	return (roots);
+}
+
+t_intersect	intersect_dispatcher(t_unit_line ray, t_list *obj)
+{
+	static t_isfunc	isfunc[] = {is0, is1, is2, is3};
+
+	return (isfunc[obj->type](ray, obj->data));
 }

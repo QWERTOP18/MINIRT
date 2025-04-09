@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 07:27:33 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:57:10 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ t_intersect	is0(t_unit_line ray, void *obj)
 	c = vec_dot(camera_center, camera_center) - sp->radius;
 	if (b * b - 4 * 1 * c < 0)
 		is.dist = __DBL_MAX__;
-	// is.normal = vec(0, 0, 0);
-	// is.pos = vec(0, 0, 0);
 	else
 	{
 		is.dist = (-b - sqrt(b * b - 4 * 1 * c)) / 2;
