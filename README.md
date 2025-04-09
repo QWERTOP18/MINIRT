@@ -1,4 +1,6 @@
-## MINIRT
+## MINIRT✨
+
+<img src="./pictures/shadow/tag1.png" width="400" height="400">
 
 ```sh
 make run
@@ -6,6 +8,30 @@ make log # debug
 make val # memory check
 make norm
 make func
+```
+
+### directory 階層
+
+```py
+.
+├── DOCS
+├── console # logのフォーマッタなど
+├── debug
+├── incs
+├── input # rt file置き場
+├── libft
+├── list
+├── minilibx
+├── vector
+├── srcs
+│ ├── interface # mlxとのinterface
+│ ├── intersection
+│ ├── object # camera, light, materialなど
+│ ├── parse
+│ ├── system.c
+│ ├── raytrace.c # raytraceのエントリーポイント
+│ ├── calculate.c # RGBの計算
+│ └── main.c
 ```
 
 ### ヘッダーファイル
@@ -26,15 +52,16 @@ make func
 
 ### input.rt
 
-```txt
-A  0.1      255,255,255
-C  0,3,-20    0,-0.2,1       60
-c  20,3,0    -1,0,0       60
-c  -20,3,0    1,0,0       60
+```rt
+A  0.1      255,255,255             # Ambient
+C  0,3,-20    0,-0.2,1    60        # main camera
+c  20,3,0    -1,0,0       60        # sub camera
+c  -20,3,0    1,0,0       60    
 c  0,20,0    0,-1,0       60
-L  15,15,-15  0.9         255,255,255
-pl 0,-4,0   0,1,0            255,255,0
-sp 5,0,0       3          255,0,0
-cy -5,-1,0   0,1,0   4  2 0,255,0
-sq 0,-2,-3   1,1,-1       3          0,176,176
+L  15,15,-15  0.9  255,255,255      # main  light
+l  -15,15,-15 0.3      0,0,255      # sub light
+pl 0,-4,0   0,1,0    255,255,0      # plane
+sp 5,0,0       3       255,0,0      # sphere
+cy -5,-1,0   0,1,0   4  2 0,255,0   # cylinder
+sq 0,-2,-3   1,1,-1  3  0,176,176   # square
 ```
