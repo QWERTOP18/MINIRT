@@ -6,14 +6,14 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 04:58:39 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 05:38:08 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-t_intersect	intersect_cylinder(t_unit_line ray, t_cylinder *cy, double outer,
-		double inner)
+t_intersect	intersect_cylinder(t_unit_line ray, const t_cylinder *cy,
+		double outer, double inner)
 {
 	t_intersect	is;
 	t_pos_vec	outer_pos;

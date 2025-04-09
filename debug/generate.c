@@ -16,8 +16,8 @@ t_objects	*generate(t_sys *sys)
 	objects->camera[3] = camera_init(vec(0, 1, 0), vec(0, 1, 0), 60, sys);
 	//平面の裏側
 	objects->camera[4] = camera_init(vec(0, -30, 0), vec(0, 1, 0), 90, sys);
-	objects->light[0] = light_init(vec(0, 30, 0), color_scaler(vec(0, 0, 255)),
-			0.6, sys);
+	objects->light[0] = light_init(vec(0, 30, 0), color_scaler(vec(255, 255,
+					255)), 1, sys);
 	objects->ambient = color_scaler(vec(0, 20, 30));
 	/**
 		* SPHERE
