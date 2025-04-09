@@ -6,7 +6,7 @@
 #    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/04/08 01:51:43 by ymizukam         ###   ########.fr        #
+#    Updated: 2025/04/09 22:00:27 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME		:= ./miniRT
 CC			:= cc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
 CFLAGS		:= -O2 -fPIE -Wall -Wextra #-Werror
-DFLAGS      := -DNOINPUT -DDEBUG
+DFLAGS      := -DGEN#-DNOINPUT -DDEBUG
 VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origins=yes
 
 
@@ -81,6 +81,10 @@ re: fclean all
 
 
 run: $(NAME)
+	$(NAME) sample.rt 2>/dev/null
+
+gen: fclean
+	$(MAKE) DFLAGS='-DGEN' all
 	$(NAME) sample.rt 2>/dev/null
 
 log: $(NAME)
