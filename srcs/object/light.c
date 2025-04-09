@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:42:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 04:09:44 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 05:19:51 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ t_light	*light_init(t_pos_vec pos, t_scaled_col col, double intensity,
 	light = xcalloc(1, sizeof(t_light), sys);
 	light->pos = pos;
 	light->color = col;
-	// light-> intensity = intensity;
-	light->intensity = vec(1.0, 1.0, 1.0);
+	light->intensity = intensity;
 	light->ison = True;
 	return (light);
 }

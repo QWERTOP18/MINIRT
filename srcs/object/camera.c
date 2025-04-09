@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 00:07:55 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 05:08:34 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_rect	set_screen(t_camera *c, t_sys *sys)
 	screen.pos = vec_add(vec_mul(c->dir, dist), c->pos);
 	screen.wdir = vec_normalize(vec(-c->dir.z, 0, c->dir.x));
 	screen.hdir = vec_cross(screen.normal, screen.wdir);
-	log_vec("screen center", screen.pos);
+	// log_vec("screen center", screen.pos);
 	log_vec("screen normal", screen.normal);
 	return (screen);
 }
