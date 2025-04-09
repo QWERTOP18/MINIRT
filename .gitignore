@@ -1,2 +1,5 @@
 *.out
 .vscode
+miniRT
+*.o
+objs
