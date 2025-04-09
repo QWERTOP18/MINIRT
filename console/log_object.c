@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:02:58 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 00:01:15 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 04:19:59 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,20 @@ void	l1(void *data)
 
 void	l2(void *data)
 {
+	const t_cylinder	*cy = (const t_cylinder *)data;
+
+	log_vec("cylinder normal", cy->normal);
+	log_vec("cylinder center", cy->center);
+	printf("r:  %8.2f,  h:  %8.2f\n", cy->radius, cy->height);
 }
 
 void	l3(void *data)
 {
+	(void)data;
 }
 
 void	log_obj(t_list *obj)
 {
-	static char			*name[] = {"sphere", "plane", "cylinder", NULL};
 	static console_log	l[] = {l0, l1, l2, l3};
 
 	if (!obj)

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 23:56:36 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/07 23:56:38 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 04:09:36 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_light
 {
 	t_pos_vec		pos;
 	t_scaled_col	intensity;
+	// double			intensity;
 	t_scaled_col	color;
 	bool			ison;
 }					t_light;

@@ -3,7 +3,6 @@
 t_objects	*generate(t_sys *sys)
 {
 	t_objects	*objects;
-	t_screen	*img;
 
 	objects = ft_calloc(1, sizeof(t_objects));
 	objects->num_of_camera = 5;
@@ -35,11 +34,10 @@ t_objects	*generate(t_sys *sys)
 				vec(1, 0, 0), material_init(vec(240, 240, 240)))));
 	/**
 		* CYLINDER
-		ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(30,
-						0,
-		0), vec(0, 1, 0), vec(3, 10, 0), material_init(vec(20, 240,
-		240)))));
 		*/
+	ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(30, 0,
+					0), vec(0, 1, 0), vec(6, 10, 0), material_init(vec(200, 0,
+						0)))));
 	log_objs(objects);
 	return (objects);
 }
