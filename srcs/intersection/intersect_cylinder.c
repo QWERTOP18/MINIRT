@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 05:38:08 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 07:15:04 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ t_intersect	intersect_cylinder(t_unit_line ray, const t_cylinder *cy,
 	is.material = cy->material;
 	inner_h = vec_dot(center_inner, cy->normal);
 	is.dist = inner;
-	is.normal = vec_normalize(vec_sub(vec_mul(cy->normal, inner_h),
-				center_inner));
+	is.normal = vec(1, 0, 0);
+	// is.normal = vec_normalize(vec_sub(vec_mul(cy->normal, inner_h),
+	// 			center_inner));
 	return (is);
 }
 
@@ -53,9 +54,15 @@ t_intersect	is2(t_unit_line ray, void *obj)
 	c = pow(vec_magnitude(ray_x_cypos), 2) - pow(cy->radius, 2);
 	a = pow(vec_magnitude(ray_x_cynorm), 2);
 	// roots = solve_quadratic_eq(a, b, c);
-	if (roots.x <= 1)
+	// if (roots.x <= 1)
+	if (b * b - 4 * a * c < 0)
 		return (is);
-	return (intersect_cylinder(ray, cy, roots.z, roots.y));
+	// return (intersect_cylinder(ray, cy, roots.z, roots.y));
+	is.material = cy->material;
+	is.dist = 10;
+	is.pos = vec(1, 1, 1);
+	is.normal = vec(1, 1, 1);
+	return (is);
 }
 
 // 底面から交点までの高さ
