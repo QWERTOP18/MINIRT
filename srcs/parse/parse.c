@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:38:54 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 00:01:48 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/09 22:01:33 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,9 @@ t_objects	*parse_file(char *file, t_sys *sys)
 	char		*line;
 
 	LOG;
-#ifdef NOINPUT
 	sys->width = 1024;
 	sys->height = 1024;
 	return (generate(sys));
-#else
-	objects = xcalloc(1, sizeof(t_objects), sys);
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		system_exit(sys, E_INVALID_INPUT);
-	line = get_next_line(fd);
-	while (line)
-	{
-		// if (is_valid_line(line))
-		//    add_object(objects, line);
-		if (!parse_line(objects, line, sys))
-			break ;
-		free(line);
-		line = get_next_line(fd);
-	}
-	free(line);
-	close(fd);
-#endif
 	return (objects);
 }
 

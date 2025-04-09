@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:37:59 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 01:13:57 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/09 19:12:11 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include "system.h"
 
 /* ---------------------------   外部呼び出し   ------------------------------- */
-t_objects	*parse_file(char *file, t_sys *sys);
+// t_objects	*parse_file(char *file, t_sys *sys);
+t_objects	*generate_from_file(t_sys *sys, const char *filename);
 
 /* -----------------------------  内部関数   --------------------------------- */
 
