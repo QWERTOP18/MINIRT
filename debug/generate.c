@@ -9,16 +9,17 @@ t_objects	*generate(t_sys *sys)
 	objects->num_of_light = 1;
 	objects->id_of_camera = 0;
 	LOG;
-	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 60, sys);
+	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 100, sys);
 	objects->camera[1] = camera_init(vec(0, 3, -20), vec(0, -0.2, 1), 60, sys);
 	objects->camera[2] = camera_init(vec(-20, 0, 0), vec(1, 0, 0), 60, sys);
+	objects->camera[3] = camera_init(vec(0, 0, 30), vec(0, 0, -1), 80, sys);
 	//球の内部
-	objects->camera[3] = camera_init(vec(0, 1, 0), vec(0, 1, 0), 60, sys);
+	// objects->camera[3] = camera_init(vec(0, 1, 0), vec(0, 1, 0), 60, sys);
 	//平面の裏側
 	objects->camera[4] = camera_init(vec(0, -30, 0), vec(0, 1, 0), 90, sys);
 	objects->light[0] = light_init(vec(0, 30, 0), color_scaler(vec(255, 255,
 					255)), 1, sys);
-	objects->ambient = color_scaler(vec(0, 20, 30));
+	objects->ambient = vec_mul(color_scaler(vec(0, 240, 255)), 0.1);
 	/**
 		* SPHERE
 		*/
@@ -37,14 +38,15 @@ t_objects	*generate(t_sys *sys)
 				vec(1, 0, 0), material_init(vec(240, 240, 240)))));
 	/**
 		* CYLINDER
-		ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(30,
-						0,
-		0), vec(1, 0, 0), vec(6, 10, 0), material_init(vec(0, 0,
-		200)))));
+		ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(40,
+		0,
+		0), vec(0, 1, 0), vec(5, 20, 0), material_init(vec(200,
+		0,
+		0)))));
 		*/
-	ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(40, 0,
-					0), vec(0, 1, 0), vec(5, 20, 0), material_init(vec(200, 0,
-						0)))));
+	ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(-10,
+					8.5, 0), vec(0, 1, 0), vec(3, 20, 0), material_init(vec(0,
+						0, 200)))));
 	log_objs(objects);
 	return (objects);
 }
