@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 06:06:25 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 03:15:42 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <math.h>
 # include <stdlib.h>
 
-// # define CENTER pos
-// # define BASE pos
 # define FT_EPSILON 0.0001
 
 /* ************************************************************************** */
@@ -46,6 +44,7 @@ double			vec_dot(t_vec v1, t_vec v2);
 t_vec			vec_cross(t_vec v1, t_vec v2);
 double			vec_magnitude(t_vec v);
 t_unit_vec		vec_normalize(t_vec v);
+double			vec_distance(t_vec v1, t_vec v2);
 
 /* ************************************************************************** */
 /*                                  LINE                                      */
@@ -66,6 +65,7 @@ typedef struct s_unit_line
 t_line			line(t_pos_vec p1, t_pos_vec p2);
 double			line_distance(t_line l, t_pos_vec p);
 t_unit_line		unit_line(t_pos_vec pos, t_vec dir);
+t_unit_line		unit_line2(t_pos_vec pos, t_pos_vec p2);
 
 t_unit_line		line_normalize(t_line l);
 
