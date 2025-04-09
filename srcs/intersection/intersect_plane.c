@@ -6,23 +6,12 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 00:29:57 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 02:14:25 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 #include "minirt.h"
-
-// typedef struct s_plane
-// {
-// 	t_unit_vec	wdir;
-// 	t_unit_vec	hdir;
-// 	t_unit_vec	normal;
-// 	t_pos_vec	pos;
-// 	double		width;
-// 	double		height;
-// 	void		*material;
-// }				t_plane;
 
 /* PLANE */
 t_intersect	is1(t_unit_line ray, void *obj)
