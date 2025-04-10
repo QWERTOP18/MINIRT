@@ -6,78 +6,67 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 07:58:49 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 08:52:41 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-t_intersect	intersect_cylinder(t_unit_line ray, const t_cylinder *cy,
-		double outer, double inner)
+t_intersect	intersect_cylinder(t_unit_line ray, const t_cylinder *cy, double t1,
+		double t2)
 {
 	t_intersect	is;
-	t_pos_vec	outer_pos;
-	t_pos_vec	inner_pos;
-	t_vec		center_outer;
-	t_vec		center_inner;
-	double		inner_h;
-	double		outer_h;
 
-	outer_pos = vec_add(ray.pos, vec_mul(ray.dir, outer));
-	inner_pos = vec_add(ray.pos, vec_mul(ray.dir, inner));
-	//
-	center_outer = vec_sub(outer_pos, cy->center);
-	center_inner = vec_sub(inner_pos, cy->center);
+	t_vec p1, p2;
+	t_vec v1, v2;
+	double h1, h2;
+	is.dist = __DBL_MAX__;
 	is.material = cy->material;
-	inner_h = fabs(vec_dot(center_inner, cy->normal));
-	outer_h = fabs(vec_dot(center_outer, cy->normal));
-	//
-	if (outer_h <= cy->height / 2)
+	p1 = vec_add(ray.pos, vec_mul(ray.dir, t1));
+	p2 = vec_add(ray.pos, vec_mul(ray.dir, t2));
+	v1 = vec_sub(p1, cy->center);
+	v2 = vec_sub(p2, cy->center);
+	h1 = fabs(vec_dot(v1, cy->normal));
+	h2 = fabs(vec_dot(v2, cy->normal));
+	if (h1 < cy->height / 2)
 	{
-		is.dist = outer;
-		is.pos = inner_pos;
-		is.normal = vec_normalize(vec_sub(center_outer, vec_mul(cy->normal,
-						outer_h)));
+		is.dist = t1;
+		is.pos = p1;
+		is.normal = vec_normalize(vec_sub(v1, vec_mul(cy->normal, h1)));
 	}
-	else if (inner_h <= cy->height / 2)
+	else if (h2 < cy->height / 2)
 	{
-		is.dist = inner;
-		is.pos = outer_pos;
-		is.normal = vec_normalize(vec_sub(center_inner, vec_mul(cy->normal,
-						inner_h)));
+		is.dist = t2;
+		is.pos = p2;
+		is.normal = vec_normalize(vec_sub(v2, vec_mul(cy->normal, h2)));
 	}
-	else
-		is.dist = __DBL_MAX__;
 	return (is);
 }
 
 /* CYLINDER */
 t_intersect	is2(t_unit_line ray, void *obj)
 {
-	t_intersect			is;
 	const t_cylinder	*cy = (const t_cylinder *)obj;
-	t_vec				ray_x_cynorm;
-	t_vec				ray_x_cypos;
+	t_intersect			is;
+	t_vec				dp;
+	t_vec				d_cross_n;
+	t_vec				dp_cross_n;
+	double				a;
 	double				b;
 	double				c;
-	double				a;
 	t_vec				roots;
 
+	dp = vec_sub(ray.pos, cy->center);
+	d_cross_n = vec_cross(ray.dir, cy->normal);
+	dp_cross_n = vec_cross(dp, cy->normal);
+	a = vec_dot(d_cross_n, d_cross_n);
+	b = 2 * vec_dot(d_cross_n, dp_cross_n);
+	c = vec_dot(dp_cross_n, dp_cross_n) - cy->radius * cy->radius;
 	is.dist = __DBL_MAX__;
-	ray_x_cynorm = vec_cross(ray.dir, cy->normal);
-	ray_x_cypos = vec_cross(ray.dir, vec_sub(ray.pos, cy->center));
-	b = 2 * vec_dot(ray_x_cynorm, ray_x_cypos);
-	c = pow(vec_magnitude(ray_x_cypos), 2) - pow(cy->radius, 2);
-	a = pow(vec_magnitude(ray_x_cynorm), 2);
 	roots = solve_eq(a, b, c);
-	if (roots.x <= 1)
-		return (is);
-	return (intersect_cylinder(ray, cy, roots.y, roots.z));
-	// is.material = cy->material;
-	// is.dist = 10;
-	// is.pos = vec(1, 1, 1);
-	// is.normal = vec(1, 1, 1);
-	// return (is);
+	if ((int)roots.x == 2)
+		return (intersect_cylinder(ray, cy, roots.y, roots.z));
+	return (is);
 }
 
 // 底面から交点までの高さ

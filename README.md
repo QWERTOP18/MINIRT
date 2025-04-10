@@ -1,6 +1,13 @@
 ## MINIRT✨
 
+⚠二枚目bug
+
+<div>
 <img src="./pictures/shadow/tag1.png" width="400" height="400">
+<img src="./pictures/cylinder/bug1.png" width="400" height="400">
+<img src="./pictures/cylinder/cylinder.png" width="400" height="400">
+
+</div>
 
 ```sh
 make run
@@ -9,6 +16,10 @@ make val # memory check
 make norm
 make func
 ```
+
+### log
+
+[log の見方](./DOCS/log.md)
 
 ### directory 階層
 
@@ -56,7 +67,7 @@ make func
 A  0.1      255,255,255             # Ambient
 C  0,3,-20    0,-0.2,1    60        # main camera
 c  20,3,0    -1,0,0       60        # sub camera
-c  -20,3,0    1,0,0       60    
+c  -20,3,0    1,0,0       60
 c  0,20,0    0,-1,0       60
 L  15,15,-15  0.9  255,255,255      # main  light
 l  -15,15,-15 0.3      0,0,255      # sub light
