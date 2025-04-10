@@ -1,8 +1,12 @@
 ## MINIRT✨
 
+⚠二枚目bug
+
 <div>
 <img src="./pictures/shadow/tag1.png" width="400" height="400">
 <img src="./pictures/cylinder/bug1.png" width="400" height="400">
+<img src="./pictures/cylinder/cylinder.png" width="400" height="400">
+
 </div>
 
 ```sh
