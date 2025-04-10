@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 17:46:07 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 04:19:32 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 10:41:08 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	cylinder_clear(t_cylinder *cy)
 {
 	if (!cy)
 		return ;
-
 	free(cy->material);
 	free(cy);
 }

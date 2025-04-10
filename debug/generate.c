@@ -10,7 +10,8 @@ t_objects	*generate(t_sys *sys)
 	objects->id_of_camera = 0;
 	LOG;
 	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 100, sys);
-	objects->camera[1] = camera_init(vec(0, 3, -20), vec(0, -0.2, 1), 60, sys);
+	objects->camera[1] = camera_init(vec(0, 20, -50), vec(0, -0.2, 1), 100,
+			sys);
 	objects->camera[2] = camera_init(vec(-20, 0, 0), vec(1, 0, 0), 60, sys);
 	objects->camera[3] = camera_init(vec(0, 0, 30), vec(0, 0, -1), 80, sys);
 	//球の内部
@@ -31,22 +32,29 @@ t_objects	*generate(t_sys *sys)
 				3, material_init(vec(24, 24, 128)))));
 	/**
 		* PLANE
+		ft_lstadd_back(&objects->objs, ft_lstnew(PLANE, plane_new(vec(-20, 0,
+						0),
+					vec(1, 0, 0), material_init(vec(240, 240, 240)))));
 		*/
 	ft_lstadd_back(&objects->objs, ft_lstnew(PLANE, plane_new(vec(0, -1.5, 0),
 				vec(0, 1, 0), material_init(vec(240, 240, 240)))));
-	ft_lstadd_back(&objects->objs, ft_lstnew(PLANE, plane_new(vec(-20, 0, 0),
-				vec(1, 0, 0), material_init(vec(240, 240, 240)))));
 	/**
 		* CYLINDER
 		ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(40,
 		0,
-		0), vec(0, 1, 0), vec(5, 20, 0), material_init(vec(200,
+		0), vec(0, 1, 0), vec(5, 20, 0xDEADBEAF), material_init(vec(200,
 		0,
 		0)))));
 		*/
 	ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(-10,
-					8.5, 0), vec(0, 1, 0), vec(3, 20, 0), material_init(vec(0,
-						0, 200)))));
+					3.5, 0), vec(0, 1, 0), vec(3, 20, 0xDEADBEAF),
+				material_init(vec(0, 0, 200)))));
+	/**
+		* CONE
+		*/
+	ft_lstadd_back(&objects->objs, ft_lstnew(CONE, cone_new(vec(-20, 8.5, 0),
+				vec(0, 1, 0), vec(45, 30, 0xDEADBEAF), material_init(vec(200, 0,
+						0)))));
 	log_objs(objects);
 	return (objects);
 }
