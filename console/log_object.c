@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:02:58 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 10:59:38 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 11:29:10 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void	l3(void *data)
 
 void	l4(void *data)
 {
-	(void)data;
+	const t_triangle	*tr = (const t_triangle *)data;
+
+	log_vec("triangle normal", tr->normal);
 }
 
 void	l5(void *data)

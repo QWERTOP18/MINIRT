@@ -6,12 +6,15 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:40:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 11:02:42 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 11:10:59 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
+/**
+ * @param angles.x angle  angles.y height
+ */
 t_cone	*cone_new(t_pos_vec center, t_vec normal, t_vec angles, void *material)
 {
 	t_cone	*cone;
