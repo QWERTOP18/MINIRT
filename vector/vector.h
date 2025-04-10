@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 03:15:42 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 11:22:41 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <math.h>
+# include <stdbool.h>
 # include <stdlib.h>
 
 # define FT_EPSILON 0.0001
@@ -124,6 +125,45 @@ typedef struct s_cylinder
 t_cylinder		*cylinder_new(t_pos_vec center, t_vec normal, t_vec lengths,
 					void *material);
 void			cylinder_clear(t_cylinder *cy);
+
+/* ************************************************************************** */
+/*                                TRIANGLE                                    */
+/* ************************************************************************** */
+
+typedef struct s_triangle
+{
+	t_pos_vec	p0;
+	t_pos_vec	p1;
+	t_pos_vec	p2;
+
+	t_unit_vec	normal;
+
+	void		*material;
+}				t_triangle;
+
+t_triangle		*triangle_new(t_pos_vec p0, t_pos_vec p1, t_pos_vec p2,
+					void *material);
+void			triangle_clear(t_triangle *triangle);
+bool			is_point_in_triangle(t_pos_vec p, const t_triangle *tri);
+
+/* ************************************************************************** */
+/*                                  CONE                                      */
+/* ************************************************************************** */
+
+typedef struct s_cone
+{
+	t_pos_vec center; // 円錐の中心（底面中心または中点）
+	t_vec normal;     // 円錐の軸方向（正規化済み）
+	double angle;     // 開き角（ラジアン）
+	double		height;
+	double radius; // （tan(angle) = r / h から算出可能）
+	void		*material;
+}				t_cone;
+
+t_cone			*cone_new(t_pos_vec center, t_vec normal, t_vec angles,
+					void *material);
+
+void			cone_clear(t_cone *cone);
 
 /* ************************************************************************** */
 /*                                  UTILS                                     */

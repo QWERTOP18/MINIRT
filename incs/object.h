@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:23:07 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/07 23:51:40 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/10 10:33:10 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef enum e_obj_type
 	SPHERE,
 	PLANE,
 	CYLINDER,
-	TRIANGLE,
 	CONE,
+	TRIANGLE,
 	ELLIPSOID,
 	ERROR = -1,
 }					t_obj_type;
