@@ -6,76 +6,89 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:41:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 10:55:29 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 07:14:09 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-static t_vec	intersect_cone(t_unit_line ray, const t_cone *cone)
+double	calc_cone_height(t_unit_line ray, const t_cone *cone, double t)
 {
-	t_vec	roots;
+	t_vec	hit;
+	t_vec	hit_vec;
 
-	t_vec co; // 頂点からレイの原点へのベクトル
-	t_vec v;  // ray.dir
-	t_vec n;  // cone->normal
-	double k; // tan(θ)^2
-	double a, b, c;
-	v = ray.dir;
-	n = cone->normal;
-	co = vec_sub(ray.pos, cone->center);
-	k = pow(tan(cone->angle), 2);
-	a = vec_dot(v, n) * vec_dot(v, n) - k * vec_dot(v, v);
-	b = 2 * (vec_dot(v, n) * vec_dot(co, n) - k * vec_dot(v, co));
-	c = vec_dot(co, n) * vec_dot(co, n) - k * vec_dot(co, co);
-	roots = solve_eq(a, b, c);
-	return (roots);
+	hit = vec_add(ray.pos, vec_mul(ray.dir, t));
+	hit_vec = vec_sub(hit, cone->vertex);
+	return (vec_dot(hit_vec, cone->normal));
 }
 
-/* CONE */
-t_intersect	is3(t_unit_line ray, void *obj)
+t_intersect	intersect_cone(t_unit_line ray, const t_cone *cone, double t1,
+		double t2)
 {
-	t_intersect		is;
-	const t_cone	*cone = (const t_cone *)obj;
-	t_vec			roots;
-	t_pos_vec		p;
-	double			hit_h;
-	t_vec			v;
-	t_vec			temp;
-	double			k;
+	t_intersect	is;
+	double		h;
 
-	k = pow(tan(cone->angle), 2);
+	t_vec v, hit, axis_point, normal;
 	is.dist = __DBL_MAX__;
-	roots = intersect_cone(ray, cone);
-	if (roots.x == 0)
-		return (is);
-	// 手前の解（roots.y）を採用してみる（あとで裏返す）
-	p = vec_add(ray.pos, vec_mul(ray.dir, roots.y));
-	v = vec_sub(p, cone->center);
-	hit_h = vec_dot(v, cone->normal);
-	if (hit_h > 0 && hit_h < cone->height)
+	is.material = cone->material;
+	v = cone->normal;
+	if (t1 > 0)
 	{
-		is.dist = roots.y;
-		is.pos = p;
-		// 接線ベクトルを使って法線を出す（簡略法）
-		temp = vec_sub(v, vec_mul(cone->normal, hit_h * (1 + k)));
-		is.normal = vec_normalize(temp);
-		is.material = cone->material;
-	}
-	else
-	{
-		// 後ろ側も確認
-		p = vec_add(ray.pos, vec_mul(ray.dir, roots.z));
-		v = vec_sub(p, cone->center);
-		hit_h = vec_dot(v, cone->normal);
-		if (hit_h > 0 && hit_h < cone->height)
+		h = calc_cone_height(ray, cone, t1);
+		if (h >= 0 && h <= cone->height)
 		{
-			is.dist = roots.z;
-			is.pos = p;
-			temp = vec_sub(v, vec_mul(cone->normal, hit_h * (1 + k)));
-			is.normal = vec_normalize(temp);
-			is.material = cone->material;
+			hit = vec_add(ray.pos, vec_mul(ray.dir, t1));
+			axis_point = vec_add(cone->vertex, vec_mul(v, h));
+			normal = vec_normalize(vec_sub(hit, axis_point));
+			if (vec_dot(normal, ray.dir) > 0)
+				normal = vec_mul(normal, -1);
+			is.pos = (t_pos_vec){hit.x, hit.y, hit.z};
+			is.normal = normal;
+			is.dist = t1;
+			return (is);
 		}
 	}
+	if (t2 > 0)
+	{
+		h = calc_cone_height(ray, cone, t2);
+		if (h >= 0 && h <= cone->height)
+		{
+			hit = vec_add(ray.pos, vec_mul(ray.dir, t2));
+			axis_point = vec_add(cone->vertex, vec_mul(v, h));
+			normal = vec_normalize(vec_sub(hit, axis_point));
+			if (vec_dot(normal, ray.dir) > 0)
+				normal = vec_mul(normal, -1);
+			is.pos = (t_pos_vec){hit.x, hit.y, hit.z};
+			is.normal = normal;
+			is.dist = t2;
+			return (is);
+		}
+	}
+	return (is);
+}
+
+t_intersect	is3(t_unit_line ray, void *obj)
+{
+	const t_cone	*cone = (const t_cone *)obj;
+	t_intersect		is;
+	t_vec			roots;
+	double			t;
+
+	t_vec v, co, d_minus_vdv, co_minus_vcov, coef;
+	double k, dv, cov;
+	v = cone->normal;
+	co = vec_sub(ray.pos, cone->vertex);
+	k = tan(cone->angle);
+	dv = vec_dot(ray.dir, v);
+	cov = vec_dot(co, v);
+	d_minus_vdv = vec_sub(ray.dir, vec_mul(v, dv));
+	co_minus_vcov = vec_sub(co, vec_mul(v, cov));
+	coef.x = vec_dot(d_minus_vdv, d_minus_vdv) - k * k * dv * dv;
+	coef.y = 2 * (vec_dot(d_minus_vdv, co_minus_vcov) - k * k * dv * cov);
+	coef.z = vec_dot(co_minus_vcov, co_minus_vcov) - k * k * cov * cov;
+	is.dist = __DBL_MAX__;
+	roots = solve_eq(coef.x, coef.y, coef.z);
+	if ((int)roots.x == 2)
+		return (intersect_cone(ray, cone, roots.y, roots.z));
 	return (is);
 }

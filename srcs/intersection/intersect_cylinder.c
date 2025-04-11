@@ -6,39 +6,60 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 08:52:41 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 07:15:31 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
+double	calc_cylinder_height(t_unit_line ray, const t_cylinder *cy, double t)
+{
+	t_vec	hit;
+	t_vec	hit_vec;
+
+	hit = vec_add(ray.pos, vec_mul(ray.dir, t));
+	hit_vec = vec_sub(hit, cy->center);
+	return (fabs(vec_dot(hit_vec, cy->normal)));
+}
+
 t_intersect	intersect_cylinder(t_unit_line ray, const t_cylinder *cy, double t1,
 		double t2)
 {
 	t_intersect	is;
+	double		h;
 
-	t_vec p1, p2;
-	t_vec v1, v2;
-	double h1, h2;
+	t_vec hit, hit_vec, normal;
 	is.dist = __DBL_MAX__;
 	is.material = cy->material;
-	p1 = vec_add(ray.pos, vec_mul(ray.dir, t1));
-	p2 = vec_add(ray.pos, vec_mul(ray.dir, t2));
-	v1 = vec_sub(p1, cy->center);
-	v2 = vec_sub(p2, cy->center);
-	h1 = fabs(vec_dot(v1, cy->normal));
-	h2 = fabs(vec_dot(v2, cy->normal));
-	if (h1 < cy->height / 2)
+	if (t1 > 0)
 	{
-		is.dist = t1;
-		is.pos = p1;
-		is.normal = vec_normalize(vec_sub(v1, vec_mul(cy->normal, h1)));
+		h = calc_cylinder_height(ray, cy, t1);
+		if (h < cy->height / 2)
+		{
+			hit = vec_add(ray.pos, vec_mul(ray.dir, t1));
+			hit_vec = vec_sub(hit, cy->center);
+			normal = vec_normalize(vec_sub(hit_vec, vec_mul(cy->normal,
+							vec_dot(hit_vec, cy->normal))));
+			is.dist = t1;
+			is.pos = hit;
+			is.normal = normal;
+			return (is);
+		}
 	}
-	else if (h2 < cy->height / 2)
+	if (t2 > 0)
 	{
-		is.dist = t2;
-		is.pos = p2;
-		is.normal = vec_normalize(vec_sub(v2, vec_mul(cy->normal, h2)));
+		h = calc_cylinder_height(ray, cy, t2);
+		if (h < cy->height / 2)
+		{
+			hit = vec_add(ray.pos, vec_mul(ray.dir, t2));
+			hit_vec = vec_sub(hit, cy->center);
+			normal = vec_normalize(vec_sub(hit_vec, vec_mul(cy->normal,
+							vec_dot(hit_vec, cy->normal))));
+			is.dist = t2;
+			is.pos = hit;
+			is.normal = vec_mul(normal, -1);
+			return (is);
+		}
 	}
 	return (is);
 }
@@ -51,46 +72,18 @@ t_intersect	is2(t_unit_line ray, void *obj)
 	t_vec				dp;
 	t_vec				d_cross_n;
 	t_vec				dp_cross_n;
-	double				a;
-	double				b;
-	double				c;
+	t_vec				coef;
 	t_vec				roots;
 
 	dp = vec_sub(ray.pos, cy->center);
 	d_cross_n = vec_cross(ray.dir, cy->normal);
 	dp_cross_n = vec_cross(dp, cy->normal);
-	a = vec_dot(d_cross_n, d_cross_n);
-	b = 2 * vec_dot(d_cross_n, dp_cross_n);
-	c = vec_dot(dp_cross_n, dp_cross_n) - cy->radius * cy->radius;
+	coef.x = vec_dot(d_cross_n, d_cross_n);
+	coef.y = 2 * vec_dot(d_cross_n, dp_cross_n);
+	coef.z = vec_dot(dp_cross_n, dp_cross_n) - cy->radius * cy->radius;
 	is.dist = __DBL_MAX__;
-	roots = solve_eq(a, b, c);
+	roots = solve_eq(coef.x, coef.y, coef.z);
 	if ((int)roots.x == 2)
 		return (intersect_cylinder(ray, cy, roots.y, roots.z));
 	return (is);
 }
-
-// 底面から交点までの高さ
-// double		height_outer = vec3_dot(center2p_outer, cylinder.normal);
-// double		height_inner = vec3_dot(center2p_inner, cylinder.normal);
-
-// if (height_outer >= 0 && height_outer <= cylinder.height)
-// {
-// 	intersection.has_intersection = true;
-// 	intersection.normal = vec3_normalize(vec3_sub(center2p_outer,
-// 				vec3_mult(cylinder.normal, height_outer)));
-// 	intersection.distance = t_outer;
-// 	intersection.position = p_outer;
-// }
-// else if (height_inner >= 0 && height_inner <= cylinder.height)
-// {
-// 	intersection.has_intersection = true;
-// 	intersection.normal = vec3_normalize(vec3_sub(vec3_mult(cylinder.normal,
-// 					height_inner), center2p_inner));
-// 	intersection.distance = t_inner;
-// 	intersection.position = p_inner;
-// }
-// else
-// {
-// 	intersection.has_intersection = false;
-// }
-// return (intersection);

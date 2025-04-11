@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 21:02:58 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 11:29:10 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 06:21:58 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	l3(void *data)
 	const t_cone	*cone = (const t_cone *)data;
 
 	log_vec("cone normal", cone->normal);
-	log_vec("cone center", cone->center);
+	log_vec("cone vertex", cone->vertex);
 	printf("r:  %8.2f,  h:  %8.2f\n", cone->radius, cone->height);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 11:22:41 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 06:13:05 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,15 +152,15 @@ bool			is_point_in_triangle(t_pos_vec p, const t_triangle *tri);
 
 typedef struct s_cone
 {
-	t_pos_vec center; // 円錐の中心（底面中心または中点）
-	t_vec normal;     // 円錐の軸方向（正規化済み）
-	double angle;     // 開き角（ラジアン）
+	t_pos_vec	vertex;
+	t_vec		normal;
+	double		angle;
 	double		height;
 	double radius; // （tan(angle) = r / h から算出可能）
 	void		*material;
 }				t_cone;
 
-t_cone			*cone_new(t_pos_vec center, t_vec normal, t_vec angles,
+t_cone			*cone_new(t_pos_vec vertex, t_vec normal, t_vec angles,
 					void *material);
 
 void			cone_clear(t_cone *cone);
