@@ -6,7 +6,7 @@ t_objects	*generate(t_sys *sys)
 
 	objects = ft_calloc(1, sizeof(t_objects));
 	objects->num_of_camera = 5;
-	objects->num_of_light = 1;
+	objects->num_of_light = 2;
 	objects->id_of_camera = 0;
 	LOG;
 	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 100, sys);
@@ -16,11 +16,13 @@ t_objects	*generate(t_sys *sys)
 	objects->camera[3] = camera_init(vec(0, 0, 40), vec(0, 0, -1), 80, sys);
 	//球の内部
 	// objects->camera[3] = camera_init(vec(0, 1, 0), vec(0, 1, 0), 60, sys);
-	objects->camera[4] = camera_init(vec(0, 50, 50), vec(0, -1, -1), 50, sys);
+	objects->camera[4] = camera_init(vec(30, 60, 0), vec(-0.3, -1, 0), 80, sys);
 	//平面の裏側
 	// objects->camera[4] = camera_init(vec(0, -30, 0), vec(0, 1, 0), 90, sys);
 	objects->light[0] = light_init(vec(200, 200, 0), color_scaler(vec(255, 255,
 					255)), 1, sys);
+	objects->light[1] = light_init(vec(200, 200, 200), color_scaler(vec(255,
+					255, 255)), 0.2, sys);
 	objects->ambient = vec_mul(color_scaler(vec(0, 240, 255)), 0.1);
 	/**
 		* SPHERE
@@ -52,19 +54,18 @@ t_objects	*generate(t_sys *sys)
 				material_init(vec(0, 0, 200)))));
 	/**
 		* CONE
-		ft_lstadd_back(&objects->objs, ft_lstnew(CONE, cone_new(vec(-20, 8.5,
-						0),
-		vec(0, 1, 0), vec(45, 30, 0xDEADBEAF), material_init(vec(200, 0,
-		0)))));
 		*/
+	ft_lstadd_back(&objects->objs, ft_lstnew(CONE, cone_new(vec(-30, 8.5, 0),
+				vec(0, -1, 0), vec(30, 10, 0xDEADBEAF), material_init(vec(200,
+						0, 0)))));
 	/**
 		* TRIANGLE
 		*/
-	ft_lstadd_back(&objects->objs, ft_lstnew(TRIANGLE, triangle_new(vec(-25,
-					-1.5, 25), vec(25, -1.5, 25), vec(-25, -1.5, -25),
+	ft_lstadd_back(&objects->objs, ft_lstnew(TRIANGLE, triangle_new(vec(-40,
+					-1.5, 40), vec(40, -1.5, 40), vec(-40, -1.5, -40),
 				material_init(vec(0xF5, 0xF5, 0xDC)))));
-	ft_lstadd_back(&objects->objs, ft_lstnew(TRIANGLE, triangle_new(vec(25,
-					-1.5, 25), vec(25, -1.5, -25), vec(-25, -1.5, -25),
+	ft_lstadd_back(&objects->objs, ft_lstnew(TRIANGLE, triangle_new(vec(40,
+					-1.5, 40), vec(40, -1.5, -40), vec(-40, -1.5, -40),
 				material_init(vec(0xF5, 0xF5, 0xDC)))));
 	log_objs(objects);
 	return (objects);
