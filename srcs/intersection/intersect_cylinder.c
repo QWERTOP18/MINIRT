@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 08:52:41 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 06:43:14 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,29 +68,3 @@ t_intersect	is2(t_unit_line ray, void *obj)
 		return (intersect_cylinder(ray, cy, roots.y, roots.z));
 	return (is);
 }
-
-// 底面から交点までの高さ
-// double		height_outer = vec3_dot(center2p_outer, cylinder.normal);
-// double		height_inner = vec3_dot(center2p_inner, cylinder.normal);
-
-// if (height_outer >= 0 && height_outer <= cylinder.height)
-// {
-// 	intersection.has_intersection = true;
-// 	intersection.normal = vec3_normalize(vec3_sub(center2p_outer,
-// 				vec3_mult(cylinder.normal, height_outer)));
-// 	intersection.distance = t_outer;
-// 	intersection.position = p_outer;
-// }
-// else if (height_inner >= 0 && height_inner <= cylinder.height)
-// {
-// 	intersection.has_intersection = true;
-// 	intersection.normal = vec3_normalize(vec3_sub(vec3_mult(cylinder.normal,
-// 					height_inner), center2p_inner));
-// 	intersection.distance = t_inner;
-// 	intersection.position = p_inner;
-// }
-// else
-// {
-// 	intersection.has_intersection = false;
-// }
-// return (intersection);
