@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:41:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 07:34:14 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 07:50:06 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ t_intersect	is3(t_unit_line ray, void *obj)
 	const t_cone	*cone = (const t_cone *)obj;
 	t_intersect		is;
 	t_roots			roots;
-	double			t;
 
 	t_vec v, co, d_minus_vdv, co_minus_vcov, coef;
 	double k, dv, cov;
