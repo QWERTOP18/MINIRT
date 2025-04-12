@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 05:35:19 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 09:21:44 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 10:24:14 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_scaled_col	cal_diffuse(t_unit_vec lightdir, t_unit_vec normal,
 {
 	double	dot_product;
 
-	dot_product = fmax(0.0, vec_dot(lightdir, normal));
+	// dot_product = fmax(0.0, vec_dot(lightdir, normal));
+	dot_product = fabs(vec_dot(lightdir, normal));
 	return (vec_mul(vec_hadamard(light->color, obj_color), dot_product));
 }
 t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
@@ -72,15 +73,15 @@ t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect,
 		t_list *objs)
 {
 	t_scaled_col	res;
+	t_unit_vec		lightdir;
 
-	t_unit_vec lightdir; //交点から光源へのベクトル
 	lightdir = vec_normalize(vec_sub(light->pos, intersect.pos));
-	res = vec(0, 0, 0); // original color
+	res = vec(0, 0, 0);
 	if (is_interrupted(light, intersect, objs))
 		return (res);
 	res = vec_add(res, cal_diffuse(lightdir, intersect.normal, light,
 				intersect.material->color));
-	// res = vec_add(res, cal_specular(vec_mul(ray.dir, -1), lightdir,
-	// 			intersect.normal, light));
+	res = vec_add(res, cal_specular(vec_mul(ray.dir, -1), lightdir,
+				intersect.normal, light));
 	return (res);
 }
