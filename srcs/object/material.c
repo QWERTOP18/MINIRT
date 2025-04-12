@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 05:45:37 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 06:42:13 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:45:29 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ t_material	*get_material(t_list *list)
 		return (((t_plane *)list->data)->material);
 	if (list->type == CYLINDER)
 		return (((t_cylinder *)list->data)->material);
-
 	return (NULL);
 }

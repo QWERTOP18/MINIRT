@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 05:35:19 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 10:24:14 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:59:21 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ t_scaled_col	cal_diffuse(t_unit_vec lightdir, t_unit_vec normal,
 {
 	double	dot_product;
 
-	// dot_product = fmax(0.0, vec_dot(lightdir, normal));
-	dot_product = fabs(vec_dot(lightdir, normal));
+	dot_product = fmax(0.0, vec_dot(lightdir, normal));
+	// dot_product = fabs(vec_dot(lightdir, normal));
 	return (vec_mul(vec_hadamard(light->color, obj_color), dot_product));
 }
+
 t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
 		t_unit_vec normal, t_light *light)
 {
@@ -37,16 +38,6 @@ t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
 	return (vec_mul(light->color, pow(v_dot_r, gloss)));
 }
 
-/**
- * objectが光源の内側にあるか判定
- */
-int	is_external(t_vec lightdir, t_vec normal)
-{
-	if (vec_dot(lightdir, normal) > 0)
-		return (1);
-	return (-1);
-}
-
 bool	is_interrupted(t_light *light, t_intersect is, t_list *objs)
 {
 	t_list		*target;
@@ -54,7 +45,6 @@ bool	is_interrupted(t_light *light, t_intersect is, t_list *objs)
 	t_unit_line	light_ray;
 
 	light_ray = unit_line2(is.pos, light->pos);
-	//自己交差しないように
 	light_ray.pos = vec_add(light_ray.pos, vec_mul(light_ray.dir, FT_EPSILON));
 	target = determine_target(light_ray, objs);
 	if (!target)
@@ -67,7 +57,7 @@ bool	is_interrupted(t_light *light, t_intersect is, t_list *objs)
 
 /**
 
-* cal_col は、与えられた光線 (ray)、光源 (light)、および交差点 (intersect) を基に、最終的な色を計算する関数です。拡散反射と鏡面反射を考慮し、最終的な色を返します。
+* 影の計算　拡散反射と鏡面反射
 */
 t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect,
 		t_list *objs)

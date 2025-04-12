@@ -72,7 +72,7 @@ t_objects	*generate(t_sys *sys)
 	// objects->camera[1] = camera_init(vec(0, 20, -50), vec(0, -0.2, 1), 100,
 	// 		sys);
 	objects->camera[1] = camera_init(vec(-50, 40, 0), vec(1, 1, 0), 60, sys);
-	objects->camera[2] = camera_init(vec(200, 200, 200), vec(-1, -1, -1), 60,
+	objects->camera[2] = camera_init(vec(100, 100, 100), vec(-1, -1, -1), 30,
 			sys);
 	objects->camera[3] = camera_init(vec(0, 80, 80), vec(0, -1, -1), 80, sys);
 	// objects->camera[3] = camera_init(vec(0, 0, 40), vec(0, 0, -1), 80, sys);
@@ -80,9 +80,9 @@ t_objects	*generate(t_sys *sys)
 	// objects->camera[3] = camera_init(vec(0, 1, 0), vec(0, 1, 0), 60, sys);
 	objects->camera[4] = camera_init(vec(30, 60, 0), vec(-0.3, -1, 0), 80, sys);
 	//
-	objects->light[0] = light_init(vec(200, 200, 0), color_scaler(vec(255, 255,
+	objects->light[1] = light_init(vec(200, 200, 0), color_scaler(vec(255, 255,
 					255)), 1, sys);
-	objects->light[1] = light_init(vec(-50, -40, 10), color_scaler(vec(255, 255,
+	objects->light[0] = light_init(vec(-50, -40, 10), color_scaler(vec(255, 255,
 					255)), 1, sys);
 	objects->ambient = vec_mul(color_scaler(vec(0, 240, 255)), 0.1);
 	setup_inside(objects);
