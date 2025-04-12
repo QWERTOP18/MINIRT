@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 07:32:44 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 17:45:07 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ typedef struct s_cone
 	t_vec		normal;
 	double		angle;
 	double		height;
-	double radius; // （tan(angle) = r / h から算出可能）
+	double		radius;
 	void		*material;
 }				t_cone;
 
