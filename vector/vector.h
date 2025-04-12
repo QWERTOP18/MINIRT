@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 06:13:05 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 07:32:44 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,4 +169,12 @@ void			cone_clear(t_cone *cone);
 /*                                  UTILS                                     */
 /* ************************************************************************** */
 
+typedef struct s_roots
+{
+	int			n;
+	double		x1;
+	double		x2;
+}				t_roots;
+
+t_roots			solve_eq(double a, double b, double c);
 #endif

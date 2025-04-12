@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 05:35:19 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 07:22:53 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 10:24:14 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_scaled_col	cal_diffuse(t_unit_vec lightdir, t_unit_vec normal,
 {
 	double	dot_product;
 
-	dot_product = fmax(0.0, vec_dot(lightdir, normal));
+	// dot_product = fmax(0.0, vec_dot(lightdir, normal));
+	dot_product = fabs(vec_dot(lightdir, normal));
 	return (vec_mul(vec_hadamard(light->color, obj_color), dot_product));
 }
 t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
@@ -27,13 +28,23 @@ t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
 	double		n_dot_l;
 	double		v_dot_r;
 
-	static double gloss = 400; // todo material->gloss
+	static double gloss = 600; // todo material->gloss
 	n_dot_l = vec_dot(lightdir, normal);
 	reflection = vec_normalize(vec_sub(vec_mul(normal, 2 * n_dot_l), lightdir));
 	v_dot_r = vec_dot(ray_inverse, reflection);
 	if (n_dot_l < 0 || v_dot_r < 0)
 		return (vec(0, 0, 0));
 	return (vec_mul(light->color, pow(v_dot_r, gloss)));
+}
+
+/**
+ * objectが光源の内側にあるか判定
+ */
+int	is_external(t_vec lightdir, t_vec normal)
+{
+	if (vec_dot(lightdir, normal) > 0)
+		return (1);
+	return (-1);
 }
 
 bool	is_interrupted(t_light *light, t_intersect is, t_list *objs)
@@ -62,11 +73,10 @@ t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect,
 		t_list *objs)
 {
 	t_scaled_col	res;
+	t_unit_vec		lightdir;
 
-	t_unit_vec lightdir; //交点から光源へのベクトル
 	lightdir = vec_normalize(vec_sub(light->pos, intersect.pos));
-	// t_scaled_col coef = vec(0.6, 0.6); // todo materialによって変える
-	res = vec(0, 0, 0); // original color
+	res = vec(0, 0, 0);
 	if (is_interrupted(light, intersect, objs))
 		return (res);
 	res = vec_add(res, cal_diffuse(lightdir, intersect.normal, light,
@@ -75,12 +85,3 @@ t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect,
 				intersect.normal, light));
 	return (res);
 }
-
-/**
- * 衝突判定のみ
- */
-// t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect,
-// 		t_list *objs)
-// {
-// 	return (color_scaler(vec(255, 255, 255)));
-// }

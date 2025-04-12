@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:41:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 07:14:09 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 07:50:06 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ t_intersect	is3(t_unit_line ray, void *obj)
 {
 	const t_cone	*cone = (const t_cone *)obj;
 	t_intersect		is;
-	t_vec			roots;
-	double			t;
+	t_roots			roots;
 
 	t_vec v, co, d_minus_vdv, co_minus_vcov, coef;
 	double k, dv, cov;
@@ -88,7 +87,7 @@ t_intersect	is3(t_unit_line ray, void *obj)
 	coef.z = vec_dot(co_minus_vcov, co_minus_vcov) - k * k * cov * cov;
 	is.dist = __DBL_MAX__;
 	roots = solve_eq(coef.x, coef.y, coef.z);
-	if ((int)roots.x == 2)
-		return (intersect_cone(ray, cone, roots.y, roots.z));
+	if (roots.n == 2)
+		return (intersect_cone(ray, cone, roots.x1, roots.x2));
 	return (is);
 }

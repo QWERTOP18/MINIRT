@@ -45,6 +45,16 @@ make func
 │ └── main.c
 ```
 
+### Utilis
+
+- **[libc](https://github.com/QWERTOP18/LIBFT)** – My custom C standard library implementation
+- **[list](https://github.com/QWERTOP18/LINKED-LIST)** – My custom Linked list utilities
+- **[vector](https://github.com/QWERTOP18/C_VECTOR)** – Simple 3D vector math library
+
+### Libraries
+
+- **[minilibx](https://harm-smits.github.io/42docs/libs/minilibx/introduction.html)** – Lightweight graphics library used in 42 projects
+
 ### ヘッダーファイル
 
 | ヘッダーファイル     | 役割                                       |

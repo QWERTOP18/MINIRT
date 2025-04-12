@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 07:15:31 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 07:33:15 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ t_intersect	is2(t_unit_line ray, void *obj)
 	t_vec				d_cross_n;
 	t_vec				dp_cross_n;
 	t_vec				coef;
-	t_vec				roots;
+	t_roots				roots;
 
 	dp = vec_sub(ray.pos, cy->center);
 	d_cross_n = vec_cross(ray.dir, cy->normal);
@@ -83,7 +83,7 @@ t_intersect	is2(t_unit_line ray, void *obj)
 	coef.z = vec_dot(dp_cross_n, dp_cross_n) - cy->radius * cy->radius;
 	is.dist = __DBL_MAX__;
 	roots = solve_eq(coef.x, coef.y, coef.z);
-	if ((int)roots.x == 2)
-		return (intersect_cylinder(ray, cy, roots.y, roots.z));
+	if (roots.n == 2)
+		return (intersect_cylinder(ray, cy, roots.x1, roots.x2));
 	return (is);
 }
