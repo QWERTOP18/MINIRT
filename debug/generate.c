@@ -4,6 +4,9 @@ void	setup_inside(t_objects *objects)
 {
 	ft_lstadd_back(&objects->objs, ft_lstnew(SPHERE, sphere_new(vec(-50, 40, 0),
 				20, material_init(vec(128, 24, 24)))));
+	// objects->camera[1] = camera_init(vec(-50, 40, 0), vec(1, 1, 0), 60, sys);
+	// objects->light[0] = light_init(vec(-50, -40, 10), color_scaler(vec(255,
+	// 255,		255)), 1, sys);
 	// ft_lstadd_back(&objects->objs, ft_lstnew(CYLINDER, cylinder_new(vec(-50,
 	// 41,
 	// 				0), vec(0, 1, 0), vec(3, 20, 0xDEADBEAF),
@@ -71,7 +74,7 @@ t_objects	*generate(t_sys *sys)
 	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 100, sys);
 	// objects->camera[1] = camera_init(vec(0, 20, -50), vec(0, -0.2, 1), 100,
 	// 		sys);
-	objects->camera[1] = camera_init(vec(-50, 40, 0), vec(1, 1, 0), 60, sys);
+	objects->camera[1] = camera_init(vec(-50, 40, 0), vec(1, -1, 0), 60, sys);
 	objects->camera[2] = camera_init(vec(100, 100, 100), vec(-1, -1, -1), 30,
 			sys);
 	objects->camera[3] = camera_init(vec(0, 80, 80), vec(0, -1, -1), 80, sys);
@@ -80,12 +83,12 @@ t_objects	*generate(t_sys *sys)
 	// objects->camera[3] = camera_init(vec(0, 1, 0), vec(0, 1, 0), 60, sys);
 	objects->camera[4] = camera_init(vec(30, 60, 0), vec(-0.3, -1, 0), 80, sys);
 	//
-	objects->light[1] = light_init(vec(200, 200, 0), color_scaler(vec(255, 255,
-					255)), 1, sys);
-	objects->light[0] = light_init(vec(-50, -40, 10), color_scaler(vec(255, 255,
-					255)), 1, sys);
+	objects->light[1] = light_init(vec(200, 200, 0), color_scaler(vec(255, 100,
+					255)), 0.5, sys);
+	objects->light[0] = light_init(vec(-200, 200, 10), color_scaler(vec(100,
+					255, 255)), 0.5, sys);
 	objects->ambient = vec_mul(color_scaler(vec(0, 240, 255)), 0.1);
-	setup_inside(objects);
+	// setup_inside(objects);
 	setup_sphere(objects);
 	setup_plane(objects);
 	setup_cylinder(objects);

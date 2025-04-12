@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 15:44:59 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 16:07:16 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 			sum_color = vec_add(sum_color, pixel->colors[i]);
 		i++;
 	}
-	sum_color = vec_add(sum_color, objs->ambient); // todo
+	sum_color = vec_add(sum_color, objs->ambient);
 	return (color_convert(sum_color));
 }

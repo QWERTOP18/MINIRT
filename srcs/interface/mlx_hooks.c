@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 15:52:59 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 16:10:06 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	key_handler(int key, t_sys *sys)
 	{
 		sys->obj->light[key - '0']->ison ^= 1;
 		log_light(sys->obj->light, n_light);
+		sys->obj->camera[sys->obj->id_of_camera]->isupdate = True;
 	}
 	return (0);
 }
