@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 18:24:23 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 06:39:08 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 18:23:44 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,22 @@ typedef struct s_material
 {
 	t_scaled_col	color;
 	double			gloss;
-	bool			checker;
+	double			k_specular;
+	double			k_diffuse;
+	int				checker;
 	bool			mirror;
-	bool			bump;
-	char			*ref;
+	char			*bump;
+
+	int				line;
+	char			*name;
+	char			description[256];
 }					t_material;
 
 /* ************************************************************************** */
 /*                                  FUNCS                                     */
 /* ************************************************************************** */
 
-t_material			*material_init(t_vec color);
+t_material			*material_init(t_vec color, t_vec coef);
 
 t_material			*get_material(t_list *list);
 
