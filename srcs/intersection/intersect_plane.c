@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 02:14:25 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 09:39:21 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ t_intersect	is1(t_unit_line ray, void *obj)
 	is.dist = vec_dot(vec_sub(pl->pos, ray.pos), pl->normal) / normal_dot_ray;
 	if (is.dist < 0) //自分より後ろにある場合
 	{
-		is.dist = __DBL_MAX__;
 		return (is);
 	}
 	is.normal = pl->normal;
-	if (normal_dot_ray < 0)
-		vec_mul(is.normal, -1);
+	if (normal_dot_ray > 0)
+		is.normal = vec_mul(is.normal, -1);
 	is.pos = vec_add(ray.pos, vec_mul(ray.dir, is.dist));
 	is.material = pl->material;
 	return (is);
