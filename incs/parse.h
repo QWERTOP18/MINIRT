@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:37:59 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/13 17:17:53 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/14 00:47:42 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 # include "system.h"
 
 /* ---------------------------   外部呼び出し   ------------------------------- */
-// t_objects	*parse_file(char *file, t_sys *sys);
-t_objects	*generate_from_file(t_sys *sys, const char *filename);
+
+t_objects	*parse_file(char *file, t_sys *sys);
+
+/* -----------------------------  内部関数   --------------------------------- */
+
 t_objects	*parse_light(t_objects *objs, char **tokens, int line_num,
 				t_sys *sys);
 char		*get_next_token(char **p);
@@ -32,6 +35,5 @@ t_objects	*parse_sphere(t_objects *objs, char **tokens, int line_num,
 float		ft_atof(const char **s);
 void		error_exit(const char *msg);
 int			is_space(char c);
-/* -----------------------------  内部関数   --------------------------------- */
 
 #endif

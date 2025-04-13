@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 05:45:37 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 06:42:13 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 00:42:01 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,26 @@ t_material	*material_init(t_vec color)
 	if (!material)
 		return (NULL);
 	material->color = color_scaler(color);
-	material->gloss = 800;
+	material->gloss = 40;
+	material->k_specular = 0.9;
+	material->k_diffuse = 0.9;
+	return (material);
+}
+
+/**
+ * @param coef x:gloss y: k_specular z:k_diffuse
+ */
+t_material	*material_init_with_param(t_vec color, t_vec coef)
+{
+	t_material	*material;
+
+	material = ft_calloc(1, sizeof(t_material));
+	if (!material)
+		return (NULL);
+	material->color = color_scaler(color);
+	material->gloss = coef.x;
+	material->k_specular = coef.y;
+	material->k_diffuse = coef.z;
 	return (material);
 }
 
@@ -33,6 +52,5 @@ t_material	*get_material(t_list *list)
 		return (((t_plane *)list->data)->material);
 	if (list->type == CYLINDER)
 		return (((t_cylinder *)list->data)->material);
-
 	return (NULL);
 }

@@ -6,12 +6,13 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:41:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 11:36:09 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:46:50 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
+/* TRIANGLE */
 t_intersect	is4(t_unit_line ray, void *obj)
 {
 	const t_triangle	*tr = (const t_triangle *)obj;
@@ -45,44 +46,5 @@ t_intersect	is4(t_unit_line ray, void *obj)
 	is.pos = vec_add(ray.pos, vec_mul(ray.dir, t));
 	is.normal = tr->normal;
 	is.material = tr->material;
-	return (is);
-}
-
-t_intersect	is5(t_unit_line ray, void *obj)
-{
-	t_intersect	is;
-
-	(void)ray;
-	(void)obj;
-	is.dist = __DBL_MAX__;
-	is.normal = vec(0, 0, 0);
-	is.pos = vec(0, 0, 0);
-	is.material = NULL;
-	return (is);
-}
-
-t_intersect	is6(t_unit_line ray, void *obj)
-{
-	t_intersect	is;
-
-	(void)ray;
-	(void)obj;
-	is.dist = __DBL_MAX__;
-	is.normal = vec(0, 0, 0);
-	is.pos = vec(0, 0, 0);
-	is.material = NULL;
-	return (is);
-}
-
-t_intersect	is7(t_unit_line ray, void *obj)
-{
-	t_intersect is;
-
-	(void)ray;
-	(void)obj;
-	is.dist = __DBL_MAX__;
-	is.normal = vec(0, 0, 0);
-	is.pos = vec(0, 0, 0);
-	is.material = NULL;
 	return (is);
 }

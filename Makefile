@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+         #
+#    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/04/13 17:11:56 by aryamamo         ###   ########.fr        #
+#    Updated: 2025/04/14 00:43:20 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,17 +81,17 @@ re: fclean all
 
 
 run: $(NAME)
-	$(NAME) sample.rt 2>/dev/null
+	$(NAME) ./input/sample.rt 2>/dev/null
 
 gen: fclean
 	$(MAKE) DFLAGS='-DGEN' all
-	# $(NAME) sample.rt 2>/dev/null
+	# $(NAME) ./input/sample.rt 2>/dev/null
 
 log: $(NAME)
-	$(NAME) sample.rt
+	$(NAME) ./input/sample.rt
 
 val: $(NAME)
-	$(VALGRIND) $(NAME) sample.rt 
+	$(VALGRIND) $(NAME) ./input/sample.rt 
 
 
 

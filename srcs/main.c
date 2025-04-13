@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/13 15:29:45 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/14 00:54:21 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,14 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		system_exit(NULL, E_INVALID_INPUT);
 	sys = system_init();
-	// #ifdef GEN
+	// 	/*  generate_from_file() を呼び出してファイルからオブジェクト群を生成 */
+	// sys->obj = generate(sys);
 	sys->obj = parse_file(argv[1], sys);
 	printf("sys->obj: %p\n", sys->obj);
 	if (!sys->obj)
 	{
 		system_exit(sys, E_INVALID_INPUT);
 	}
-	// #else
-	// 	/*  generate_from_file() を呼び出してファイルからオブジェクト群を生成 */
-	// 	sys->obj = generate_from_file(sys, argv[1]);
-	// #endif
 	setup_mlx(sys);
 	LOG;
 	mlx_loop(sys->mlx);

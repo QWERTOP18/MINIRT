@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:27:20 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/13 17:37:52 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/14 00:56:12 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ t_objects	*parse_file(char *file, t_sys *sys)
 			perror("Error splitting line");
 			return (NULL);
 		}
-		if (ft_strncmp(tokens[0], "A", 2) == 0)
+		if (tokens[0][0] == '#')
+			continue ;
+		else if (ft_strncmp(tokens[0], "A", 2) == 0)
 			parse_ambient(objs, tokens, i, sys);
 		else if (ft_strncmp(tokens[0], "C", 2) == 0)
 			parse_camera(objs, tokens, i, sys);

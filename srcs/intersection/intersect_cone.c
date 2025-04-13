@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:41:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 07:50:06 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 15:47:01 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ t_intersect	intersect_cone(t_unit_line ray, const t_cone *cone, double t1,
 	return (is);
 }
 
+/* CONE */
 t_intersect	is3(t_unit_line ray, void *obj)
 {
 	const t_cone	*cone = (const t_cone *)obj;

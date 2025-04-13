@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 07:57:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 17:12:58 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/14 00:47:30 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,5 @@
 #  define LOG ""
 #  define WARNIG ""
 # endif
-
-t_objects	*parse_file(char *file, t_sys *sys);
 
 #endif

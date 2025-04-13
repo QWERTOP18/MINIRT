@@ -20,4 +20,15 @@ void			log_light(t_light **light, int size);
 
 void			log_pixel(t_pixel **pixel, int y, int x);
 
+void			l0(void *data);
+void			l1(void *data);
+void			l2(void *data);
+void			l3(void *data);
+void			l4(void *data);
+void			l5(void *data);
+void			l6(void *data);
+void			l7(void *data);
+void			l8(void *data);
+void			l9(void *data);
+
 #endif
