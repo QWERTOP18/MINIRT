@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 05:35:19 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:58:22 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 06:30:39 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,17 @@ t_scaled_col	cal_diffuse(t_unit_vec lightdir, t_unit_vec normal,
 			* material->k_diffuse));
 }
 
-t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,
-		t_unit_vec normal, t_light *light, t_material *material)
+t_scaled_col	cal_specular(t_line rayinv_light, t_unit_vec normal,
+		t_light *light, t_material *material)
 {
-	t_unit_vec	reflection;
+	t_unit_vec	ray_inverse;
 	double		n_dot_l;
 	double		v_dot_r;
+	t_unit_vec	lightdir;
+	t_unit_vec	reflection;
 
+	ray_inverse = rayinv_light.p1;
+	lightdir = rayinv_light.p2;
 	n_dot_l = vec_dot(lightdir, normal);
 	reflection = vec_normalize(vec_sub(vec_mul(normal, 2 * n_dot_l), lightdir));
 	v_dot_r = vec_dot(ray_inverse, reflection);
@@ -72,7 +76,7 @@ t_scaled_col	cal_col(t_unit_line ray, t_light *light, t_intersect intersect,
 		return (res);
 	res = vec_add(res, cal_diffuse(lightdir, intersect.normal, light,
 				intersect.material));
-	res = vec_add(res, cal_specular(vec_mul(ray.dir, -1), lightdir,
+	res = vec_add(res, cal_specular(line(vec_mul(ray.dir, -1), lightdir),
 				intersect.normal, light, intersect.material));
 	return (res);
 }

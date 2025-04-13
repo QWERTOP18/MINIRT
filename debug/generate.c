@@ -17,8 +17,7 @@ void	setup_inside(t_objects *objects)
 void	setup_sphere(t_objects *objects)
 {
 	ft_lstadd_back(&objects->objs, ft_lstnew(SPHERE, sphere_new(vec(0, 0, 0),
-				1.5, material_init_with_param(vec(128, 24, 24), vec(600, 0.9,
-						0.9), 0))));
+				1.5, material_init_l(vec(128, 24, 24), 0))));
 	ft_lstadd_back(&objects->objs, ft_lstnew(SPHERE, sphere_new(vec(10, 0, 0),
 				1.5, material_init_with_param(vec(128, 24, 24), vec(10, 0.4,
 						0.9), 0))));
@@ -92,17 +91,17 @@ t_objects	*generate(t_sys *sys)
 	// objects->camera[3] = camera_init(vec(0, 1, 0), vec(0, 1, 0), 60, sys);
 	objects->camera[4] = camera_init(vec(30, 60, 0), vec(-0.3, -1, 0), 80, sys);
 	//
-	objects->light[1] = light_init(vec(200, 200, 0), color_scaler(vec(255, 100,
-					255)), 0.5, sys);
-	objects->light[0] = light_init(vec(-200, 200, 10), color_scaler(vec(100,
-					255, 255)), 0.5, sys);
+	objects->light[1] = light_init(vec(200, 200, 0), vec(255, 100, 255), 0.5,
+			sys);
+	objects->light[0] = light_init(vec(-200, 200, 10), vec(100, 255, 255), 0.5,
+			sys);
 	objects->ambient = vec_mul(color_scaler(vec(0, 240, 255)), 0.1);
 	// setup_inside(objects);
 	setup_sphere(objects);
-	setup_plane(objects);
-	setup_cylinder(objects);
-	setup_cone(objects);
-	setup_triangle(objects);
+	// setup_plane(objects);
+	// setup_cylinder(objects);
+	// setup_cone(objects);
+	// setup_triangle(objects);
 	log_objs(objects);
 	return (objects);
 }

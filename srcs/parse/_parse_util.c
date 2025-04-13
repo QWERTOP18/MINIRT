@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:26:16 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 05:34:37 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 06:39:03 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ bool	expect_len(int num, char **tokens, int line)
 	}
 	return (true);
 }
+
 float	ft_atof(const char **s)
 {
 	int			sign;

@@ -42,6 +42,7 @@ bool	parse_tokens(char **tokens, int line_num, t_objects *objs, t_sys *sys)
 			line_num);
 	return (true);
 }
+
 bool	parse_line(char *line, int line_num, t_objects *objs, t_sys *sys)
 {
 	char	**tokens;
