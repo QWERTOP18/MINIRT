@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 01:17:33 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 01:35:34 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 02:01:36 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,16 @@ void	log_material(t_material *material)
 		printf("name: %s\n", material->name);
 	if (material->description)
 		printf("description: %s\n", material->description);
+}
+void	log_material_inline(t_material *material)
+{
+	if (!material)
+	{
+		printf("Material is NULL\n");
+		return ;
+	}
+	printf("line: %d  ", material->line);
+	if (material->name)
+		printf("name: %s", material->name);
+	printf("\n");
 }

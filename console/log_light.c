@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 01:28:12 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 01:31:48 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:50:22 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,4 @@ void	log_light_detail(t_light **light, int size)
 		log_vec_inline("    color", light[i]->color);
 		i++;
 	}
-	printf("\n");
 }
