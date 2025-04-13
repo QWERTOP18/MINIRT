@@ -6,7 +6,7 @@
 /*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:27:20 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/13 12:36:15 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/13 17:37:52 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ t_objects	*parse_file(char *file, t_sys *sys)
 				i);
 		line = get_next_line(fd);
 	}
+	printf("sys->obj file: %p\n", sys->obj);
+	return (objs);
 }
 
 /*

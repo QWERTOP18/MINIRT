@@ -6,14 +6,14 @@
 #    By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/04/13 12:05:34 by aryamamo         ###   ########.fr        #
+#    Updated: 2025/04/13 17:11:56 by aryamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= ./miniRT
 CC			:= gcc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
-CFLAGS		:= -O2 -fPIE -Wall -Wextra #-Werror
+CFLAGS		:= -O2 -fPIE -g -Wall -Wextra #-Werror
 DFLAGS      := #-DGEN#-DNOINPUT -DDEBUG
 VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origins=yes
 

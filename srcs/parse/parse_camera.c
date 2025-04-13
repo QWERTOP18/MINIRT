@@ -6,7 +6,7 @@
 /*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 12:46:17 by aryamamo          #+#    #+#             */
-/*   Updated: 2025/04/13 14:02:09 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/13 17:22:53 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	parse_vec3_cam(const char *token, t_vec *vec, bool check_range)
 	while (i < 3)
 	{
 		value = ft_atof(&p);
-		printf("value: %f\n", value);
 		if (check_range && (value < -1.0 || value > 1.0))
 			error_exit("Vector value out of range");
 		if (i == 0)
@@ -66,6 +65,7 @@ t_objects	*parse_camera(t_objects *objs, char **tokens, int line_num,
 		error_exit("Failed to initialize camera");
 	objs->camera[objs->num_of_camera] = cam;
 	objs->num_of_camera++;
+	printf("sys->obj cam: %p\n", sys->obj);
 	return (objs);
 }
 

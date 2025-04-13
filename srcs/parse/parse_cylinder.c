@@ -6,7 +6,7 @@
 /*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 18:10:44 by aryamamo          #+#    #+#             */
-/*   Updated: 2025/04/13 16:22:07 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/13 17:24:08 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,12 @@ t_objects	*parse_sphere(t_objects *objs, char **tokens, int line_num,
 	parse_vec3_sp(center_token, sp->center);
 	sp->diameter = ft_atof((const char **)&diameter_token);
 	parse_color(color_token, sp->color);
+	printf("sys->obj: %p\n", sys->obj);
 	ft_lstadd_back(&(sys->obj->objs), ft_lstnew(SPHERE,
 			sphere_new(vec(sp->center[0], sp->center[1], sp->center[2]),
 				sp->diameter, material_init(vec(sp->color[0], sp->color[1],
 						sp->color[2])))));
+	printf("sys->obj sphere: %p\n", sys->obj);
 	free(sp);
 	return (objs);
 }

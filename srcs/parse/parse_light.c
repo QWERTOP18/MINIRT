@@ -79,15 +79,12 @@ t_objects	*parse_light(t_objects *objs, char **tokens, int line_num,
 	}
 	light = ft_calloc(1, sizeof(t_light));
 	parse_vec3(pos_token, light);
-	printf("debug\n");
 	light->intensity = ft_atof(&bright_token);
-	printf("debug2\n");
-	printf("color_token: %s\n", color_token);
 	parse_light_color(color_token, light);
-	printf("debug3\n");
 	objs->light[objs->num_of_light] = light_init(light->pos, light->color,
 			light->intensity, sys);
 	objs->num_of_light++;
+	printf("sys->obj light: %p\n", sys->obj);
 	return (objs);
 }
 /*

@@ -6,7 +6,7 @@
 /*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 12:19:34 by aryamamo          #+#    #+#             */
-/*   Updated: 2025/04/13 16:20:01 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/13 17:23:30 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,7 @@ t_objects	*parse_ambient(t_objects *objs, char **tokens, int line, t_sys *sys)
 			* ratio);
 	printf("ambient: %f, %f, %f\n", objs->ambient.x, objs->ambient.y,
 		objs->ambient.z);
-	free(color_tokens[0]);
-	free(color_tokens[1]);
-	free(color_tokens[2]);
-	free(color_tokens);
-	free(tokens[1]);
-	free(tokens[2]);
-	free(tokens[0]);
-	free(tokens);
+	printf("sys->obj: %p\n", sys->obj);
+	printf("objs ambient: %p\n", objs);
 	return (objs);
 }
