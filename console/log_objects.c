@@ -6,29 +6,11 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 00:01:20 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 05:04:18 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:36:43 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "console.h"
-
-void	log_light(t_light **light, int size)
-{
-	int	i;
-
-	if (!light)
-		return ;
-	i = 0;
-	while (i < size)
-	{
-		if (light[i]->ison)
-			printf(YELLOW REVERSED "[%d]" RESET " ", i);
-		else
-			printf("[%d] ", i);
-		i++;
-	}
-	printf("\n");
-}
 
 void	log_objs(t_objects *objs)
 {
@@ -40,5 +22,32 @@ void	log_objs(t_objects *objs)
 	printf("id_of_camera : %d\n", objs->id_of_camera);
 	printf("num_of_light : %d\n", objs->num_of_light);
 	printf(YELLOW BOLD "----------------------------------\n" RESET);
+	printf("\n");
+}
+
+void	log_objs_detail(t_objects *objs)
+{
+	if (!objs)
+		return ;
+	printf(YELLOW BOLD "---- obj -------------------------\n" RESET);
+	printf("num_of_objs  : %d\n", ft_lstsize(objs->objs));
+	printf("num_of_camera: %d\n", objs->num_of_camera);
+	printf("id_of_camera : %d\n", objs->id_of_camera);
+	printf("num_of_light : %d\n", objs->num_of_light);
+	log_light_detail(&objs->light, objs->num_of_light);
+	printf(YELLOW BOLD "----------------------------------\n" RESET);
+	printf("\n");
+}
+
+void	log_obj(t_list *obj)
+{
+	static console_log	l[] = {l0, l1, l2, l3, l4, l5, l6, l7, l8};
+
+	if (!obj)
+	{
+		printf(RED "object None" RESET "\n");
+		return ;
+	}
+	l[obj->type](obj->data);
 	printf("\n");
 }

@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 16:10:06 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:33:58 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ int	mouse_handler(int button, int x, int y, t_sys *sys)
 	if (button == LEFT_CLICK)
 	{
 		log_pixel(sys->obj->camera[id]->img->pixels, y, x);
+	}
+	if (button == RIGHT_CLICK)
+	{
+		log_pixel_detail(sys->obj->camera[id]->img->pixels, y, x);
+	}
+	if (button == CENTER_CLICK)
+	{
+		log_objs_detail(sys->obj);
 	}
 	return (0);
 }
