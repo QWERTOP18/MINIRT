@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:41:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 07:05:07 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 07:31:40 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ t_intersect	is3(t_unit_line ray, void *obj)
 {
 	const t_cone	*cone;
 	t_cone_vars		vars;
-	t_vec			d_mv;
-	t_vec			co_mv;
 	t_vec			coef;
 	t_roots			roots;
 
@@ -52,9 +50,8 @@ t_intersect	is3(t_unit_line ray, void *obj)
 	vars.v = cone->normal;
 	vars.co = vec_sub(ray.pos, cone->vertex);
 	vars.k = tan(cone->angle);
-	d_mv = get_cone_dv_parts(ray.dir, vars.v, &vars.dv);
-	co_mv = get_cone_cov_parts(vars.co, vars.v, &vars.cov);
-	coef = get_cone_coeffs(d_mv, co_mv, &vars);
+	coef = get_cone_coeffs(get_cone_dv_parts(ray.dir, vars.v, &vars.dv),
+			get_cone_cov_parts(vars.co, vars.v, &vars.cov), &vars);
 	roots = solve_eq(coef.x, coef.y, coef.z);
 	if (roots.n == 2)
 		return (intersect_cone(ray, cone, roots.x1, roots.x2));
