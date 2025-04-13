@@ -98,9 +98,9 @@ t_objects	*generate(t_sys *sys)
 	objects->ambient = vec_mul(color_scaler(vec(0, 240, 255)), 0.1);
 	// setup_inside(objects);
 	setup_sphere(objects);
-	// setup_plane(objects);
-	// setup_cylinder(objects);
-	// setup_cone(objects);
+	setup_plane(objects);
+	setup_cylinder(objects);
+	setup_cone(objects);
 	// setup_triangle(objects);
 	log_objs(objects);
 	return (objects);
