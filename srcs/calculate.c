@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 05:35:19 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 10:24:14 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/12 13:48:23 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ t_scaled_col	cal_diffuse(t_unit_vec lightdir, t_unit_vec normal,
 {
 	double	dot_product;
 
-	// dot_product = fmax(0.0, vec_dot(lightdir, normal));
-	dot_product = fabs(vec_dot(lightdir, normal));
+	dot_product = fmax(0.0, vec_dot(lightdir, normal));
 	return (vec_mul(vec_hadamard(light->color, obj_color), dot_product));
 }
 t_scaled_col	cal_specular(t_unit_vec ray_inverse, t_unit_vec lightdir,

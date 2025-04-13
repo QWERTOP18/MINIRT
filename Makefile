@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
+#    By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/04/09 22:24:47 by ymizukam         ###   ########.fr        #
+#    Updated: 2025/04/13 12:05:34 by aryamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= ./miniRT
-CC			:= cc
+CC			:= gcc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
 CFLAGS		:= -O2 -fPIE -Wall -Wextra #-Werror
-DFLAGS      := -DGEN#-DNOINPUT -DDEBUG
+DFLAGS      := #-DGEN#-DNOINPUT -DDEBUG
 VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origins=yes
 
 
