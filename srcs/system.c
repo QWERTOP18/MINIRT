@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   system.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/13 12:33:57 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:55:44 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@
 
 void	system_exit(t_sys *sys, int status)
 {
-	LOG;
-	if (status == E_INVALID_INPUT)
-	{
-		// ft_putstr_fd(ERRMSG1, 2);
-	}
 	if (!sys)
 		return (free(sys), exit(status));
 	if (!sys->obj)
@@ -60,7 +55,6 @@ t_sys	*system_init(void)
 {
 	t_sys	*sys;
 
-	LOG;
 	sys = xcalloc(1, sizeof(t_sys), NULL);
 	sys->width = 1024;
 	sys->height = 1024;
@@ -77,7 +71,6 @@ void	*xcalloc(size_t nmemb, size_t size, t_sys *sys)
 {
 	void	*ptr;
 
-	// WARNIG;
 	ptr = ft_calloc(nmemb, size);
 	if (!ptr)
 		system_exit(sys, E_ALLOCATE);

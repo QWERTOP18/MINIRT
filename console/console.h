@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   console.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/14 04:53:27 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/04/14 04:54:00 by ymizukam         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CONSOLE_H
 # define CONSOLE_H
 
@@ -11,7 +23,7 @@
 # include "system.h"
 # include <stdio.h>
 
-typedef void	(*console_log)(void *data);
+typedef void	(*t_console_log)(void *data);
 
 void			log_obj(t_list *obj);
 void			log_obj_inline(t_list *obj);

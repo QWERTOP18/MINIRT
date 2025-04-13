@@ -6,19 +6,19 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 05:35:19 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 00:36:28 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:58:22 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
+// dot_product = fabs(vec_dot(lightdir, normal));
 t_scaled_col	cal_diffuse(t_unit_vec lightdir, t_unit_vec normal,
 		t_light *light, t_material *material)
 {
 	double	dot_product;
 
 	dot_product = fmax(0.0, vec_dot(lightdir, normal));
-	// dot_product = fabs(vec_dot(lightdir, normal));
 	return (vec_mul(vec_hadamard(light->color, material->color), dot_product
 			* material->k_diffuse));
 }

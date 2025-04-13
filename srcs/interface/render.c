@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:40:17 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/11 15:38:08 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:56:33 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	render_img(t_camera *camera, t_sys *sys)
 	unsigned int	color;
 	t_unit_line		ray;
 
-	LOG;
 	camera->isupdate = False;
 	ray.pos = camera->pos;
 	y = 0;

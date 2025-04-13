@@ -80,7 +80,6 @@ t_objects	*generate(t_sys *sys)
 	objects->num_of_camera = 5;
 	objects->num_of_light = 2;
 	objects->id_of_camera = 0;
-	LOG;
 	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 100, sys);
 	// objects->camera[1] = camera_init(vec(0, 20, -50), vec(0, -0.2, 1), 100,
 	// 		sys);

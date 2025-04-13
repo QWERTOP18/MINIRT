@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 01:33:58 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:56:24 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int	key_handler(int key, t_sys *sys)
 
 int	exit_handler(t_sys *sys)
 {
-	LOG;
 	system_exit(sys, 0);
 	return (0);
 }

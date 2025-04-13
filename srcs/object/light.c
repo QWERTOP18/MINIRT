@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:42:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 01:43:13 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:56:12 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_light	*light_init(t_pos_vec pos, t_scaled_col col, double intensity,
 {
 	t_light	*light;
 
-	LOG;
 	light = xcalloc(1, sizeof(t_light), sys);
 	light->pos = pos;
 	light->color = vec_mul(color_scaler(col), intensity);
@@ -29,7 +28,6 @@ void	light_deinit(t_light *light[], int size)
 {
 	int	i;
 
-	LOG;
 	if (!light)
 		return ;
 	i = 0;

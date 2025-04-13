@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 00:54:21 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:58:40 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,14 @@ int	loop_handler(t_sys *sys)
 	return (0);
 }
 
-/* --- main() --- */
+// sys->obj = generate(sys);
 int	main(int argc, char **argv)
 {
 	t_sys	*sys;
 
-	LOG;
 	if (argc != 2)
 		system_exit(NULL, E_INVALID_INPUT);
 	sys = system_init();
-	// 	/*  generate_from_file() を呼び出してファイルからオブジェクト群を生成 */
-	// sys->obj = generate(sys);
 	sys->obj = parse_file(argv[1], sys);
 	printf("sys->obj: %p\n", sys->obj);
 	if (!sys->obj)
@@ -51,7 +48,6 @@ int	main(int argc, char **argv)
 		system_exit(sys, E_INVALID_INPUT);
 	}
 	setup_mlx(sys);
-	LOG;
 	mlx_loop(sys->mlx);
 	system_exit(sys, 0);
 	return (0);
