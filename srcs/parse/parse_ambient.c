@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_ambient.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 12:19:34 by aryamamo          #+#    #+#             */
-/*   Updated: 2025/04/13 17:23:30 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/14 03:10:41 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_objects	*parse_ambient(t_objects *objs, char **tokens, int line, t_sys *sys)
 	double	ratio;
 	char	**color_tokens;
 
+	LOG;
 	double r, g, b;
 	if (!tokens[1] || !tokens[2])
 	{
