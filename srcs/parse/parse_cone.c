@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_plane.c                                      :+:      :+:    :+:   */
+/*   parse_cone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 04:10:41 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:35:17 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/04/14 04:10:21 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/04/14 04:37:58 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-bool	parse_plane(t_objects *objs, char **tokens, int line)
+bool	parse_cone(t_objects *objs, char **tokens, int line_num)
 {
 	return (true);
 }

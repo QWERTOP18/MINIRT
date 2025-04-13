@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_util.c                                       :+:      :+:    :+:   */
+/*   _parse_util.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:26:16 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 19:35:59 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:19:09 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-#include "vector.h"
 
-t_vec	parse_vector(const char *line)
+bool	expect_len(int num, const char **tokens, int line)
 {
-	return (vec(0, 0, 0));
-}
+	int	i;
 
+	i = 0;
+	// i = 0 は存在することが確定している
+	while (++i < num)
+		if (!tokens[i])
+		{
+			printf("line: %d: Insufficient parameters\n", line);
+			return (false);
+		}
+	return (true);
+}
 float	ft_atof(const char **s)
 {
 	int			sign;
@@ -65,23 +73,4 @@ void	error_exit(const char *msg)
 int	is_space(char c)
 {
 	return (c == ' ' || c == '\n' || c == '\t' || c == '\r');
-}
-
-char	*get_next_token(char **p)
-{
-	char	*start;
-
-	while (**p && is_space(**p))
-		(*p)++;
-	if (**p == '\0')
-		return (NULL);
-	start = *p;
-	while (**p && !is_space(**p))
-		(*p)++;
-	if (**p)
-	{
-		**p = '\0';
-		(*p)++;
-	}
-	return (start);
 }

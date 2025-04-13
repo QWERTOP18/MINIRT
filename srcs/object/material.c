@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 05:45:37 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 00:42:01 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:42:05 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,19 @@ t_material	*material_init(t_vec color)
 	return (material);
 }
 
+t_material	*material_init_l(t_vec color, int line)
+{
+	t_material	*material;
+
+	material = material_init(color);
+	material->line = line;
+	return (material);
+}
+
 /**
  * @param coef x:gloss y: k_specular z:k_diffuse
  */
-t_material	*material_init_with_param(t_vec color, t_vec coef)
+t_material	*material_init_with_param(t_vec color, t_vec coef, int line)
 {
 	t_material	*material;
 
@@ -41,6 +50,7 @@ t_material	*material_init_with_param(t_vec color, t_vec coef)
 	material->gloss = coef.x;
 	material->k_specular = coef.y;
 	material->k_diffuse = coef.z;
+	material->line = line;
 	return (material);
 }
 
