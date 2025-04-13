@@ -6,15 +6,15 @@
 #    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/04/09 22:24:47 by ymizukam         ###   ########.fr        #
+#    Updated: 2025/04/14 00:43:20 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= ./miniRT
-CC			:= cc
+CC			:= gcc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
-CFLAGS		:= -O2 -fPIE -Wall -Wextra #-Werror
-DFLAGS      := -DGEN#-DNOINPUT -DDEBUG
+CFLAGS		:= -O2 -fPIE -g -Wall -Wextra #-Werror
+DFLAGS      := #-DGEN#-DNOINPUT -DDEBUG
 VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origins=yes
 
 
@@ -81,17 +81,17 @@ re: fclean all
 
 
 run: $(NAME)
-	$(NAME) sample.rt 2>/dev/null
+	$(NAME) ./input/sample.rt 2>/dev/null
 
 gen: fclean
 	$(MAKE) DFLAGS='-DGEN' all
-	# $(NAME) sample.rt 2>/dev/null
+	# $(NAME) ./input/sample.rt 2>/dev/null
 
 log: $(NAME)
-	$(NAME) sample.rt
+	$(NAME) ./input/sample.rt
 
 val: $(NAME)
-	$(VALGRIND) $(NAME) sample.rt 
+	$(VALGRIND) $(NAME) ./input/sample.rt 
 
 
 
