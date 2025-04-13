@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:01:24 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 11:22:24 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:56:33 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	obj_clear(void *data, int type)
 
 void	objs_deinit(t_objects *objs)
 {
-	LOG;
 	if (!objs)
 		return ;
 	ft_lstclear(&objs->objs, obj_clear);

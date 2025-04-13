@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 10:40:53 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 15:43:29 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:59:42 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ t_cone	*cone_new(t_pos_vec vertex, t_vec normal, t_vec angles, void *material)
 		return (NULL);
 	cone->vertex = vertex;
 	cone->angle = angles.x * M_PI / 180;
-	cone->height = angles.y; // angles.y に高さ
+	cone->height = angles.y;
 	cone->normal = normal;
 	cone->material = material;
 	cone->radius = cone->height * tan(cone->angle);
 	return (cone);
 }
+
 void	cone_clear(t_cone *cone)
 {
 	if (!cone)

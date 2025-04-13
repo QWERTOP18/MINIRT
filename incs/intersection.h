@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 13:33:11 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 07:24:17 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 07:03:43 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_intersect
 
 typedef t_intersect	(*t_isfunc)(t_unit_line ray, void *obj);
 
+t_intersect			intersect0(void);
+
 /* -----------------------------  INTERSECT   ------------------------------- */
 
 t_intersect			is0(t_unit_line ray, void *obj);
@@ -50,5 +52,14 @@ t_intersect			is9(t_unit_line ray, void *obj);
 /* -----------------------------   UTILS    --------------------------------- */
 
 t_intersect			intersect_dispatcher(t_unit_line ray, t_list *obj);
+
+typedef struct s_cone_vars
+{
+	t_vec			v;
+	t_vec			co;
+	double			k;
+	double			dv;
+	double			cov;
+}					t_cone_vars;
 
 #endif

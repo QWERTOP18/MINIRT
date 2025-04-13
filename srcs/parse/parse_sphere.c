@@ -6,13 +6,13 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 04:10:34 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:39:38 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 05:19:52 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-bool	parse_sphere(t_objects *objs, const char **tokens, int line)
+bool	parse_sphere(t_objects *objs, char **tokens, int line)
 {
 	double			radius;
 	t_scaled_col	color;
@@ -23,7 +23,7 @@ bool	parse_sphere(t_objects *objs, const char **tokens, int line)
 	if (!res)
 		return (false);
 	center = parse_vector(&res, tokens[1], line);
-	radius = parse_double(&res, tokens[2], line) / 2;
+	radius = parse_double(&res, tokens[2], line, vec(0, __DBL_MAX__, 1)) / 2;
 	color = parse_color(&res, tokens[3], line);
 	if (!res)
 		return (false);

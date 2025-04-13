@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 01:28:12 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 01:50:22 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:53:22 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	log_light(t_light **light, int size)
 	}
 	printf("\n");
 }
+
 void	log_light_detail(t_light **light, int size)
 {
 	int	i;

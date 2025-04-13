@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 15:45:15 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:56:39 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_rect	set_screen(t_camera *c, t_sys *sys)
 	int		dist;
 	t_rect	screen;
 
-	LOG;
 	dist = sys->width / 2 / tan(c->fov / 2);
 	screen.normal = c->dir;
 	screen.pos = vec_add(vec_mul(c->dir, dist), c->pos);
@@ -33,7 +32,6 @@ t_camera	*camera_init(t_vec pos, t_vec orient, int fov, t_sys *sys)
 {
 	t_camera	*camera;
 
-	LOG;
 	camera = xcalloc(1, sizeof(t_camera), sys);
 	camera->img = xcalloc(1, sizeof(t_screen), sys);
 	camera->pos = pos;
@@ -49,7 +47,6 @@ void	camera_deinit(void *mlx, t_camera *camera[], int size)
 {
 	int	i;
 
-	LOG;
 	i = 0;
 	if (!camera)
 		return ;

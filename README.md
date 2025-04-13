@@ -17,9 +17,14 @@ make norm
 make func
 ```
 
-### log
+### WIKI
 
-[log の見方](./DOCS/log.md)
+- [Home](https://github.com/QWERTOP18/MINIRT/wiki/)
+- [ClassDiagram](https://github.com/QWERTOP18/MINIRT/wiki/ClassDiagram)
+- [Vector](https://github.com/QWERTOP18/MINIRT/wiki/Vector)
+- [Flow](https://github.com/QWERTOP18/MINIRT/wiki/Flow)
+- [Parse](https://github.com/QWERTOP18/MINIRT/wiki/Parse)
+- [log](https://github.com/QWERTOP18/MINIRT/wiki/log)
 
 ### directory 階層
 

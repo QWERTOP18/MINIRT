@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:21:11 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/01/06 03:21:17 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 05:13:33 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,9 @@ t_vec	vec(double x, double y, double z)
 	v.y = y;
 	v.z = z;
 	return (v);
+}
+
+t_vec	vec0(void)
+{
+	return (vec(0, 0, 0));
 }

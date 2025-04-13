@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 00:01:20 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 03:24:40 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 06:39:23 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	log_objs_detail(t_objects *objs)
 
 void	log_obj(t_list *obj)
 {
-	static console_log	l[] = {l0, l1, l2, l3, l4, l5, l6, l7, l8};
+	static t_console_log	l[] = {l0, l1, l2, l3, l4, l5, l6, l7, l8};
 
 	if (!obj)
 	{
@@ -64,9 +64,11 @@ void	log_obj(t_list *obj)
 	l[obj->type](obj->data);
 	printf("\n");
 }
+
 void	log_obj_inline(t_list *obj)
 {
-	static console_log	ls[] = {ls0, ls1, ls2, ls3, ls4, ls5, ls6, ls7, ls8};
+	static t_console_log	ls[] = {ls0, ls1, ls2, ls3, ls4, ls5, ls6, ls7,
+		ls8};
 
 	if (!obj)
 	{

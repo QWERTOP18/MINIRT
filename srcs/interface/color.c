@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:43:19 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/08 06:19:46 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 04:56:33 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_scaled_col	color_scaler(t_vec color)
 // 	t_scaled_col	**array;
 // 	int		i;
 
-// 	LOG;
+//
 // 	i = 0;
 // 	array = xcalloc(height, sizeof(t_scaled_col *), sys);
 // 	while (i < height)
@@ -52,7 +52,7 @@ t_scaled_col	color_scaler(t_vec color)
 
 // void	color_array_deinit(int height, int width, t_scaled_col **array)
 // {
-// 	LOG;
+//
 // 	(void)width;
 // 	if (!array)
 // 		return ;
