@@ -63,6 +63,29 @@ bool	parse_line(char *line, int line_num, t_objects *objs, t_sys *sys)
 	return (res);
 }
 
+bool	check_objects(t_objects *objs)
+{
+	bool	res;
+
+	res = true;
+	if (objs->ambient.x == -1)
+	{
+		printf("Ambient is required\n");
+		res = false;
+	}
+	if (objs->num_of_camera == 0)
+	{
+		printf("Camera is required\n");
+		res = false;
+	}
+	if (objs->num_of_light == 0)
+	{
+		printf("Light is required\n");
+		res = false;
+	}
+	return (res);
+}
+
 t_objects	*parse_file(char *file, t_sys *sys)
 {
 	int			fd;
@@ -74,10 +97,9 @@ t_objects	*parse_file(char *file, t_sys *sys)
 	res = true;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-	{
 		return (printf("Error opening file"), NULL);
-	}
 	objects = ft_calloc(1, sizeof(t_objects));
+	objects->ambient = vec(-1, -1, -1);
 	i = 0;
 	while (++i < MAX_INPUT_LINE)
 	{
@@ -87,7 +109,7 @@ t_objects	*parse_file(char *file, t_sys *sys)
 		res &= parse_line(line, i, objects, sys);
 		free(line);
 	}
-	if (!res)
+	if (!res || !check_objects(objects))
 		return (free(objects), NULL);
 	return (printf("parse: %s completed\n", file), objects);
 }

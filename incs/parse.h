@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:37:59 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 05:19:52 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 07:46:20 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ t_objects	*parse_file(char *file, t_sys *sys);
 
 /* -----------------------------  内部関数   --------------------------------- */
 
-t_objects	*parse_light(t_objects *objs, char **tokens, int line_num,
-				t_sys *sys);
-t_objects	*parse_camera(t_objects *objs, char **tokens, int line_num,
-				t_sys *sys);
+bool		parse_light(t_objects *objs, char **tokens, int line, t_sys *sys);
+bool		parse_camera(t_objects *objs, char **tokens, int line, t_sys *sys);
 
 bool		parse_ambient(t_objects *objs, char **tokens, int line);
 bool		parse_sphere(t_objects *objs, char **tokens, int line);
