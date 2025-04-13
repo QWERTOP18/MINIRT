@@ -6,13 +6,26 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:41:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:57:41 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 05:06:01 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
 /* TRIANGLE */
+t_intersect	is4(t_unit_line ray, void *obj)
+{
+	t_intersect	is;
+
+	(void)ray;
+	(void)obj;
+	is.dist = __DBL_MAX__;
+	is.normal = vec(0, 0, 0);
+	is.pos = vec(0, 0, 0);
+	is.material = NULL;
+	return (is);
+}
+
 // t_intersect	is4(t_unit_line ray, void *obj)
 // {
 // 	const t_triangle	*tr = (const t_triangle *)obj;

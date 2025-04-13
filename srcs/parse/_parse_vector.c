@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 03:29:36 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:16:35 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 05:12:54 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ t_vec	parse_vector(bool *res, const char *token, int line)
 	}
 	// todo parse_double にres :boolを持たせてparseの失敗を検知するaaaみたいな小数ではないものが来ても、
 	// res=false とするだけで最後までparseする
-	return (vec(parse_double(res, el[0], line), parse_double(res, el[1], line),
-			parse_double(res, el[2], line)));
+	return (vec(parse_double(res, el[0], line, vec0()), parse_double(res, el[1],
+				line, vec0()), parse_double(res, el[2], line, vec0())));
 }
 
 t_vec	parse_color(bool *res, const char *token, int line)

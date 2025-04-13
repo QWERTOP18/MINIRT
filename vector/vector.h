@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 17:45:07 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 05:13:14 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef t_vec	t_unit_vec;
 typedef t_vec	t_pos_vec;
 
 t_vec			vec(double x, double y, double z);
+t_vec			vec0(void);
 t_vec			vec_add(t_vec v1, t_vec v2);
 t_vec			vec_sub(t_vec v1, t_vec v2);
 t_vec			vec_mul(t_vec v, double scalar);

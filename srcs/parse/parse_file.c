@@ -47,6 +47,7 @@ bool	parse_line(char *line, int line_num, t_objects *objs, t_sys *sys)
 	char	**tokens;
 	bool	res;
 
+	res = true;
 	tokens = ft_split(line, ' ');
 	if (!tokens)
 	{
@@ -54,7 +55,9 @@ bool	parse_line(char *line, int line_num, t_objects *objs, t_sys *sys)
 		printf("Error splitting line %d\n", line_num);
 		return (false);
 	}
-	res = parse_tokens(tokens, line_num, objs, sys);
+	if (parse_tokens(tokens, line_num, objs, sys) == false)
+		res = false;
+	// printf(res ? "true\n" : "false\n");
 	ft_strs_clear(tokens);
 	return (res);
 }
@@ -80,7 +83,7 @@ t_objects	*parse_file(char *file, t_sys *sys)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		res = parse_line(line, i, objects, sys);
+		res &= parse_line(line, i, objects, sys);
 		free(line);
 	}
 	if (!res)
