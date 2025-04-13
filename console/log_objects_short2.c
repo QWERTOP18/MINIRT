@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   log_vector.c                                       :+:      :+:    :+:   */
+/*   log_objects_short2.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 21:03:01 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 01:21:49 by ymizukam         ###   ########.fr       */
+/*   Created: 2025/01/10 21:02:58 by ymizukam          #+#    #+#             */
+/*   Updated: 2025/04/14 01:51:57 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "console.h"
 
-void	log_vec(char *name, t_vec vec)
+void	ls5(void *data)
 {
-	printf(UNDERLINE BLUE BOLD "%s" RESET "\n", name);
-	printf("x:  %8.2f\n", vec.x);
-	printf("y:  %8.2f\n", vec.y);
-	printf("z:  %8.2f\n", vec.z);
-	printf("\n");
+	(void)data;
 }
-void	log_vec_inline(char *name, t_vec vec)
+
+void	ls6(void *data)
 {
-	printf("%s: ", name);
-	printf("%8.2f  ", vec.x);
-	printf("%8.2f  ", vec.y);
-	printf("%8.2f", vec.z);
-	printf("\n");
+	(void)data;
+}
+
+void	ls7(void *data)
+{
+	(void)data;
+}
+
+void	ls8(void *data)
+{
+	(void)data;
 }

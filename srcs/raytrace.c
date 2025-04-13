@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 09:53:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/12 18:36:35 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:42:17 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ unsigned int	update_pixel(t_unit_line ray, t_objects *objs, t_pixel *pixel)
 	i = 0;
 	while (i < objs->num_of_light)
 	{
-		pixel->colors[i] = vec_mul(cal_col(ray, objs->light[i],
-					pixel->intersect, objs->objs), objs->light[i]->intensity);
-		// todo lightのintensityはscale_colorにまとめる？
+		pixel->colors[i] = cal_col(ray, objs->light[i], pixel->intersect,
+				objs->objs);
 		i++;
 	}
 	i = 0;

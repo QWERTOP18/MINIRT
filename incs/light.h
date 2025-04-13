@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/07 23:56:36 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/10 05:19:32 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 01:44:43 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@
 /* ************************************************************************** */
 /*                                 STRUCT         :)                          */
 /* ************************************************************************** */
-
-typedef struct s_light_disc
-{
-	bool			iscalculated;
-	t_unit_vec		light;
-	t_unit_vec		reflect;
-	t_scaled_col	scol;
-}					t_light_disc;
 
 typedef struct s_light
 {
