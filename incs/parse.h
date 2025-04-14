@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:37:59 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 09:54:27 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:31:23 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ bool		expect_len(int num, char **tokens, int line);
 t_vec		parse_vector(bool *res, const char *token, int line);
 t_vec		parse_color(bool *res, const char *token, int line);
 double		parse_double(bool *res, const char *token, int line, t_vec lim);
+
+void		deinit_parse_stack(t_sys *sys, t_objects *objects);
+int			open_rtfile(const char *file);
 
 #endif

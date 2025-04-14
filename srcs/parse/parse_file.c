@@ -15,12 +15,10 @@
 
 #include "object.h"
 #include "parse.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "system.h"
 
 bool	parse_tokens(char **tokens, int line_num, t_objects *objs, t_sys *sys)
 {
-	// empty line or comment line
 	if (!tokens[0] || tokens[0][0] == '\n' || tokens[0][0] == '#')
 		return (true);
 	else if (ft_strncmp(tokens[0], "A", 2) == 0)
@@ -28,15 +26,15 @@ bool	parse_tokens(char **tokens, int line_num, t_objects *objs, t_sys *sys)
 	else if (ft_strncmp(tokens[0], "C", 2) == 0)
 		return (parse_camera(objs, tokens, line_num, sys));
 	else if (ft_strncmp(tokens[0], "L", 2) == 0)
-		parse_light(objs, tokens, line_num, sys);
-	else if (ft_strncmp(tokens[0], "sp", 2) == 0)
+		return (parse_light(objs, tokens, line_num, sys));
+	else if (ft_strncmp(tokens[0], "sp", 3) == 0)
 		return (parse_sphere(objs, tokens, line_num));
-	else if (ft_strncmp(tokens[0], "pl", 2) == 0)
+	else if (ft_strncmp(tokens[0], "pl", 3) == 0)
 		return (parse_plane(objs, tokens, line_num));
-	else if (ft_strncmp(tokens[0], "cy", 2) == 0)
+	else if (ft_strncmp(tokens[0], "cy", 3) == 0)
 		return (parse_cylinder(objs, tokens, line_num));
-	else if (ft_strncmp(tokens[0], "cone", 2) == 0)
-		return (parse_cylinder(objs, tokens, line_num));
+	else if (ft_strncmp(tokens[0], "cone", 5) == 0)
+		return (parse_cone(objs, tokens, line_num));
 	else
 		return (printf("line: %d: Unknown object type '%s'\n", line_num,
 				tokens[0]), false);
@@ -58,7 +56,6 @@ bool	parse_line(char *line, int line_num, t_objects *objs, t_sys *sys)
 	}
 	if (parse_tokens(tokens, line_num, objs, sys) == false)
 		res = false;
-	// printf(res ? "true\n" : "false\n");
 	ft_strs_clear(tokens);
 	return (res);
 }
@@ -98,23 +95,22 @@ t_objects	*parse_file(char *file, t_sys *sys)
 	bool		res;
 
 	res = true;
-	// todo .rt以外だったらreturn NULL
-	fd = open(file, O_RDONLY);
+	fd = open_rtfile(file);
 	if (fd < 0)
-		return (printf("Error opening file"), NULL);
-	objects = ft_calloc(1, sizeof(t_objects));
-	objects->ambient = vec(-1, -1, -1);
+		return (free(sys->mlx), NULL);
+	objects = init_objs();
 	i = 0;
 	while (++i < MAX_INPUT_LINE)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
+		line[ft_strlen(line) - 1] = '\0';
 		res &= parse_line(line, i, objects, sys);
 		free(line);
 	}
 	if (!res || !check_objects(objects))
-		return (objs_deinit(objects), NULL);
+		return (deinit_parse_stack(sys, objects), NULL);
 	return (printf("parse: %s completed\n", file), objects);
 }
 
