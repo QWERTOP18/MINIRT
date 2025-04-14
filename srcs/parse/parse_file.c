@@ -35,6 +35,8 @@ bool	parse_tokens(char **tokens, int line_num, t_objects *objs, t_sys *sys)
 		return (parse_cylinder(objs, tokens, line_num));
 	else if (ft_strncmp(tokens[0], "cone", 5) == 0)
 		return (parse_cone(objs, tokens, line_num));
+	else if (ft_strncmp(tokens[0], "tr", 3) == 0)
+		return (parse_triangle(objs, tokens, line_num));
 	else
 		return (printf("line: %d: Unknown object type '%s'\n", line_num,
 				tokens[0]), false);

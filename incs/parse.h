@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:37:59 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 12:31:23 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 16:39:14 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ bool		parse_sphere(t_objects *objs, char **tokens, int line);
 bool		parse_cylinder(t_objects *objs, char **tokens, int line);
 bool		parse_cone(t_objects *objs, char **tokens, int line);
 bool		parse_plane(t_objects *objs, char **tokens, int line);
+bool		parse_triangle(t_objects *objs, char **tokens, int line_num);
 
 /* -----------------------------  補助関数   --------------------------------- */
 
