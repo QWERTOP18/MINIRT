@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_ambient.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 12:19:34 by aryamamo          #+#    #+#             */
-/*   Updated: 2025/04/14 05:19:52 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:22:29 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ bool	parse_ambient(t_objects *objs, char **tokens, int line)
 	t_scaled_col	color;
 	bool			res;
 
+	if (objs->ambient.x != -1)
+		return (printf("line: %d: ambient light is already set\n", line),
+			false);
 	res = expect_len(3, tokens, line);
 	if (!res)
 		return (false);
