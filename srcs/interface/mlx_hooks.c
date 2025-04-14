@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:56:24 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:13:53 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,11 @@ int	mouse_handler(int button, int x, int y, t_sys *sys)
 	return (0);
 }
 
-int	key_handler(int key, t_sys *sys)
+int	key_handler2(int key, t_sys *sys)
 {
 	int	n_camera;
-	int	n_light;
 
 	n_camera = sys->obj->num_of_camera;
-	n_light = sys->obj->num_of_light;
-	if (key == ESCAPE)
-		exit_handler(sys);
 	if (key == UP)
 	{
 		sys->obj->id_of_camera++;
@@ -53,6 +49,20 @@ int	key_handler(int key, t_sys *sys)
 		sys->obj->id_of_camera += n_camera;
 		sys->obj->id_of_camera %= n_camera;
 	}
+	return (0);
+}
+
+int	key_handler(int key, t_sys *sys)
+{
+	int	n_light;
+
+	n_light = sys->obj->num_of_light;
+	if (key == ESCAPE)
+		exit_handler(sys);
+	if (key == UP || key == DOWN)
+		key_handler2(key, sys);
+	if (key == 'i')
+		log_objs_detail(sys->obj);
 	if (0 <= key - '0' && key - '0' < n_light)
 	{
 		sys->obj->light[key - '0']->ison ^= 1;

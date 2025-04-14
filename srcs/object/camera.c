@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:24:09 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:56:39 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:05:50 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_rect	set_screen(t_camera *c, t_sys *sys)
 	screen.pos = vec_add(vec_mul(c->dir, dist), c->pos);
 	screen.wdir = vec_normalize(vec(-c->dir.z, 0, c->dir.x));
 	screen.hdir = vec_cross(screen.normal, screen.wdir);
-	log_vec("screen normal", screen.normal);
 	return (screen);
 }
 

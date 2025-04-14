@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _parse_vector.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 03:29:36 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 05:12:54 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:03:16 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_vec	parse_vector(bool *res, const char *token, int line)
 	char	**el;
 
 	el = ft_split(token, ',');
-	if (!el || !el[0] || !el[1] || !el[2])
+	if (!el || !el[0] || !el[1] || !el[2] || el[3])
 	{
 		ft_strs_clear(el);
 		printf("line: %d:  vector and color should 3 fields\n", line);

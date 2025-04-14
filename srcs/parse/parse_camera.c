@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/13 12:46:17 by aryamamo          #+#    #+#             */
-/*   Updated: 2025/04/14 07:46:05 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 09:57:47 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ bool	parse_camera(t_objects *objs, char **tokens, int line, t_sys *sys)
 	t_vec	dir;
 
 	if (objs->num_of_camera >= MAX_CAMERA)
-		return (printf("too many cameras\n"), false);
+		return (printf("line: %d: too many cameras\n", line), false);
 	res = expect_len(4, tokens, line);
 	if (!res)
 		return (false);
