@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 02:00:30 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:55:44 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:37:28 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 void	system_exit(t_sys *sys, int status)
 {
 	if (!sys)
-		return (free(sys), exit(status));
+		return (exit(status));
 	if (!sys->obj)
 		return (free(sys), exit(status));
 	camera_deinit(sys->mlx, sys->obj->camera, sys->obj->num_of_camera);
@@ -47,7 +47,7 @@ t_objects	*init_objs(void)
 	objs->id_of_camera = 0;
 	objs->num_of_light = 0;
 	objs->objs = NULL;
-	objs->ambient = vec(0, 0, 0);
+	objs->ambient = vec(-1, -1, -1);
 	return (objs);
 }
 
@@ -61,9 +61,6 @@ t_sys	*system_init(void)
 	sys->mlx = mlx_init();
 	if (!sys->mlx)
 		system_exit(NULL, E_MLX_INIT);
-	sys->obj = init_objs();
-	if (sys->obj == NULL)
-		system_exit(sys, E_ALLOCATE);
 	return (sys);
 }
 

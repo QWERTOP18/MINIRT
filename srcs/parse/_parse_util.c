@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _parse_util.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:26:16 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 09:54:17 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:37:46 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ bool	expect_len(int num, char **tokens, int line)
 	int	i;
 
 	i = 0;
-	// i = 0 は存在することが確定している
 	while (++i < num)
 	{
 		if (!tokens[i])
@@ -32,4 +31,31 @@ bool	expect_len(int num, char **tokens, int line)
 		return (false);
 	}
 	return (true);
+}
+
+void	deinit_parse_stack(t_sys *sys, t_objects *objects)
+{
+	camera_deinit(sys->mlx, objects->camera, objects->num_of_camera);
+	light_deinit(objects->light, objects->num_of_light);
+	free(sys->mlx);
+	objs_deinit(objects);
+}
+
+int	open_rtfile(const char *file)
+{
+	int	len;
+	int	fd;
+
+	if (!file)
+		return (-1);
+	len = ft_strlen(file);
+	if (len < 3 || ft_strncmp(file + len - 3, ".rt", 4) != 0)
+	{
+		write(2, "Error: File must have .rt extension\n", 36);
+		return (-1);
+	}
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		perror("Error opening file");
+	return (fd);
 }

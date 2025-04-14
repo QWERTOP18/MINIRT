@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 06:19:31 by teando            #+#    #+#             */
-/*   Updated: 2025/04/08 06:09:51 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 11:41:28 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *, int))
 	{
 		next_node = current->next;
 		del(current->data, current->type);
+		free(current);
 		current = next_node;
 	}
 	*lst = NULL;
