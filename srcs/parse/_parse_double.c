@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   _parse_double.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 03:59:52 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 06:20:42 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:21:55 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+
+double	ft_atod(const char *str, bool *res)
+{
+}
 
 /**
  * @param lim xに最小値 yに最大値 zに範囲指定をするかどうかをいれて渡す

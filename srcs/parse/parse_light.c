@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_light.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 06:38:49 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 07:49:13 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/14 10:24:05 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	parse_light(t_objects *objs, char **tokens, int line, t_sys *sys)
 	t_vec	pos;
 
 	if (objs->num_of_light >= MAX_LIGHT)
-		return (printf("too many lights\n"), false);
+		return (printf("line: %d: too many lights\n", line), false);
 	res = expect_len(4, tokens, line);
 	if (!res)
 		return (false);

@@ -38,7 +38,8 @@ bool	parse_tokens(char **tokens, int line_num, t_objects *objs, t_sys *sys)
 	else if (ft_strncmp(tokens[0], "cone", 2) == 0)
 		return (parse_cylinder(objs, tokens, line_num));
 	else
-		printf("line: %d: Unknown object type '%s'\n", line_num, tokens[0]);
+		return (printf("line: %d: Unknown object type '%s'\n", line_num,
+				tokens[0]), false);
 	return (true);
 }
 
@@ -84,6 +85,7 @@ bool	check_objects(t_objects *objs)
 	}
 	return (res);
 }
+
 /**
  * @param res エラーがあるか
  */
@@ -96,7 +98,7 @@ t_objects	*parse_file(char *file, t_sys *sys)
 	bool		res;
 
 	res = true;
-	// .rt以外だったらreturn NULL
+	// todo .rt以外だったらreturn NULL
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		return (printf("Error opening file"), NULL);
@@ -112,7 +114,7 @@ t_objects	*parse_file(char *file, t_sys *sys)
 		free(line);
 	}
 	if (!res || !check_objects(objects))
-		return (free(objects), NULL);
+		return (objs_deinit(objects), NULL);
 	return (printf("parse: %s completed\n", file), objects);
 }
 
