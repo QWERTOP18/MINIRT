@@ -6,7 +6,7 @@
 /*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 03:59:52 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 10:21:55 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/14 12:27:20 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,39 @@
 
 double	ft_atod(const char *str, bool *res)
 {
+	double	result;
+	int		sign;
+	int		i;
+
+	result = 0.0;
+	sign = 1;
+	i = 0;
+	if (str[i] == '-')
+	{
+		sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	if (str[i] == '.')
+	{
+		i++;
+		while (str[i] >= '0' && str[i] <= '9')
+		{
+			result = result * 10 + (str[i] - '0');
+			i++;
+		}
+	}
+	if (str[i] != '\0')
+	{
+		printf("Invalid number format\n");
+		*res = false;
+		return (0);
+	}
+	return (result * sign);
 }
 
 /**
@@ -33,6 +66,7 @@ double	parse_double(bool *res, const char *token, int line, t_vec lim)
 
 	// todo 失敗したら*res = false　にしエラーメッセージをはく
 	d = atof(token);
+	// d = ft_atod(token, res);
 	if (lim.z != 0.0 && (d < lim.x || lim.y < d))
 	{
 		if (lim.y == __DBL_MAX__)
