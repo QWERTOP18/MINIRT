@@ -6,7 +6,7 @@
 /*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 03:19:29 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 16:20:35 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:05:03 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,20 @@ typedef struct s_triangle
 
 	void		*material;
 }				t_triangle;
+
+typedef struct s_tr_elements
+{
+	t_vec		e1;
+	t_vec		e2;
+	t_vec		h;
+	t_vec		s;
+	t_vec		q;
+	double		a;
+	double		f;
+	double		u;
+	double		v;
+	double		t;
+}				t_tr_elements;
 
 t_triangle		*triangle_new(t_pos_vec p0, t_pos_vec p1, t_pos_vec p2,
 					void *material);

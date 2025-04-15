@@ -6,15 +6,16 @@
 #    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/04/15 18:17:32 by ymizukam         ###   ########.fr        #
+#    Updated: 2025/04/15 18:27:20 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= ./miniRT
 CC			:= cc
+CC			:= cc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
 CFLAGS		:= -O2 -Wall -Wextra -Werror
-DFLAGS      := -DMAX_CAMERA=1 -DMAX_LIGHT=1
+DFLAGS      := #-DMAX_CAMERA=1 -DMAX_LIGHT=1
 VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origins=yes
 
 

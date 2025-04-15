@@ -61,8 +61,8 @@ void	setup_triangle(t_objects *objects)
 	/**
 		* TRIANGLE
 		*/
-	ft_lstadd_back(&objects->objs, ft_lstnew(TRIANGLE, triangle_new(vec(-40,
-					-1.5, 40), vec(40, -1.5, 40), vec(-40, -1.5, -40),
+	ft_lstadd_back(&objects->objs, ft_lstnew(TRIANGLE, triangle_new(vec(40,
+					-1.5, 40), vec(-40, -1.5, 40), vec(-40, -1.5, -40),
 				material_init_with_param(vec(0xF5, 0xF5, 0xDC), vec(600, 0.9,
 						0.9), 0))));
 	ft_lstadd_back(&objects->objs, ft_lstnew(TRIANGLE, triangle_new(vec(40,
@@ -107,7 +107,7 @@ t_objects	*generate(t_sys *sys)
 	// setup_camera(objects, sys);
 	// setup_lights(objects, sys);
 	// setup_inside(objects);
-	// setup_sphere(objects);
+	setup_sphere(objects);
 	// setup_plane(objects);
 	// setup_cylinder(objects);
 	setup_cone(objects);
