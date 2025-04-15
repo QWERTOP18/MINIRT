@@ -107,7 +107,8 @@ t_objects	*parse_file(char *file, t_sys *sys)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		line[ft_strlen(line) - 1] = '\0';
+		if (ft_strlen(line) > 0 && line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = '\0';
 		res &= parse_line(line, i, objects, sys);
 		free(line);
 	}

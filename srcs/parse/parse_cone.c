@@ -6,7 +6,7 @@
 /*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 04:10:21 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 15:41:42 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/15 11:19:08 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ bool	parse_cone(t_objects *objs, char **tokens, int line_num)
 	t_scaled_col	color;
 	bool			res;
 
-	// double			diameter;
-	// double			height;
 	res = expect_len(6, tokens, line_num);
 	if (!res)
 		return (false);
