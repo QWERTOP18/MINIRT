@@ -76,7 +76,7 @@ t_objects	*generate(t_sys *sys)
 	t_objects	*objects;
 
 	objects = ft_calloc(1, sizeof(t_objects));
-	objects->num_of_camera = 1;
+	objects->num_of_camera = 5;
 	objects->num_of_light = 2;
 	objects->id_of_camera = 0;
 	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 100, sys);
@@ -100,8 +100,8 @@ t_objects	*generate(t_sys *sys)
 	// setup_sphere(objects);
 	// setup_plane(objects);
 	// setup_cylinder(objects);
-	// setup_cone(objects);
-	// setup_triangle(objects);
+	setup_cone(objects);
+	setup_triangle(objects);
 	// log_objs(objects);
 	return (objects);
 }

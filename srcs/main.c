@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 		system_exit(NULL, E_INVALID_INPUT);
 	sys = system_init();
 	sys->obj = parse_file(argv[1], sys);
+	// sys->obj = generate(sys);
 	if (!sys->obj)
 	{
 		system_exit(sys, E_INVALID_INPUT);
