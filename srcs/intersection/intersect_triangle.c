@@ -6,57 +6,61 @@
 /*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:41:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/15 17:51:25 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:05:20 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "intersection.h"
 
-/* TRIANGLE */
-// t_intersect	is4(t_unit_line ray, void *obj)
-// {
-// 	t_intersect	is;
+static int	tr_check_a(const t_tr_elements *te)
+{
+	return (fabs(te->a) >= FT_EPSILON);
+}
 
-// 	(void)ray;
-// 	(void)obj;
-// 	is.dist = __DBL_MAX__;
-// 	is.normal = vec(0, 0, 0);
-// 	is.pos = vec(0, 0, 0);
-// 	is.material = NULL;
-// 	return (is);
-// }
+static int	tr_check_uv(const t_tr_elements *te)
+{
+	return (te->u >= 0.0 && te->u <= 1.0 && te->v >= 0.0 && te->u
+		+ te->v <= 1.0);
+}
+
+static int	tr_calculate_elements(t_tr_elements *te, t_unit_line ray,
+		const t_triangle *tr)
+{
+	te->e1 = vec_sub(tr->p1, tr->p0);
+	te->e2 = vec_sub(tr->p2, tr->p0);
+	te->h = vec_cross(ray.dir, te->e2);
+	te->a = vec_dot(te->e1, te->h);
+	if (!tr_check_a(te))
+		return (0);
+	te->f = 1.0 / te->a;
+	te->s = vec_sub(ray.pos, tr->p0);
+	te->u = te->f * vec_dot(te->s, te->h);
+	te->q = vec_cross(te->s, te->e1);
+	te->v = te->f * vec_dot(ray.dir, te->q);
+	te->t = te->f * vec_dot(te->e2, te->q);
+	return (tr_check_uv(te) && te->t >= FT_EPSILON);
+}
+
+static void	tr_set_result(t_intersect *is, t_unit_line ray,
+		const t_triangle *tr, const t_tr_elements *te)
+{
+	is->dist = te->t;
+	is->pos = vec_add(ray.pos, vec_mul(ray.dir, te->t));
+	is->normal = tr->normal;
+	if (vec_dot(is->normal, ray.dir) > 0)
+		is->normal = vec_mul(is->normal, -1);
+}
 
 t_intersect	is4(t_unit_line ray, void *obj)
 {
 	const t_triangle	*tr = (const t_triangle *)obj;
 	t_intersect			is;
+	t_tr_elements		te;
 
-	t_vec e1, e2, h, s, q;
-	double a, f, u, v, t;
-	e1 = vec_sub(tr->p1, tr->p0);
-	e2 = vec_sub(tr->p2, tr->p0);
-	h = vec_cross(ray.dir, e2);
-	a = vec_dot(e1, h);
 	is.dist = __DBL_MAX__;
 	is.material = tr->material;
-	if (fabs(a) < FT_EPSILON)
+	if (!tr_calculate_elements(&te, ray, tr))
 		return (is);
-	f = 1.0 / a;
-	s = vec_sub(ray.pos, tr->p0);
-	u = f * vec_dot(s, h);
-	if (u < 0.0 || u > 1.0)
-		return (is);
-	q = vec_cross(s, e1);
-	v = f * vec_dot(ray.dir, q);
-	if (v < 0.0 || u + v > 1.0)
-		return (is);
-	t = f * vec_dot(e2, q);
-	if (t < FT_EPSILON)
-		return (is);
-	is.dist = t;
-	is.pos = vec_add(ray.pos, vec_mul(ray.dir, t));
-	is.normal = tr->normal;
-	if (vec_dot(is.normal, ray.dir) > 0)
-		is.normal = vec_mul(is.normal, -1);
+	tr_set_result(&is, ray, tr, &te);
 	return (is);
 }
