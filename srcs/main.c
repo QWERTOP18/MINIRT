@@ -42,8 +42,8 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		system_exit(NULL, E_INVALID_INPUT);
 	sys = system_init();
-	sys->obj = generate(sys);
-	// sys->obj = parse_file(argv[1], sys);
+	sys->obj = parse_file(argv[1], sys);
+	// sys->obj = generate(sys);
 	if (!sys->obj)
 	{
 		system_exit(sys, E_INVALID_INPUT);

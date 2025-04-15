@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 04:53:27 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:54:00 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:00:49 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void			log_obj(t_list *obj);
 void			log_obj_inline(t_list *obj);
 void			log_objs(t_objects *objs);
 void			log_objs_detail(t_objects *objs);
+
+void			log_camera(t_camera *camera, int id);
 
 void			log_vec(char *name, t_vec vec);
 void			log_vec_inline(char *name, t_vec vec);

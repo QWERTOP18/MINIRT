@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:35:46 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 10:13:53 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:05:19 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,21 @@ int	key_handler2(int key, t_sys *sys)
 	{
 		sys->obj->id_of_camera++;
 		sys->obj->id_of_camera %= n_camera;
+		log_camera(sys->obj->camera[sys->obj->id_of_camera],
+			sys->obj->id_of_camera);
 	}
 	if (key == DOWN)
 	{
 		sys->obj->id_of_camera--;
 		sys->obj->id_of_camera += n_camera;
 		sys->obj->id_of_camera %= n_camera;
+		log_camera(sys->obj->camera[sys->obj->id_of_camera],
+			sys->obj->id_of_camera);
+	}
+	if (key == 'c')
+	{
+		log_camera(sys->obj->camera[sys->obj->id_of_camera],
+			sys->obj->id_of_camera);
 	}
 	return (0);
 }
@@ -59,7 +68,7 @@ int	key_handler(int key, t_sys *sys)
 	n_light = sys->obj->num_of_light;
 	if (key == ESCAPE)
 		exit_handler(sys);
-	if (key == UP || key == DOWN)
+	if (key == UP || key == DOWN || key == 'c')
 		key_handler2(key, sys);
 	if (key == 'i')
 		log_objs_detail(sys->obj);

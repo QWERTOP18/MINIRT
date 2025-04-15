@@ -3,18 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+         #
+#    By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/04/15 17:41:14 by aryamamo         ###   ########.fr        #
+#    Updated: 2025/04/15 18:27:20 by ymizukam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= ./miniRT
 CC			:= cc
+CC			:= cc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
-CFLAGS		:= -O2 -fPIE -g -Wall -Wextra #-Werror
-DFLAGS      := #-DGEN#-DNOINPUT -DDEBUG
+CFLAGS		:= -O2 -Wall -Wextra -Werror
+DFLAGS      := #-DMAX_CAMERA=1 -DMAX_LIGHT=1
 VALGRIND    := valgrind -q#--leak-check=full --show-leak-kinds=all --track-origins=yes
 
 
@@ -82,6 +83,10 @@ re: fclean all
 
 run: $(NAME)
 	$(NAME) ./input/sample.rt 2>/dev/null
+
+tr: $(NAME)
+	$(NAME) ./input/triangle.rt 2>/dev/null
+
 
 
 invalid: $(NAME)

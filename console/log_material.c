@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 01:17:33 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:53:05 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:03:09 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	log_material(t_material *material)
 	printf("line: %d\n", material->line);
 	if (material->name)
 		printf("name: %s\n", material->name);
-	if (material->description)
+	if (material->description[0])
 		printf("description: %s\n", material->description);
 }
 

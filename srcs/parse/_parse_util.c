@@ -6,7 +6,7 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 14:26:16 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 12:37:46 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:25:00 by ymizukam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	deinit_parse_stack(t_sys *sys, t_objects *objects)
 {
 	camera_deinit(sys->mlx, objects->camera, objects->num_of_camera);
 	light_deinit(objects->light, objects->num_of_light);
+	mlx_destroy_display(sys->mlx);
 	free(sys->mlx);
 	objs_deinit(objects);
 }

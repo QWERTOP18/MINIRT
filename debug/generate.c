@@ -71,39 +71,49 @@ void	setup_triangle(t_objects *objects)
 						0.9), 0))));
 }
 
+// void	setup_camera(t_objects *objects, t_sys *sys)
+// {
+// 	objects->num_of_camera = 5;
+// 	objects->id_of_camera = 0;
+// 	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 100, sys);
+// 	// objects->camera[1] = camera_init(vec(0, 20, -50), vec(0, -0.2, 1), 100,
+// 	// 		sys);
+// 	objects->camera[1] = camera_init(vec(-50, 40, 0), vec(1, -1, 0), 60, sys);
+// 	objects->camera[2] = camera_init(vec(100, 100, 100), vec(-1, -1, -1), 30,
+// 			sys);
+// 	objects->camera[3] = camera_init(vec(0, 80, 80), vec(0, -1, -1), 80, sys);
+// 	// objects->camera[3] = camera_init(vec(0, 0, 40), vec(0, 0, -1), 80, sys);
+// 	//球の内部
+// 	// objects->camera[3] = camera_init(vec(0, 1, 0), vec(0, 1, 0), 60, sys);
+// 	objects->camera[4] = camera_init(vec(30, 60, 0), vec(-0.3, -1, 0), 80, sys);
+// 	//
+// }
+
+// void	setup_lights(t_objects *objects, t_sys *sys)
+// {
+// 	objects->num_of_light = 2;
+// 	objects->light[0] = light_init(vec(-200, 200, 10), vec(100, 255, 255), 0.5,
+// 			sys);
+// 	objects->light[1] = light_init(vec(200, 200, 0), vec(255, 100, 255), 0.5,
+// 			sys);
+// 	objects->ambient = vec_mul(color_scaler(vec(0, 240, 255)), 0.1);
+// }
+
 t_objects	*generate(t_sys *sys)
 {
 	t_objects	*objects;
 
 	objects = ft_calloc(1, sizeof(t_objects));
-	objects->num_of_camera = 5;
-	objects->num_of_light = 2;
-	objects->id_of_camera = 0;
-	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 100, sys);
-	// objects->camera[1] = camera_init(vec(0, 20, -50), vec(0, -0.2, 1), 100,
-	// 		sys);
-	objects->camera[1] = camera_init(vec(70, -20, 0), vec(-1, 0.4, 0), 100,
-			sys);
-	objects->camera[2] = camera_init(vec(100, 100, 100), vec(-1, -1, -1), 30,
-			sys);
-	objects->camera[3] = camera_init(vec(0, 80, 80), vec(0, -1, -1), 80, sys);
-	// objects->camera[3] = camera_init(vec(0, 0, 40), vec(0, 0, -1), 80, sys);
-	//球の内部
-	// objects->camera[3] = camera_init(vec(0, 1, 0), vec(0, 1, 0), 60, sys);
-	objects->camera[4] = camera_init(vec(30, 60, 0), vec(-0.3, -1, 0), 80, sys);
-	//
-	objects->light[0] = light_init(vec(-200, 200, 10), vec(100, 255, 255), 0.5,
-			sys);
-	objects->light[1] = light_init(vec(200, -200, 0), vec(255, 100, 255), 0.5,
-			sys);
-	objects->ambient = vec_mul(color_scaler(vec(0, 240, 255)), 0.1);
+	// setup_camera(objects, sys);
+	// setup_lights(objects, sys);
 	// setup_inside(objects);
 	setup_sphere(objects);
 	// setup_plane(objects);
 	// setup_cylinder(objects);
-	// setup_cone(objects);
+	setup_cone(objects);
 	setup_triangle(objects);
 	// log_objs(objects);
+	(void)sys;
 	return (objects);
 }
 /*
