@@ -99,7 +99,7 @@ t_objects	*parse_file(char *file, t_sys *sys)
 	res = true;
 	fd = open_rtfile(file);
 	if (fd < 0)
-		return (free(sys->mlx), NULL);
+		return (mlx_destroy_display(sys->mlx), free(sys->mlx), NULL);
 	objects = init_objs();
 	i = 0;
 	while (++i < MAX_INPUT_LINE)
