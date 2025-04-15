@@ -7,7 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
 
-/*   Updated: 2025/04/15 11:18:56 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/15 17:41:59 by aryamamo         ###   ########.fr       */
 
 /*                                                                            */
 /* ************************************************************************** */
@@ -42,7 +42,8 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		system_exit(NULL, E_INVALID_INPUT);
 	sys = system_init();
-	sys->obj = parse_file(argv[1], sys);
+	sys->obj = generate(sys);
+	// sys->obj = parse_file(argv[1], sys);
 	if (!sys->obj)
 	{
 		system_exit(sys, E_INVALID_INPUT);

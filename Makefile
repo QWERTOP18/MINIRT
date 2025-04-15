@@ -6,12 +6,12 @@
 #    By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/18 14:08:51 by ymizukam          #+#    #+#              #
-#    Updated: 2025/04/14 10:25:54 by aryamamo         ###   ########.fr        #
+#    Updated: 2025/04/15 17:41:14 by aryamamo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= ./miniRT
-CC			:= gcc
+CC			:= cc
 FRAMEWORKS	:= -lmlx -lXext -lX11 -lm
 CFLAGS		:= -O2 -fPIE -g -Wall -Wextra #-Werror
 DFLAGS      := #-DGEN#-DNOINPUT -DDEBUG
