@@ -6,14 +6,76 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 03:59:52 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 12:38:34 by ymizukam         ###   ########.fr       */
+
+/*   Updated: 2025/04/14 15:32:04 by aryamamo         ###   ########.fr       */
+
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
+static int	handle_sign(const char *str, int *sign)
+{
+	int	i;
+
+	i = 0;
+	*sign = 1;
+	if (str[i] == '-')
+	{
+		*sign = -1;
+		i++;
+	}
+	else if (str[i] == '+')
+		i++;
+	return (i);
+}
+
+static int	parse_integer_part(const char *str, double *result, int i)
+{
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		*result = *result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (i);
+}
+
+static int	parse_decimal_part(const char *str, double *result, int i)
+{
+	double	decimal_place;
+
+	decimal_place = 0.1;
+	if (str[i] == '.')
+	{
+		i++;
+		while (str[i] >= '0' && str[i] <= '9')
+		{
+			*result += (str[i] - '0') * decimal_place;
+			decimal_place *= 0.1;
+			i++;
+		}
+	}
+	return (i);
+}
+
 double	ft_atod(const char *str, bool *res)
 {
+	double	result;
+	int		sign;
+	int		i;
+
+	result = 0.0;
+	*res = true;
+	i = handle_sign(str, &sign);
+	i = parse_integer_part(str, &result, i);
+	i = parse_decimal_part(str, &result, i);
+	if (str[i] != '\0')
+	{
+		printf("Invalid number format\n");
+		*res = false;
+		return (0);
+	}
+	return (result * sign);
 }
 
 /**
@@ -31,8 +93,7 @@ double	parse_double(bool *res, const char *token, int line, t_vec lim)
 {
 	double	d;
 
-	// todo 失敗したら*res = false　にしエラーメッセージをはく
-	d = atof(token);
+	d = ft_atod(token, res);
 	if (lim.z != 0.0 && (d < lim.x || lim.y < d))
 	{
 		if (lim.y == __DBL_MAX__)

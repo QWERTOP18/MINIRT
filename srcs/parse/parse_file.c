@@ -26,15 +26,17 @@ bool	parse_tokens(char **tokens, int line_num, t_objects *objs, t_sys *sys)
 	else if (ft_strncmp(tokens[0], "C", 2) == 0)
 		return (parse_camera(objs, tokens, line_num, sys));
 	else if (ft_strncmp(tokens[0], "L", 2) == 0)
-		parse_light(objs, tokens, line_num, sys);
-	else if (ft_strncmp(tokens[0], "sp", 2) == 0)
+		return (parse_light(objs, tokens, line_num, sys));
+	else if (ft_strncmp(tokens[0], "sp", 3) == 0)
 		return (parse_sphere(objs, tokens, line_num));
-	else if (ft_strncmp(tokens[0], "pl", 2) == 0)
+	else if (ft_strncmp(tokens[0], "pl", 3) == 0)
 		return (parse_plane(objs, tokens, line_num));
-	else if (ft_strncmp(tokens[0], "cy", 2) == 0)
+	else if (ft_strncmp(tokens[0], "cy", 3) == 0)
 		return (parse_cylinder(objs, tokens, line_num));
-	else if (ft_strncmp(tokens[0], "cone", 2) == 0)
-		return (parse_cylinder(objs, tokens, line_num));
+	else if (ft_strncmp(tokens[0], "cone", 5) == 0)
+		return (parse_cone(objs, tokens, line_num));
+	else if (ft_strncmp(tokens[0], "tr", 3) == 0)
+		return (parse_triangle(objs, tokens, line_num));
 	else
 		return (printf("line: %d: Unknown object type '%s'\n", line_num,
 				tokens[0]), false);
@@ -105,6 +107,8 @@ t_objects	*parse_file(char *file, t_sys *sys)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
+		if (ft_strlen(line) > 0 && line[ft_strlen(line) - 1] == '\n')
+			line[ft_strlen(line) - 1] = '\0';
 		res &= parse_line(line, i, objects, sys);
 		free(line);
 	}

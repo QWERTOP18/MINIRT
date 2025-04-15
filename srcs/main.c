@@ -6,7 +6,9 @@
 /*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 00:29:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 12:37:16 by ymizukam         ###   ########.fr       */
+
+/*   Updated: 2025/04/15 11:18:56 by aryamamo         ###   ########.fr       */
+
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +42,6 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		system_exit(NULL, E_INVALID_INPUT);
 	sys = system_init();
-	// sys->obj = generate(sys);
 	sys->obj = parse_file(argv[1], sys);
 	if (!sys->obj)
 	{
@@ -51,3 +52,5 @@ int	main(int argc, char **argv)
 	system_exit(sys, 0);
 	return (0);
 }
+
+// sys->obj = generate(sys);
