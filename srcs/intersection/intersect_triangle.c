@@ -6,7 +6,7 @@
 /*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/19 16:41:26 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/15 11:43:41 by aryamamo         ###   ########.fr       */
+/*   Updated: 2025/04/15 17:40:56 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ t_intersect	is4(t_unit_line ray, void *obj)
 	is.dist = t;
 	is.pos = vec_add(ray.pos, vec_mul(ray.dir, t));
 	is.normal = tr->normal;
+	if (vec_dot(is.normal, ray.dir) > 0)
+		is.normal = vec_mul(is.normal, -1);
 	return (is);
 }

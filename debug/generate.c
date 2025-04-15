@@ -61,8 +61,8 @@ void	setup_triangle(t_objects *objects)
 	/**
 		* TRIANGLE
 		*/
-	ft_lstadd_back(&objects->objs, ft_lstnew(TRIANGLE, triangle_new(vec(-40,
-					-1.5, 40), vec(40, -1.5, 40), vec(-40, -1.5, -40),
+	ft_lstadd_back(&objects->objs, ft_lstnew(TRIANGLE, triangle_new(vec(40,
+					-1.5, 40), vec(-40, -1.5, 40), vec(-40, -1.5, -40),
 				material_init_with_param(vec(0xF5, 0xF5, 0xDC), vec(600, 0.9,
 						0.9), 0))));
 	ft_lstadd_back(&objects->objs, ft_lstnew(TRIANGLE, triangle_new(vec(40,
@@ -76,13 +76,14 @@ t_objects	*generate(t_sys *sys)
 	t_objects	*objects;
 
 	objects = ft_calloc(1, sizeof(t_objects));
-	objects->num_of_camera = 1;
+	objects->num_of_camera = 5;
 	objects->num_of_light = 2;
 	objects->id_of_camera = 0;
 	objects->camera[0] = camera_init(vec(70, 10, 0), vec(-1, 0, 0), 100, sys);
 	// objects->camera[1] = camera_init(vec(0, 20, -50), vec(0, -0.2, 1), 100,
 	// 		sys);
-	objects->camera[1] = camera_init(vec(-50, 40, 0), vec(1, -1, 0), 60, sys);
+	objects->camera[1] = camera_init(vec(70, -20, 0), vec(-1, 0.4, 0), 100,
+			sys);
 	objects->camera[2] = camera_init(vec(100, 100, 100), vec(-1, -1, -1), 30,
 			sys);
 	objects->camera[3] = camera_init(vec(0, 80, 80), vec(0, -1, -1), 80, sys);
@@ -93,15 +94,15 @@ t_objects	*generate(t_sys *sys)
 	//
 	objects->light[0] = light_init(vec(-200, 200, 10), vec(100, 255, 255), 0.5,
 			sys);
-	objects->light[1] = light_init(vec(200, 200, 0), vec(255, 100, 255), 0.5,
+	objects->light[1] = light_init(vec(200, -200, 0), vec(255, 100, 255), 0.5,
 			sys);
 	objects->ambient = vec_mul(color_scaler(vec(0, 240, 255)), 0.1);
 	// setup_inside(objects);
-	// setup_sphere(objects);
+	setup_sphere(objects);
 	// setup_plane(objects);
 	// setup_cylinder(objects);
 	// setup_cone(objects);
-	// setup_triangle(objects);
+	setup_triangle(objects);
 	// log_objs(objects);
 	return (objects);
 }
