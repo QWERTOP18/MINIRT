@@ -7,9 +7,10 @@
 <img src="./pictures/cylinder/bug1.png" width="400" height="400">
 <img src="./pictures/any/sphere.png" width="400" height="400">
 <img src="./pictures/any/palace1.png" width="400" height="400">
+<img src="./pictures/polygon/wolf.png" width="400" height="400">
 
 </div>
-⚠ 1枚目 bug
+⚠ 2枚目 bug
 
 ```sh
 make run
