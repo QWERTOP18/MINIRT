@@ -1,14 +1,15 @@
 ## MINIRT✨
 
-⚠ 二枚目 bug
+![deer](./pictures/polygon/deer-header.png)
 
 <div>
-<img src="./pictures/shadow/tag1.png" width="400" height="400">
+
 <img src="./pictures/cylinder/bug1.png" width="400" height="400">
-<img src="./pictures/cylinder/cylinder.png" width="400" height="400">
-<img src="./pictures/any/palace.png" width="400" height="400">
+<img src="./pictures/any/sphere.png" width="400" height="400">
+<img src="./pictures/any/palace1.png" width="400" height="400">
 
 </div>
+⚠ 1枚目 bug
 
 ```sh
 make run

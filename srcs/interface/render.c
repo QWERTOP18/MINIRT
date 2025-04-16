@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ymizukam <ymizukam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aryamamo <aryamamo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 01:40:17 by ymizukam          #+#    #+#             */
-/*   Updated: 2025/04/14 04:56:33 by ymizukam         ###   ########.fr       */
+/*   Updated: 2025/04/16 12:09:37 by aryamamo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	render_img(t_camera *camera, t_sys *sys)
 	y = 0;
 	while (y < sys->height)
 	{
+		printf("\rRendering... %d%%", (y * 100) / sys->height);
+		fflush(stdout);
 		x = 0;
 		while (x < sys->width)
 		{
