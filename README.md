@@ -6,6 +6,7 @@
 <img src="./pictures/shadow/tag1.png" width="400" height="400">
 <img src="./pictures/cylinder/bug1.png" width="400" height="400">
 <img src="./pictures/cylinder/cylinder.png" width="400" height="400">
+<img src="./pictures/any/palace.png" width="400" height="400">
 
 </div>
 
@@ -78,6 +79,8 @@ make func
 
 ### input.rt
 
+https://github.com/arashi0-git/RTfiles.git
+
 ```rt
 A  0.1      255,255,255             # Ambient
 C  0,3,-20    0,-0.2,1    60        # main camera
@@ -90,27 +93,4 @@ pl 0,-4,0   0,1,0    255,255,0      # plane
 sp 5,0,0       3       255,0,0      # sphere
 cy -5,-1,0   0,1,0   4  2 0,255,0   # cylinder
 sq 0,-2,-3   1,1,-1  3  0,176,176   # square
-```
-
-### commit rule
-
-https://qiita.com/oekazuma/items/0ce5082a07fe5c942de3
-
-```
-# 🐛  :bug: バグ修正
-# 👍  :+1: 機能改善
-# ✨  :sparkles: 部分的な機能追加
-# 🎨  :art: デザイン変更のみ
-# 💢  :anger: コンフリクト
-# 🚧  :construction: WIP
-# 📝  :memo: 文言修正
-# ♻️  :recycle: リファクタリング
-# 🔥  :fire: 不要な機能・使われなくなった機能の削除
-# 💚  :green_heart: テストやCIの修正・改善
-# 👕  :shirt: Lintエラーの修正やコードスタイルの修正
-# 🚀  :rocket: パフォーマンス改善
-# 🆙  :up: 依存パッケージなどのアップデート
-# 👮  :cop: セキュリティ関連の改善
-# ⚙   :gear: config変更
-# 📚  :books: ドキュメント
 ```
